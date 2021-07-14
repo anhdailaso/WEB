@@ -1,0 +1,154 @@
+﻿@using Model.Data
+@model PhuTungViewModel
+    <style>
+        .my-custom-scrollbar {
+            position: relative;
+            height: 450px;
+            overflow: auto;
+        }
+        .table-wrapper-scroll-y {
+            display: block;
+        }
+    </style>
+@using (Html.BeginForm("_ThemPhuThung", "UserRequest", FormMethod.Post, new { id = "ThemPhuTung" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-content modal-lg" style="margin: 30px auto;">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" data-lang="lblthembophan">Thêm Bộ Phận Cho Phiếu Yêu Cầu</h4>
+        </div>
+        @Html.HiddenFor(x => x.MS_MAY)
+        @Html.HiddenFor(x => x.STT)
+        @Html.HiddenFor(x => x.STT_VAN_DE)
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-4 col-lg-4">
+                    @*<div class="form-group ">
+                        <table class="tree table table-hover">*@
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="tree table table-hover check">
+                                    @for (var i = 0; i < Model.ListBoPhan.Count; i++)
+                                    {
+                                        var BoPhanId = string.Format("bp-{0}", Model.ListBoPhan[i].MS_BO_PHAN);
+                                    <tr data-id="@Model.ListBoPhan[i].MS_BO_PHAN" class="treegrid-@Model.ListBoPhan[i].MS_BO_PHAN @(Model.ListBoPhan[i].MS_BO_PHAN_CHA == "0" ? "" : "treegrid-parent-" + Model.ListBoPhan[i].MS_BO_PHAN_CHA)">
+                                        <td>
+                                            @Html.CheckBoxFor(m => Model.ListBoPhan[i].Choose, new { @id = BoPhanId })
+                                        </td>
+                                        <td style="min-width: 250px">
+                                            <a class="chucDanhQLNV" data-selected="false" data-loai="@ViewBag.loai" data-chucdanh="@Model.ListBoPhan[i].TEN_BO_PHAN" href="#" id="treegrid-@Model.ListBoPhan[i].MS_BO_PHAN" style="vertical-align: text-bottom; text-decoration: none; color: rgb(2, 117, 216);">
+                                                @Model.ListBoPhan[i].TEN_BO_PHAN
+                                            </a>
+                                            @Html.DisplayFor(m => Model.ListBoPhan[i].TEN_BO_PHAN)
+                                            @Html.HiddenFor(m => Model.ListBoPhan[i].TEN_BO_PHAN)
+                                            @Html.HiddenFor(m => Model.ListBoPhan[i].MS_BO_PHAN)
+                                            @Html.HiddenFor(m => Model.ListBoPhan[i].MS_BO_PHAN_CHA)
+                                            @Html.HiddenFor(m => Model.ListBoPhan[i].MS_MAY)
+                                        </td>
+                                    </tr>
+                                    }
+                                </table>
+                    </div>
+                </div>
+
+                <div class="col-xs-8 col-lg-8">
+                    <div class="table-wrapper">
+                        <div class="table-responsive" style="overflow: auto">
+                            <table id="tbPlan" class="table table-bordered table-condensed ">
+                                <thead>
+                                    <tr>
+                                        <th data-lang="Choose">Chọn</th>
+                                        <th data-lang="MS_BP">MS bộ phận</th>
+                                        <th data-lang="Ten_BP">Tên bộ phận</th>
+                                        <th data-lang="MS_VI_TRI">MS vị trí</th>
+                                        <th data-lang="MS_PT">MS phụ tùng</th>
+                                        <th data-lang="Ten_PT">Tên phụ tùng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (var i = 0; i < Model.ListPhuTung.Count; i++)
+                                    {
+                                        var PhuTungId = string.Format("phutunng-{0}", Model.ListPhuTung[i].MS_PT);
+                                        <tr>
+                                            <td>
+                                                @Html.CheckBoxFor(m => Model.ListPhuTung[i].Choose, new { @id = PhuTungId })
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(m => Model.ListPhuTung[i].MS_BO_PHAN)
+                                                @Html.HiddenFor(m => Model.ListPhuTung[i].MS_BO_PHAN)
+
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(m => Model.ListPhuTung[i].TEN_BO_PHAN)
+                                                @Html.HiddenFor(m => Model.ListPhuTung[i].TEN_BO_PHAN)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(m => Model.ListPhuTung[i].MS_VI_TRI_PT)
+                                                @Html.HiddenFor(m => Model.ListPhuTung[i].MS_VI_TRI_PT)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(m => Model.ListPhuTung[i].MS_PT)
+                                                @Html.HiddenFor(m => Model.ListPhuTung[i].MS_PT)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(m => Model.ListPhuTung[i].TEN_BO_PHAN)
+                                                @Html.HiddenFor(m => Model.ListPhuTung[i].TEN_BO_PHAN)
+                                                @Html.HiddenFor(m => Model.ListPhuTung[i].STT_VAN_DE)
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="row ">
+                <div class="col-sm-3 col-md-3 col-xs-3 col-lg-3 pull-right">
+                    <div class="form-group">
+                        <input type="button" data-dismiss="modal" id="Button1" data-lang="btnHuy" style="color: #fff; width: 100%;" class="btn-flat flat" value="Hủy">
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3 col-xs-3 col-lg-3 pull-right">
+                    <div class="form-group">
+                        <input type="submit" data-action="add" id="btnSave" style="color: #fff; width: 100%;" data-lang="btnGhi" class="btn-flat flat" ng-click="" value="Lưu">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+    @*<script src="~/js/plugins/jquery/jquery.treegrid.js"></script>*@
+<script>
+    $('#tbPlan').DataTable();
+    $('.tree').on('click', 'tr', function (event) {
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+        } else {
+            var id = $(this).attr('data-id').toLowerCase();
+            $("#tbPlan tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(id) > -1)
+            });
+        }
+    });
+    var $formphuTung = $("#ThemPhuTung");
+    $("#btnSave").on("click",
+        function (data) {
+            $.ajax({
+                type: $formphuTung.prop("method"),
+                url: $formphuTung.prop("action"),
+                data: $formphuTung.serializeObject(),
+            });
+            if (data == "success") {
+                Alert.fn.Show(data, Alert.Type.error);
+            }
+            else {
+                Alert.fn.Show(data, Alert.Type.error);
+            }
+            return false;
+        });
+    require(['jquery.treegrid'])
+</script>
+

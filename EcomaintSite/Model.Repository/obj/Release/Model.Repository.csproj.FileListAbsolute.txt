@@ -1,0 +1,173 @@
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\bin\Release\Model.Repository.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\bin\Release\Model.Repository.pdb
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\bin\Release\EntityFramework.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\bin\Release\Model.Interface.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\bin\Release\Model.Interface.pdb
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\bin\Release\Model.Data.pdb
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll.config
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\bin\Release\EntityFramework.xml
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csprojResolveAssemblyReference.cache
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.CoreCompileInputs.cache
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\obj\Release\Model.Repository.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Repository\obj\Release\Model.Repository.pdb
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Repository.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Repository.pdb
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\EntityFramework.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Interface.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Interface.pdb
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Data.pdb
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll.config
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\EntityFramework.xml
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csprojAssemblyReference.cache
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.CoreCompileInputs.cache
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.CopyComplete
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.pdb
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Repository.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Repository.pdb
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\EntityFramework.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Microsoft.ApplicationBlocks.Data.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Interface.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.Mvc.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.Razor.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Razor.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Microsoft.Web.Infrastructure.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Deployment.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Interface.pdb
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Data.pdb
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll.config
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\EntityFramework.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.Mvc.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.Razor.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Razor.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Deployment.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csprojAssemblyReference.cache
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.Common.HelperSetting.resources
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.GenerateResource.cache
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.CoreCompileInputs.cache
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.CopyComplete
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.pdb
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Repository.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Repository.pdb
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\EntityFramework.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Interface.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.Razor.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Razor.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Microsoft.Web.Infrastructure.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Deployment.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Interface.pdb
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Data.pdb
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll.config
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\EntityFramework.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.Mvc.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.Razor.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Razor.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Deployment.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csprojAssemblyReference.cache
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.Common.HelperSetting.resources
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.GenerateResource.cache
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.CoreCompileInputs.cache
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.CopyComplete
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.pdb
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Repository.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Repository.pdb
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\EntityFramework.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Interface.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.Razor.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Razor.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Microsoft.Web.Infrastructure.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Deployment.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Interface.pdb
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Data.pdb
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll.config
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\EntityFramework.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.Mvc.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.Razor.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Razor.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Deployment.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csprojAssemblyReference.cache
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.Common.HelperSetting.resources
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.GenerateResource.cache
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.CoreCompileInputs.cache
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.CopyComplete
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Repository\obj\Release\Model.Repository.pdb
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\Model.Repository.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\Model.Repository.pdb
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\EntityFramework.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\Model.Interface.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\System.Web.Razor.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Razor.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\Microsoft.Web.Infrastructure.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Deployment.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\Model.Interface.pdb
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\Model.Data.pdb
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll.config
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\EntityFramework.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\System.Web.Mvc.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\System.Web.Razor.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Razor.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Deployment.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csprojAssemblyReference.cache
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\obj\Release\Model.Repository.Common.HelperSetting.resources
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.GenerateResource.cache
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.CoreCompileInputs.cache
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.CopyComplete
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\obj\Release\Model.Repository.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Repository\obj\Release\Model.Repository.pdb
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\Model.Repository.dll
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\Model.Repository.pdb
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\EntityFramework.dll
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\Model.Interface.dll
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\System.Web.Razor.dll
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Razor.dll
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.dll
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\Microsoft.Web.Infrastructure.dll
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Deployment.dll
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\Model.Interface.pdb
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\Model.Data.pdb
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\Model.Data.dll.config
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\EntityFramework.xml
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\System.Web.Mvc.xml
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\System.Web.Razor.xml
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Razor.xml
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.xml
+E:\03.WEB\EcomaintSite\Model.Repository\bin\Release\System.Web.WebPages.Deployment.xml
+E:\03.WEB\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csprojAssemblyReference.cache
+E:\03.WEB\EcomaintSite\Model.Repository\obj\Release\Model.Repository.Common.HelperSetting.resources
+E:\03.WEB\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.GenerateResource.cache
+E:\03.WEB\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.CoreCompileInputs.cache
+E:\03.WEB\EcomaintSite\Model.Repository\obj\Release\Model.Repository.csproj.CopyComplete
+E:\03.WEB\EcomaintSite\Model.Repository\obj\Release\Model.Repository.dll
+E:\03.WEB\EcomaintSite\Model.Repository\obj\Release\Model.Repository.pdb

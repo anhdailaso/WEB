@@ -1,0 +1,226 @@
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.pdb
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.xml
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csprojResolveAssemblyReference.cache
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CoreCompileInputs.cache
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.pdb
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Model.Data.pdb
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll.config
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.dll
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.pdb
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.dll
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Model.Data.pdb
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll.config
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.xml
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csprojResolveAssemblyReference.cache
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CoreCompileInputs.cache
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.dll
+F:\SourceControl\Vsecomaint-respository\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.pdb
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.dll
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.pdb
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.dll
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.pdb
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll.config
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.xml
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csprojResolveAssemblyReference.cache
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CoreCompileInputs.cache
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.dll
+E:\CMMS_WEB\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.pdb
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.pdb
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.pdb
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll.config
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.xml
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csprojAssemblyReference.cache
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CoreCompileInputs.cache
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CopyComplete
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.pdb
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.dll
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.pdb
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.dll
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.pdb
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll.config
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.xml
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csprojAssemblyReference.cache
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CoreCompileInputs.cache
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CopyComplete
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.dll
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.pdb
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.Razor.dll
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.WebPages.dll
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.Mvc.xml
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.Razor.xml
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.WebPages.xml
+C:\Users\giain\Desktop\webboo\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.pdb
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.Mvc.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.Razor.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.WebPages.Razor.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.WebPages.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.pdb
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll.config
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.Mvc.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.Razor.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.WebPages.Razor.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.WebPages.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csprojAssemblyReference.cache
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CoreCompileInputs.cache
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CopyComplete
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.pdb
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.pdb
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.pdb
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll.config
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csprojAssemblyReference.cache
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CoreCompileInputs.cache
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CopyComplete
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.pdb
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.dll
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.pdb
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.dll
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.pdb
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll.config
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.xml
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csprojAssemblyReference.cache
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CoreCompileInputs.cache
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CopyComplete
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.dll
+D:\00.Code\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.pdb
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.pdb
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.pdb
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll.config
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csprojAssemblyReference.cache
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CoreCompileInputs.cache
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CopyComplete
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.pdb
+E:\WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.dll
+E:\WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.pdb
+E:\WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll
+E:\WEB\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\WEB\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.dll
+E:\WEB\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Data.pdb
+E:\WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll.config
+E:\WEB\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\WEB\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.xml
+E:\WEB\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csprojAssemblyReference.cache
+E:\WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CoreCompileInputs.cache
+E:\WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CopyComplete
+E:\WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.dll
+E:\WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.pdb
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.pdb
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\bin\Debug\Model.Data.pdb
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll.config
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csprojAssemblyReference.cache
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CoreCompileInputs.cache
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CopyComplete
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.pdb
+E:\03.WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.dll
+E:\03.WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.pdb
+E:\03.WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll
+E:\03.WEB\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\03.WEB\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.dll
+E:\03.WEB\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\03.WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Data.pdb
+E:\03.WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll.config
+E:\03.WEB\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\03.WEB\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.xml
+E:\03.WEB\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\03.WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csprojAssemblyReference.cache
+E:\03.WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CoreCompileInputs.cache
+E:\03.WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CopyComplete
+E:\03.WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.dll
+E:\03.WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.pdb
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.dll
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Interface.pdb
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.dll
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Data.pdb
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\bin\Debug\Model.Data.dll.config
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\bin\Debug\EntityFramework.xml
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.AssemblyReference.cache
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CoreCompileInputs.cache
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.csproj.CopyComplete
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.dll
+D:\04.WEB\01.WEB\EcomaintSite\Model.Interface\obj\Debug\Model.Interface.pdb

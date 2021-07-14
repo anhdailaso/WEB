@@ -1,0 +1,378 @@
+﻿@using Model.Data
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<link href="~/Content/magic-check.min.css" rel="stylesheet" />
+
+<style>
+    tr.group, tr.group:hover {
+        background-color: #eaeaea !important;
+        cursor: pointer;
+        color: #0b0b0c
+    }
+
+    table tr .dt-body-center {
+        text-align: center
+    }
+
+    table tr td {
+        vertical-align: middle !important
+    }
+
+    td input[type=text], td textarea {
+        resize: none;
+        width: 100% !important
+    }
+
+    #tbQualityParameter input[type=text], #tbQualityParameter textarea {
+        height: 2.5em !important
+    }
+
+    #tbQuantityParameter input[type=text], #tbQuantityParameter textarea {
+        height: 8em !important
+    }
+
+    table td input[type=checkbox] {
+        width: 17px;
+        height: 17px
+    }
+
+    #tbEquip .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_paginate {
+        margin-top: 5px;
+        float: left;
+        text-align: left
+    }
+
+    .dataTables_wrapper {
+        position: relative;
+        clear: both;
+        width: auto;
+        min-height: 300px;
+        margin-left: 0;
+        zoom: 1
+    }
+
+    #tbMAY_wrapper .dataTables_wrapper {
+        min-height: 260px
+    }
+
+    div[data-toggle=buttons] label, label.btn span {
+        font-size: 14px
+    }
+
+    td .btn {
+        font-size: 17px;
+    }
+
+
+
+    #tbSparePartSelected > tbody > tr > td {
+        word-break: break-all;
+    }
+
+    #tbWO > tbody > tr > td {
+        word-break: break-all;
+    }
+
+
+    td.details {
+        color: #2366dd;
+        font-style: italic;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    tr.selected > td.details {
+        color: #323b49;
+    }
+</style>
+
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href='#' data-lang="lblListMonitoringDevice">Danh sách giám sát máy</a></li>
+            <li class="breadcrumb-item active" data-lang="lblGiamSatThongSo">Giám sát thông số thiết bị</li>
+        </ol>
+    </div>
+</div>
+<div ng-controller="MonitoringController" ng-init="fn.Init()">
+    @if (ViewBag.link == 1)
+    {
+        <input type="hidden" id="link" name="link" value="@ViewBag.link">
+        <input type="hidden" id="nx" name="nx" value="@ViewBag.nx">
+        <input type="hidden" id="may" name="may" value="@ViewBag.may">
+        <input type="hidden" id="dngay" name="dngay" value="@ViewBag.dngay">
+        <input type="hidden" id="tngay" name="tngay" value="@ViewBag.tngay">
+    }
+
+    @*<div class="row">
+            <div class="col-lg-12">
+                <div class="card-box">
+                    <div class="row ">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group responsive">
+                                <label data-lang="lblDiaDiem">Địa điểm</label>
+                                @Html.DropDownList("cbbDiaDiem", ViewBag.NhaXuong as SelectList, new { name = "cbbDiaDiem", data_slide = "left", @class = "form-control select2-container--classic", @style = "width:100%" })
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group responsive">
+                                <label data-lang="lblThietBi">Máy</label>
+                                <div class="input-group">
+                                    @Html.DropDownList("cbbThietBi", ViewBag.NhaXuong as SelectList, new { name = "cbbThietBi", data_live_search = "true", data_slide = "left", @class = "form-control select2-container--classic", @style = "width:100%" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <div id="divButtonDefault" class="toolbar-action">
+                    <button ng-click="fn.SuaGS();" type="button" data-lang="btnSuags" class="btn btn-default pull-right" id="btnSuags">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+
+                    <button ng-click="fn.XoaGS();" type="button" data-lang="btnXoa" id="btnRemove" class="btn btn-default pull-right">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                    <a href='@Url.Action("InitMonitoring", "Monitoring")' data-lang="btnThemgs" class="btn btn-default pull-right" id="btnThemgs">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <ul id="myTabs" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#tabMonitoring" data-val="0" aria-controls="tabMonitoring" role="tab" data-lang="tabThongSo" data-toggle="tab">Giám sát</a></li>
+                    <li role="presentation"><a href="#tabThongSoDT" data-val="1" aria-controls="tabThongSoDT" role="tab" data-toggle="tab" data-lang="tabThongSoDT">định tính</a></li>
+                    <li role="presentation"><a href="#tabThongSoDL" data-val="2" aria-controls="tabThongSoDL" role="tab" data-toggle="tab" data-lang="tabThongSoDL">định lượng</a></li>
+                </ul>
+                <h6 style="margin: 20px 0 0 0;"></h6>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    @*tab giám sát tình trạng*@
+                    <div role="tabpanel" class="tab-pane active" id="tabMonitoring">
+                        @*table danh sách giám sát*@
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <div class="form-group">
+                                    <label data-lang="lblTungay">Từ ngày</label>
+                                    <input class="form-control" type="text" id="fromDate" data-type="datepicker" value="@DateTime.Now.AddMonths(-1).ToString("dd/MM/yyyy")" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <div class="form-group">
+                                    <label data-lang="lblDenngay">Đến ngày</label>
+                                    <input class="form-control" type="text" id="toDate" data-type="datepicker" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <label data-lang="lblNhanvienkiemtra">Nhân viên kiểm tra</label>
+                                    @Html.DropDownList("cbbNhanVien", ViewBag.NhanVien as SelectList, new { name = "cbbNhanVien", data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <div class="table-responsive" style="overflow: auto">
+                                        <table id="tbGiamSatTinhTrang" class="table table-bordered table-condensed display" style="width:100px">
+                                            <thead>
+                                                <tr>
+                                                    <th hidden>STT</th>
+                                                    <th data-lang="SO_PHIEU">Số phiếu</th>
+                                                    <th data-lang="NGAY_KT">Ngày kiểm tra</th>
+                                                    <th data-lang="GIO_KT">Giờ kiểm tra</th>
+                                                    <th data-lang="lblNhanvienkiemtra">Nhân viên kiểm tra</th>
+                                                    <th hidden>Mã CN</th>
+                                                    <th data-lang="MS_MAY">Mã tài sản</th>
+                                                    <th data-lang="TEN_MAY">Tên tài sản</th>
+                                                    <th data-lang="NHAN_XET">Nhận xét</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*tab định tính*@
+                    <div role="tabpanel" class="tab-pane" id="tabThongSoDT">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="container-fluid">
+                                    <div class="radio-inline">
+                                        <label><input type="radio" name="optradio" value="1" checked>Đạt</label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <label><input type="radio" name="optradio" value="0">Không đạt</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="table-responsive" style="overflow: auto">
+                                            <table id="tbthongsodinhtinh" class="table table-bordered table-condensed display">
+                                                <thead>
+                                                    <tr>
+                                                        <th hidden>STT</th>
+                                                        <th data-lang="MS_MAY">Mã tài sản </th>
+                                                        <th data-lang="TEN_MAY">Tên tài sản</th>
+                                                        <th hidden>Mã bộ phận </th>
+                                                        <th data-lang="TEN_BO_PHAN">Tên bộ phận</th>
+                                                        <th hidden >Mã thông số </th>
+                                                        <th data-lang="TEN_TS_GSTT">Thông số GS</th>
+                                                        <th data-lang="TG_TT">TG TT</th>
+                                                        <th data-lang="TG_KH">TG KH</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="table-responsive" style="overflow: auto; margin-top:7px;">
+                                            <table id="tbgiatri" class="table table-bordered table-condensed display">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-lang="GIA_TRI">Giá trị</th>
+                                                        <th data-lang="GHI_CHU">Ghi chú</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*tab thông số định lượng*@
+                    <div role="tabpanel" class="tab-pane" id="tabThongSoDL">
+                        <div class=" row">
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <div class="form-group">
+                                    <div class="table-responsive" style="overflow: auto">
+                                        <table id="tbthongsodinhluong" class="table table-bordered table-condensed display">
+                                            <thead>
+                                                <tr>
+                                                    <th hidden>STT</th>
+                                                    <th data-lang="MS_MAY">Mã tài sản </th>
+                                                    <th data-lang="TEN_MAY">Tên tài sản</th>
+                                                    <th hidden>Mã bộ phận </th>
+                                                    <th data-lang="TEN_BO_PHAN">Tên bộ phận</th>
+                                                    <th hidden>Mã thông số </th>
+                                                    <th data-lang="TEN_TS_GSTT">Thông số GS</th>
+                                                    <th data-lang="GIA_TRI">Giá trị</th>
+                                                    <th data-lang="TEN_GIA_TRI">Tên giá trị</th>
+                                                    <th data-lang="TEN_DV_DO">Đơn vị đo</th>
+                                                    <th data-lang="TG_KH">TG KH</th>
+                                                    <th data-lang="TG_TT">TG_TT</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="table-responsive" style="overflow: auto; margin-top:7px;">
+                                        <table id="tbgiatriDL" class="table table-bordered table-condensed display">
+                                            <thead>
+                                                <tr>
+                                                    <th data-lang="GIA_TRI">Giá trị </th>
+                                                    <th data-lang="GIA_TRI_DUOI">Giá trị dưới</th>
+                                                    <th data-lang="GIA_TRI_TREN">Giá trị trên</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="divButtonFloat" class="kc_fab_wrapper">
+            </div>
+        </div>
+    </div>
+
+    @*model chon may*@
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="color: #15428B !important;" data-lang="lblChooseDevice">Chọn máy</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive" style="overflow:auto">
+                                <table id="tbEquip" style="width:100%" class="table table-bordered table-striped table-condensed ">
+                                    <thead>
+                                        <tr>
+                                            <th data-lang="DeviceID">DeviceID</th>
+                                            <th data-lang="Description">Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr data-id="@item.ID">
+                                                <td style="width: 150px">@item.ID</td>
+                                                <td>@item.Name</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div id="divGhi" class="row ">
+                        <div class="col-sm-3 col-md-2 col-xs-4 col-lg-3 pull-right">
+                            <div class="form-group">
+                                <input type="button" data-dismiss="modal" data-lang="btnHuy" style="color: #fff; width: 100%;" class="btn-flat flat" value="Hủy">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2 col-xs-4 col-lg-3 pull-right">
+                            <div class="form-group">
+                                <input type="button" id="btnChooseEquip" style="color: #fff; width: 100%;" data-lang="btnChon" class="btn-flat flat" value="Chon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divButtonFloat" class="kc_fab_wrapper">
+
+        </div>
+    </div>
+</div>
+
+<script>
+        var urlGetGiamSatTinhTrang = '@Url.Action("FilterData", "Monitoring")'
+        var urlGetThongSoGiamSatTinhTrang = '@Url.Action("GetThongSo", "Monitoring")'
+        var urlGetGiaTri = '@Url.Action("GetGiaTri", "Monitoring")'
+        var urlGetGiaTriDL = '@Url.Action("GetGiaTriDL", "Monitoring")'
+        var urlAddGiamSatTinhTrang = '@Url.Action("InitMonitoring", "Monitoring")'
+        var urlXoaGiamSatTinhTrang = '@Url.Action("XoaGiamSatTinhTrang", "Monitoring")'
+        require(['MonitoringController'])
+</script>

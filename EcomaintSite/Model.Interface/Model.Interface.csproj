@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{782A9D8B-3954-45BB-8EB6-69449D12D3D2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model.Interface</RootNamespace>
+    <AssemblyName>Model.Interface</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\..\..\..\TACM\Biz.TACM\BIZ.TACM\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\ICombobox.cs" />
+    <Compile Include="IRepository\IChartRepository.cs" />
+    <Compile Include="IRepository\IComponentRepository.cs" />
+    <Compile Include="IRepository\IDatabaseRepository.cs" />
+    <Compile Include="IRepository\IDepartmentRepository.cs" />
+    <Compile Include="IRepository\IEquipmentRepository.cs" />
+    <Compile Include="IRepository\IGeneralRepository.cs" />
+    <Compile Include="IRepository\ILanguagesRepository.cs" />
+    <Compile Include="IRepository\IMasterPlanRepository.cs" />
+    <Compile Include="IRepository\IMasterPlansOfSparePartRepository.cs" />
+    <Compile Include="IRepository\IMasterPlansOfWorkRepository.cs" />
+    <Compile Include="IRepository\IMenuRepository.cs" />
+    <Compile Include="IRepository\IMonitoringOfQualitativeRepository.cs" />
+    <Compile Include="IRepository\IMonitoringOfQuantitativeRepository.cs" />
+    <Compile Include="IRepository\IMonitoringRepository.cs" />
+    <Compile Include="IRepository\ISafetyRepository.cs" />
+    <Compile Include="IRepository\IOrgUnitRepository.cs" />
+    <Compile Include="IRepository\IPeriodicMaintenanceRepository.cs" />
+    <Compile Include="IRepository\IPreventiveMaintenanceOfSparePartRepository.cs" />
+    <Compile Include="IRepository\IPreventiveMaintenanceOfWorkRepository.cs" />
+    <Compile Include="IRepository\IPreventiveMaintenanceRepository.cs" />
+    <Compile Include="IRepository\IPriorityRepository.cs" />
+    <Compile Include="IRepository\IProductionLineRepository.cs" />
+    <Compile Include="IRepository\IReasonForRepairRepository.cs" />
+    <Compile Include="IRepository\IMyEcomainRepository.cs" />
+    <Compile Include="IRepository\IReceiptRequestRepository.cs" />
+    <Compile Include="IRepository\ISparepartAndTypeOfSparepartRepository.cs" />
+    <Compile Include="IRepository\ISparePartComponentRepository.cs" />
+    <Compile Include="IRepository\ISparePartRepository.cs" />
+    <Compile Include="IRepository\IStaffRepository.cs" />
+    <Compile Include="IRepository\ITheFormalityOfMaintenanceRepository.cs" />
+    <Compile Include="IRepository\ITheStatusDetailsOfWorkOrderRepository.cs" />
+    <Compile Include="IRepository\ITypeOfMaintenanceRepository.cs" />
+    <Compile Include="IRepository\ITypeOfMaterialRepository.cs" />
+    <Compile Include="IRepository\IUserRepository.cs" />
+    <Compile Include="IRepository\IUserRequestComponentRepository.cs" />
+    <Compile Include="IRepository\IUserRequestDetailRepository.cs" />
+    <Compile Include="IRepository\IUserRequestDocumentRepository.cs" />
+    <Compile Include="IRepository\IUserRequestRepository.cs" />
+    <Compile Include="IRepository\IWebUserLoginRepository.cs" />
+    <Compile Include="IRepository\IWorkComponentRepository.cs" />
+    <Compile Include="IRepository\IWorkOrderByTheStatusRepository.cs" />
+    <Compile Include="IRepository\IWorkOrderDetailByTheStateRepository.cs" />
+    <Compile Include="IRepository\IWorkOrderIncludeDetailSparePartRepository.cs" />
+    <Compile Include="IRepository\IWorkOrderOfSparePartRepository.cs" />
+    <Compile Include="IRepository\IWorkOrderOfWorkRepository.cs" />
+    <Compile Include="IRepository\IWorkOrderRepository.cs" />
+    <Compile Include="IRepository\IWorkRepository.cs" />
+    <Compile Include="IRepository\IWorkSiteRepository.cs" />
+    <Compile Include="IRepository\IPurchaseRequestRepository.cs" />
+    <Compile Include="IUnitOfWork\IMasterPlanUnitOfWork.cs" />
+    <Compile Include="IUnitOfWork\IMonitoringUnitOfWork.cs" />
+    <Compile Include="IUnitOfWork\IUserRequestUnitOfWork.cs" />
+    <Compile Include="IUnitOfWork\IWorkOrderUnitOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.Data.csproj">
+      <Project>{eca26243-73d3-4b55-b5f7-c3802d1afef1}</Project>
+      <Name>Model.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

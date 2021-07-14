@@ -1,0 +1,28 @@
+﻿
+@using Model.Data
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href='@Url.Action("index", "Dashboard")'>Dashboard</a></li>
+            <li id="frmYeuCauCuaNSD" class="breadcrumb-item active" data-lang="lblmyEcomain">Tiếp nhận yêu cầu</li>
+        </ol>
+    </div>
+</div>
+<div ng-controller="MyEcomainController" ng-init="fn.Init()">
+    <input type="file" id="fileToUpload" style="display: none;" />
+</div>
+<script>
+    var urlPhieuBaoTri = '@Url.Action("GetPhieuBaoTri", "MyEcomain")';
+    var urlGiamSatTinhTrang = '@Url.Action("GetGiamSatTinhTrang", "MyEcomain")';
+    var urlMyecomain = '@Url.Action("GeMyecomain", "MyEcomain")';
+    var urlFilterPBT = '@Url.Action("FilterData", "WorkOrder")';
+    var urlDevices = '@Url.Action("getDevices", "UserRequest")';
+    var urlReadbarcode = '@Url.Action("ProcessRequest", "MyEcomain")';
+    require(['MyEcomainController'])
+</script>
+@*<script src="~/js/controller/MobileBarcodeReader.js"></script>*@

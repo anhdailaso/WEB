@@ -1,0 +1,13 @@
+﻿{
+  "processing": "<div class='overlay custom-loader-background'><i class='fa fa-cog fa-spin custom-loader-color'></i></div>",
+  "sSearch": "Search ",
+  "lengthMenu": "Show _MENU_ entries",
+  "zeroRecords": "No matching records found",
+  "info": "",
+  "infoEmpty": "",
+  "paginate": {
+    "next": ">",
+    "previous": "<"
+  },
+  "emptyTable": "No data available in table"
+}

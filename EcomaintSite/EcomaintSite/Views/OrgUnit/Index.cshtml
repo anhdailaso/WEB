@@ -1,0 +1,158 @@
+﻿@using Model.Data
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href='@Url.Action("Index", "Dashboard")'>Dashboard</a></li>
+            <li id="frmDonVi" class="breadcrumb-item active" data-lang="lblDSDonVi">Danh sách đơn vị</li>
+        </ol>
+    </div>
+</div>
+<div data-ng-controller="OrgUnitController" data-ng-init="fn.Init()">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <div id="divButtonDefault" class="toolbar-action">
+                    <button data-ng-click="fn.Remove()" type="button" data-lang="btnXoa" id="btnRemove" class="btn btn-default pull-right">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                    <button data-ng-click="fn.Edit()" type="button" data-lang="btnSua" id="btnEdit" class="btn btn-default pull-right">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                    <button data-ng-click="fn.Add()" type="button" data-lang="btnThem" id="btnAdd" class="btn btn-default pull-right">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <h5 class="card-title" data-lang="grpDanhSachDonVi">Danh sách đơn vị</h5>
+                <div class="form-group">
+                    <div class="table-responsive" style="overflow: auto;height: 386px;">
+                        <table id="tbOrgUnit" class="table table-bordered table-condensed table-striped">
+                            <thead>
+                                <tr>
+                                    <th data-lang="Name">Name</th>
+                                    <th data-lang="ShortName" class="hidden">ShortName</th>
+                                    <th data-lang="NameOfEng">NameOfEng</th>
+                                    <th data-lang="Address">Address</th>
+                                    <th data-lang="Phone">Phone</th>
+                                    <th data-lang="Fax">Fax</th>
+                                    <th data-lang="CompactName" class="hidden">CompactName</th>
+                                    <th data-lang="Default" class="hidden">Default</th>
+                                    <th data-lang="IsOutsource" class="hidden">IsOutsource</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr data-id="@item.ID">
+                                        <td style="width: 150px">@item.Name</td>
+                                        <td style="width: 150px" class="hidden">@item.ShortName</td>
+                                        <td style="width: 150px">@item.NameOfEng</td>
+                                        <td style="width: 150px">@item.Address</td>
+                                        <td style="width: 150px">@item.Phone</td>
+                                        <td style="width: 150px">@item.Fax</td>
+                                        <td style="width: 150px" class="hidden">@item.CompactName</td>
+                                        <td style="width: 150px" class="hidden">@Convert.ToString(item.Default).ToLower()</td>
+                                        <td style="width: 150px" class="hidden">@Convert.ToString(item.IsOutsource).ToLower()</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modals content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="color: #15428B !important;" data-lang="lblChiTiet">Chi tiết</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-4 col-xs-4 col-sm-4">
+                                <div class="form-group">
+                                    <label data-lang="lblMaDonVi" style="font-weight:600">lblMaDonVi</label>
+                                    <input class="form-control" type="text" id="txtID" value="" disabled="">
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-xs-8 col-sm-8">
+                                <div class="form-group">
+                                    <label data-lang="lblTenDonVi" style="font-weight:600">lblTenDonVi</label>
+                                    <input class="form-control" type="text" id="txtName" value="" disabled="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-xs-4 col-sm-4">
+                                <div class="form-group">
+                                    <label data-lang="lblTenNgan" style="font-weight:600">lblTenNgan</label>
+                                    <input class="form-control" type="text" id="txtShortName" value="" disabled="">
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-xs-8 col-sm-8">
+                                <div class="form-group">
+                                    <label data-lang="lblTenDonViAnh">lblTenDonViAnh</label>
+                                    <input class="form-control" type="text" id="txtNameOfEng" value="" disabled="">
+                                </div>
+                            </div><div class="col-lg-12 col-xs-12 col-sm-12">
+                                <div class="form-group">
+                                    <label data-lang="lblDiaChi">lblDiaChi</label>
+                                    <input class="form-control" type="text" id="txtAddress" value="" disabled="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xs-6 col-sm-6">
+                                <div class="form-group">
+                                    <label data-lang="lblDienThoai">lblDienThoai</label>
+                                    <input class="form-control" type="text" id="txtPhone" value="" disabled="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xs-6 col-sm-6">
+                                <div class="form-group">
+                                    <label data-lang="lblFax">lblFax</label>
+                                    <input class="form-control" type="text" id="txtFax" value="" disabled="">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-xs-12 col-sm-12">
+                                <div class="form-group">
+                                    <label data-lang="lblKyHieu">lblKyHieu</label>
+                                    <input class="form-control" type="text" id="txtCompactName" value="" disabled="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-xs-4 col-sm-4">
+                                <div class="form-group">
+                                    <label data-lang="lblMacdinh">lblMacdinh</label>
+                                    <input type="checkbox" id="ckDefault">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-xs-4 col-sm-4">
+                                <div class="form-group">
+                                    <label data-lang="lblVendor">lblVendor</label>
+                                    <input type="checkbox" id="ckOutsource">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row ">
+                            <div class="col-sm-3 col-md-2 col-xs-4 col-lg-3 pull-right">
+                                <div class="form-group">
+                                    <input type="button" data-dismiss="modal" data-lang="btnHuy" style="color: #fff; width: 100%;" class="btn-flat flat" value="Hủy">
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-2 col-xs-4 col-lg-3 pull-right">
+                                <div class="form-group">
+                                    <input type="button" id="btnSave" style="color: #fff; width: 100%;" data-lang="btnGhi" class="btn-flat flat" value="Lưu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kc_fab_wrapper" id="divButtonFloat"></div>
+</div>
+<script>
+    var urlSave = '@Url.Action("Save", "OrgUnit")';
+    var urlRemove = '@Url.Action("Remove", "OrgUnit")';
+    require(["./OrgUnitController"]);
+</script>

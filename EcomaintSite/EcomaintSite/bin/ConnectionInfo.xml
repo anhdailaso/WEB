@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConnectionInfo>
+  <Server>.</Server>
+  <Database>CMMS_BARIA</Database>
+  <User>sa</User>
+  <Password>123</Password>
+</ConnectionInfo>

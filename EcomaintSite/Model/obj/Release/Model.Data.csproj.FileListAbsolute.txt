@@ -1,0 +1,111 @@
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\bin\Release\Model.Data.dll.config
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\bin\Release\Model.Data.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\bin\Release\Model.Data.pdb
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\bin\Release\EntityFramework.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\bin\Release\EntityFramework.xml
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.xml
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.xml
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\obj\Release\Model.Data.csprojResolveAssemblyReference.cache
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\obj\Release\Model.Data.csproj.CoreCompileInputs.cache
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\obj\Release\Model.Data.dll
+E:\CMMS_WEB\Ecomaint-respository\EcomaintSite\Model\obj\Release\Model.Data.pdb
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Model.Data.dll.config
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Model.Data.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Model.Data.pdb
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.xml
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.xml
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.xml
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.csprojAssemblyReference.cache
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.csproj.CoreCompileInputs.cache
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.csproj.CopyComplete
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.dll
+D:\web ecomain\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.pdb
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Model.Data.dll.config
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Model.Data.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Model.Data.pdb
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.csprojAssemblyReference.cache
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.csproj.CoreCompileInputs.cache
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.csproj.CopyComplete
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.dll
+D:\webBAMBOO\web ecomain\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.pdb
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Model.Data.dll.config
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Model.Data.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Model.Data.pdb
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.csprojAssemblyReference.cache
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.csproj.CoreCompileInputs.cache
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.csproj.CopyComplete
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.dll
+D:\các version của web\20190302\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.pdb
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Model.Data.dll.config
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Model.Data.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Model.Data.pdb
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.csprojAssemblyReference.cache
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.csproj.CoreCompileInputs.cache
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.csproj.CopyComplete
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.dll
+D:\Ecomain\03.Web\SourceEcomaint\SourceEcomaint\EcomaintSite\Model\obj\Release\Model.Data.pdb
+E:\Nâng cấp web ofline\EcomaintSite\Model\bin\Release\Model.Data.dll.config
+E:\Nâng cấp web ofline\EcomaintSite\Model\bin\Release\Model.Data.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model\bin\Release\Model.Data.pdb
+E:\Nâng cấp web ofline\EcomaintSite\Model\bin\Release\EntityFramework.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model\bin\Release\EntityFramework.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Nâng cấp web ofline\EcomaintSite\Model\obj\Release\Model.Data.csprojAssemblyReference.cache
+E:\Nâng cấp web ofline\EcomaintSite\Model\obj\Release\Model.Data.csproj.CoreCompileInputs.cache
+E:\Nâng cấp web ofline\EcomaintSite\Model\obj\Release\Model.Data.csproj.CopyComplete
+E:\Nâng cấp web ofline\EcomaintSite\Model\obj\Release\Model.Data.dll
+E:\Nâng cấp web ofline\EcomaintSite\Model\obj\Release\Model.Data.pdb
+E:\03.WEB\EcomaintSite\Model\bin\Release\Model.Data.dll.config
+E:\03.WEB\EcomaintSite\Model\bin\Release\Model.Data.dll
+E:\03.WEB\EcomaintSite\Model\bin\Release\Model.Data.pdb
+E:\03.WEB\EcomaintSite\Model\bin\Release\EntityFramework.dll
+E:\03.WEB\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.dll
+E:\03.WEB\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.dll
+E:\03.WEB\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\03.WEB\EcomaintSite\Model\bin\Release\EntityFramework.xml
+E:\03.WEB\EcomaintSite\Model\bin\Release\EntityFramework.SqlServer.xml
+E:\03.WEB\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.Core.xml
+E:\03.WEB\EcomaintSite\Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\03.WEB\EcomaintSite\Model\obj\Release\Model.Data.csprojAssemblyReference.cache
+E:\03.WEB\EcomaintSite\Model\obj\Release\Model.Data.csproj.CoreCompileInputs.cache
+E:\03.WEB\EcomaintSite\Model\obj\Release\Model.Data.csproj.CopyComplete
+E:\03.WEB\EcomaintSite\Model\obj\Release\Model.Data.dll
+E:\03.WEB\EcomaintSite\Model\obj\Release\Model.Data.pdb

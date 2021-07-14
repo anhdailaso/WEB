@@ -1,0 +1,439 @@
+﻿@using Model.Data
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<style type="text/css">
+    @@media (min-width:768px) {
+        #modalMasterPlansOfWork .modal-dialog {
+            width: 90%;
+        }
+    }
+
+    #tbSparePartSelected > tbody > tr > td {
+        word-break: break-all;
+    }
+
+    div.FixedHeader_Cloned th,
+    div.FixedHeader_Cloned td {
+        background-color: white !important;
+    }
+
+    td.details {
+        color: #2366dd;
+        font-style: italic;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    tr.selected > td.details {
+        color: #323b49;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href='@Url.Action("Index", "Dashboard")'>Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active" data-lang="lblKHTT">Kế hoạch tổng thể</li>
+            <li class="breadcrumb-item">
+                <a href='@Url.Action("Index", "PeriodicMaintenance")' data-lang="lblBaoTriDK">Bảo trì định kỳ</a>
+            </li>
+        </ol>
+    </div>
+</div>
+<div ng-controller="MasterPlansController" ng-init="fn.Init()">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="lblTuNgay">Từ ngày</label>
+                            <input class="form-control" type="text" id="fromDate" data-loading="true" data-type="datepicker" value="@DateTime.Now.AddMonths(-1).ToString("dd/MM/yyyy")" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="lblDenNgay">Đến ngày</label>
+                            <input class="form-control" type="text" id="toDate" data-loading="true" data-type="datepicker" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label data-lang="lblTuyChon">Tùy chọn</label>
+                            <select id="cboOption" ng-model="cboOption" ng-change="(fn.DropDownValueChanged(this))" class="selectpicker form-control">
+                                <option value="0" data-lang="ChuaGiaiQuyet" selected>Chưa giải quyết</option>
+                                <option value="1" data-lang="CongViecBiBo">Công việc bị bỏ</option>
+                                <option value="2" data-lang="DaGiaiQuyet">Đã giải quyết</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <div id="divButtonDefault" class="toolbar-action">
+                    <button ng-click="fn.Remove()" type="button" data-lang="btnRemove" id="btnRemove" class="btn btn-default pull-right">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                    <button ng-click="fn.Edit()" type="button" data-lang="btnEdit" id="btnEdit" class="btn btn-default pull-right">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                    <button ng-click="fn.Add()" type="button" data-lang="btnAdd" id="btnAdd" class="btn btn-default pull-right">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </button>
+                    <button ng-click="fn.CreateWO()" type="button" data-lang="btnCreateWO" id="btnCreateWO" class="btn btn-default pull-right">
+                        <i class="fa fa-recycle" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <ul id="tabContentsPlan" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#tabKeHoach" id="tab1" data-index="0" aria-controls="tabKeHoach" role="tab" data-toggle="tab" data-lang="tabKeHoach">Kế hoạch</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#tabWorkDetail" aria-controls="tabWorkDetail" data-index="1" role="tab" data-toggle="tab" data-lang="tabWorkDetail">Kế hoạch chi tiết</a>
+                    </li>
+                </ul>
+                <h6 style="margin: 20px 0 0 0;"></h6>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="tabKeHoach">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <h5 class="card-title" data-lang="lblKeHoachTT">Danh sách kế hoạch</h5>
+                                <div class="form-group">
+                                    <div class="table-responsive" style="overflow: auto">
+                                        <table id="tbPlan" class="table table-bordered table-condensed ">
+                                            <thead>
+                                                <tr>
+                                                    <th data-lang="Choose">Chọn</th>
+                                                    <th data-lang="Article">Hạng mục</th>
+                                                    <th data-lang="DeviceID">Mã máy</th>
+                                                    <th data-lang="Name">Tên máy</th>
+                                                    <th data-lang="TU_NGAY">Từ ngày</th>
+                                                    <th data-lang="DEN_NGAY">Đến ngày</th>
+                                                    <th data-lang="SO_PHUT">Số phút</th>
+                                                    <th data-lang="ReasonForRepair">Lý do</th>
+                                                    <th data-lang="Priority">Mức ưu tiên</th>
+                                                    <th data-lang="ConfirmedBy">Người xác nhận</th>
+                                                    <th data-lang="Note">Ghi chú</th>
+                                                    <th data-lang="TypeOfMaintenanceID">Mã loại BT</th>
+                                                    <th data-lang="ID">Mã lý do</th>
+                                                    <th data-lang="PriorityID">Mức UT ID</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="tabWorkDetail">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h5 class="card-title" data-lang="grpDanhsachCV">
+                                    Danh sách công việc
+                                </h5>
+                                <div class="form-group">
+                                    <div class="table-responsive" style="overflow: auto;">
+                                        <table id="tbWork" class="table table-bordered table-condensed ">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 100px;" data-lang="Name">Name</th>
+                                                    <th style="width: 150px;" data-lang="WorkName">WorkName</th>
+                                                    <th style="width: 80px;" data-lang="SO_PHUT_KH">SO_PHUT_KH</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="3" data-lang="KhongCoDuLieu">Không có dữ liệu</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h5 class="card-title" data-lang="grpDanhsachPTTheoCV">
+                                    Danh sách phụ tùng theo công việc
+                                </h5>
+                                <div class="form-group">
+                                    <div class="table-responsive" style="overflow: auto;">
+                                        <table id="tbSparePart" class="table table-bordered table-condensed ">
+                                            <thead>
+                                                <tr>
+                                                    <th data-lang="SparePartID">SparePartID</th>
+                                                    <th data-lang="Name">Name</th>
+                                                    <th data-lang="Amount">Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="5" data-lang="KhongCoDuLieu">Không có dữ liệu</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div id="divBtnThem" class="row ">
+                        <div class="col-sm-3 col-md-2 col-xs-3 col-lg-2 pull-right">
+                            <div class="form-group">
+                                <input onclick="return Sua();" type="button" id="btnSua" style="width: 100%;" data-lang="btnSua" class="btn-flat flat" value="Sửa">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2 col-xs-3 col-lg-2 pull-right">
+                            <div class="form-group">
+                                <a href='#' style="width: 100%;" data-lang="btnThem" class="btn-flat flat" id="btnThem">Thêm</a>
+                            </div>
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="color: #15428B !important;" data-lang="lblCreateWO">Lập PBT</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label data-lang="lblLoaiBT">Loại bảo trì</label>
+                                <select id="cboTypeMaintenance" class="form-control selectpicker" data-live-search="true" , data-slide="both"></select>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label data-lang="lblNguoiLap">Người lập</label>
+                                @Html.DropDownList("cboCreatedBy", ViewBag.cboCreatedBy as SelectList, new { data_live_search = "true", data_slide = "left", @class = " selectpicker form-control" })
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label data-lang="lblNguoiGiamSat">Người giám sát</label>
+                                @Html.DropDownList("cboMonitoredBy", ViewBag.cboMonitoredBy as SelectList, new { data_live_search = "true", data_slide = "right", @class = " selectpicker form-control" })
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label data-lang="lblNgayBDKH">Ngày BĐKH</label>
+                                <input class="form-control" type="text" id="startDateKH" data-type="datepicker" value="@DateTime.Now.AddMonths(-1).ToString("dd/MM/yyyy")" />
+                                @*<input type="text" data-type="datepicker" class="form-control" id="startDateKH"/>*@
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label data-lang="lblNgayKTKH">Ngày KTKH</label>
+                                <input class="form-control" type="text" id="endDateKH" data-type="datepicker" value="@DateTime.Now.AddMonths(-1).ToString("dd/MM/yyyy")" />
+                                @*<input type="text" data-type="datepicker" class="form-control" id="endDateKH"/>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-xs-4 col-lg-3 pull-right">
+                            <div class="form-group">
+                                <input type="button" id="btnSaveWO" style="color: #fff; width: 100%;" data-lang="btnGhi" class="btn-flat flat" value="Lưu">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divButtonFloat" class="kc_fab_wrapper"></div>
+    <div class="modal fade" id="modalMasterPlansOfWork" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="color: #15428B !important;" data-lang="lblTaoKHTT">Tạo kế hoạch tổng cho thiết bị</h4>
+                </div>
+                <div class="modal-body">
+                    <ul id="tabContentModal" class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#tabChooseDevice" data-index="0" id="tab1" aria-controls="tabChooseDevice" role="tab" data-toggle="tab" data-lang="tabChooseDevice">1. Chọn máy <i class="fa fa-fw fa-caret-down"></i></a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#tabChooseWork" data-index="1" aria-controls="tabChooseWork" role="tab" data-toggle="tab" data-lang="tabChooseWork">2. Chọn công việc <i class="fa fa-fw fa-caret-down"></i></a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#tabChonPT" data-index="2" aria-controls="tabChonPT" role="tab" data-toggle="tab" data-lang="tabChonPT">3. Chọn phụ tùng <i class="fa fa-fw fa-caret-down"></i></a>
+                        </li>
+                    </ul>
+                    <h6 style="margin: 20px 0 0 0;"></h6>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="tabChooseDevice">
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label data-lang="lblDevice">Máy</label>
+                                        @Html.DropDownList("cboDevice", ViewBag.cboDevice as SelectList, new { data_live_search = "true", data_slide = "both", @class = "selectpicker form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xs-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label data-lang="lblNgayBDKH">Ngày BDKH</label>
+                                        <input type="text" data-type="datepicker" class="form-control" id="startDatePlanModal" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xs-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label data-lang="lblNgayKTKH">Ngày BTKH</label>
+                                        <input type="text" data-type="datepicker" class="form-control" id="endDatePlanModal" />
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-xs-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label data-lang="lblLyDoSC">Lý do</label>
+                                        @Html.DropDownList("cboReason", ViewBag.cboReason as SelectList, new { data_live_search = "true", data_slide = "left", @class = "selectpicker form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xs-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label data-lang="lblMucUuTien">Mức ưu tiên</label>
+                                        @Html.DropDownList("cboPriority", ViewBag.cboPriority as SelectList, new { data_live_search = "true", data_slide = "right", @class = "selectpicker form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label data-lang="lblHangMuc">Hạng mục</label>
+                                        <textarea class="form-control" id="txtArticle"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="tabChooseWork">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-xs-6  col-sm-4">
+                                            <h5 class="card-title" data-lang="grpDanhSachBP">
+                                                Danh sách bộ phận
+                                            </h5>
+                                            <div class="form-group">
+                                                <div id="tvComponent" class="treeview" style="max-height:200px; overflow:auto" data-role="treeview">
+                                                    <ul></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-xs-6 col-sm-8">
+                                            <h5 class="card-title" data-lang="grpDanhsachCV">
+                                                Danh sách công việc
+                                            </h5>
+                                            <div class="form-group">
+                                                <div class="table-responsive" style="overflow: auto;">
+                                                    <table id="tbWorkSelecting" class="table table-bordered table-condensed ">
+                                                        <thead>
+                                                            <tr>
+                                                                <th data-lang="Choose" style="width: 100px;">Chọn</th>
+                                                                <th data-lang="WorkName" style="width: 100px;">Tên công việc</th>
+                                                                <th style="width: 80px;" data-lang="SO_PHUT_KH">So</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="tabChonPT">
+                            <div class="row">
+                                <div class="col-lg-5 col-xs-12 col-sm-5">
+                                    <h5 class="card-title" data-lang="grpDanhsachCV">
+                                        Danh sách công việc
+                                    </h5>
+                                    <div class="form-group">
+                                        <div class="table-responsive" style="overflow: auto;">
+                                            <table id="tbWorkSelected" class="table table-bordered table-condensed ">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-lang="WorkName" style="width: 100%;">Tên công việc</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-xs-12 col-sm-7">
+                                    <h5 class="card-title" data-lang="grpDanhsachPT">
+                                        Danh sách phụ tùng
+                                    </h5>
+                                    <div class="form-group">
+                                        <div class="table-responsive" style="overflow: auto;">
+                                            <table id="tbSparePartSelected" class="table table-bordered table-condensed ">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-lang="Choose">Chọn</th>
+                                                        <th data-lang="SparePartID">Mã phụ tùng</th>
+                                                        <th data-lang="Name">Tên phụ tùng</th>
+                                                        <th data-lang="Specification">Quy cách</th>
+                                                        <th data-lang="UnitOfCalculationID">Đơn vị tính</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row ">
+                        <div class="col-sm-3 col-md-2 col-xs-3 col-lg-2 pull-right">
+                            <div class="form-group">
+                                <input type="button" data-dismiss="modal" id="Button1" data-lang="btnHuy" style="color: #fff; width: 100%;" class="btn-flat flat" value="Hủy">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2 col-xs-3 col-lg-2 pull-right">
+                            <div class="form-group">
+                                <input type="button" id="btnSavePlan" style="color: #fff; width: 100%;" data-lang="btnGhi" class="btn-flat flat" value="Lưu">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var urlFilter = '@Url.Action("FilterData", "MasterPlans")';
+    var urlGetTypeOfMaintenanceByDevice = '@Url.Action("GetTypeOfMaintenanceByDevice", "MasterPlans")';
+    var urlSaveWO = '@Url.Action("SaveWO", "MasterPlans")';
+    var urlGetComponentByDevice = '@Url.Action("GetComponentByDevice", "MasterPlans")';
+    var urlGetWorkByComponent = '@Url.Action("GetWorkByComponent", "MasterPlans")';
+    var urlGetSparePart = '@Url.Action("GetSparePart", "MasterPlans")';
+    var urlCreatePlans = '@Url.Action("CreatePlans", "MasterPlans")'
+    var urlEdit = '@Url.Action("Edit", "MasterPlans")'
+    var urlGetGetWorkPlanOfWork = '@Url.Action("GetWorkPlan", "MasterPlans")'
+    var urlGetSparePartForPlan = '@Url.Action("GetSparePartForPlan", "MasterPlans")'
+    var urlGetPlanDetails = '@Url.Action("GetPlanDetails", "MasterPlans")'
+    require(['MasterPlansController'])
+</script>

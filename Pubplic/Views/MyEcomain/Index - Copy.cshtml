@@ -1,0 +1,171 @@
+﻿
+@using Model.Data
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<style>
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href='@Url.Action("index", "Dashboard")'>Dashboard</a></li>
+            <li id="frmYeuCauCuaNSD" class="breadcrumb-item active" data-lang="lblmyEcomain">Tiếp nhận yêu cầu</li>
+        </ol>
+    </div>
+</div>
+<div ng-controller="MyEcomainController" ng-init="fn.Init()">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <label data-lang="lblDiaDiem">Địa điểm</label>
+                            @Html.DropDownList("cbbDiaDiem", ViewBag.NhaXuong as SelectList, new { data_live_search = "true", data_slide = "right", @class = "selectpicker form-control" })
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <label data-lang="lblHeThong">Hệ thống</label>
+                            @Html.DropDownList("cbbHeThong", ViewBag.HeThong as SelectList, new { data_live_search = "true", data_slide = "right", @class = "selectpicker form-control" })
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <label data-lang="lblLoaiTS">Loại tài sản</label>
+                            @Html.DropDownList("cbbLoaiMay", ViewBag.LoaiMay as SelectList, new { data_live_search = "true", data_slide = "right", @class = "selectpicker form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <ul id="myTabs" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#tabWorkorder" aria-controls="tabWorkorder" role="tab" data-toggle="tab" data-lang="tabWorkorder">Phiếu bảo trì quá hạn</a></li>
+                    <li role="presentation"><a href="#tabmonitoring" aria-controls="tabmonitoring" role="tab" data-toggle="tab" data-lang="tabMonitoring">Giám sát tình trạng đến hạng kiểm tra</a></li>
+                </ul>
+                <h6 style="margin: 20px 0 0 0;"></h6>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    @*tab phieu bao tri*@
+                    <div role="tabpanel" class="tab-pane active" id="tabWorkorder">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <label data-lang="lblTaisan">Tài sản</label>
+                                    @Html.DropDownList("cbbMay", ViewBag.May as SelectList, new { data_live_search = "true", data_slide = "left", @class = "selectpicker form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        @*table danh sách phiếu bảo trì đến và quá hạn kt*@
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h5 class="card-title" data-lang="lblDSPhieuBaoTri">Danh sách phiếu bảo trì</h5>
+                                <div class="form-group">
+                                    <div class="table-responsive" style="overflow: auto">
+                                        <table id="tbphieubaotri" class="table table-bordered table-condensed display">
+                                            <thead>
+                                                <tr>
+                                                    <th>Phiếu bảo trì</th>
+                                                    <th>Mã tài sản</th>
+                                                    <th>Tên tài sản</th>
+                                                    <th>Tên loại bảo trì</th>
+                                                    <th>Ngày bắt đầu</th>
+                                                    <th>Ngày kết thúc</th>
+                                                    <th>Địa điểm</th>
+                                                    <th>Tình trạng</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="8" data-lang="KhongCoDuLieu">Không có dữ liệu</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    @*tab giám sát tình trạng đến hạng*@
+                    <div role="tabpanel" class="tab-pane" id="tabmonitoring">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                <div class="form-group">
+                                    <label data-lang="lblTaisan">Tài sản</label>
+                                    @Html.DropDownList("cbbMayTS", ViewBag.May as SelectList, new { data_live_search = "true", data_slide = "left", @class = "selectpicker form-control" })
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                <div class="form-group">
+                                    <label data-lang="lblLoaiCV">Loại công việc</label>
+                                    @Html.DropDownList("cbbLoaiCV", ViewBag.LoaiCV as SelectList, new { data_live_search = "true", data_slide = "right", @class = "selectpicker form-control" })
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                <div class="form-group">
+                                    <label data-lang="lblTungay">Từ ngày</label>
+                                    <input class="form-control" type="text" id="fromDate" data-type="datepicker" value="@DateTime.Now.AddMonths(-12).ToString("dd/MM/yyyy")" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                <div class="form-group">
+                                    <label data-lang="lblDenngay">Đến ngày</label>
+                                    <input class="form-control" type="text" id="toDate"  data-type="datepicker" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                                </div>
+                            </div>
+                        </div>
+
+                        @*table giám sát tình trạng đến hạn kiểm tra*@
+                        <div class="row">
+                            <div class="col-lg-12">
+                                @*<h5 class="card-title" data-lang="lblDSGiamSatTinhTrang">Danh sách giám sát tình trạng</h5>*@
+                                <div class="form-group">
+                                    <div class="table-responsive">
+                                        <table id="tbgiamsattinhtrang" class="table table-bordered table-condensed display">
+                                            <thead>
+                                                <tr>
+                                                    <th width="10%">Mã tài sản</th>
+                                                    <th width="10%">Tên tài sản</th>
+                                                    <th width="10%">Tên bộ phận</th>
+                                                    <th width="10%">Thông số GSTT</th>
+                                                    <th width="10%">Chu kỳ</th>
+                                                    <th width="10%">Ngày KT cuối</th>
+                                                    <th width="10%">Giá trị</th>
+                                                    <th width="10%">Ngày KT kế</th>
+                                                    <th width="10%">Cách thực hiện</th>
+                                                    <th width="10%">Thời gian thực hiện</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="10" data-lang="KhongCoDuLieu">Không có dữ liệu</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divButtonFloat" class="kc_fab_wrapper">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+   
+    var urlPhieuBaoTri = '@Url.Action("GetPhieuBaoTri", "MyEcomain")';
+    var urlGiamSatTinhTrang = '@Url.Action("GetGiamSatTinhTrang", "MyEcomain")';
+        require(['MyEcomainController'])
+</script>

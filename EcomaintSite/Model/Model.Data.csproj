@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ECA26243-73D3-4B55-B5F7-C3802D1AFEF1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model.Data</RootNamespace>
+    <AssemblyName>Model.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Budget.cs" />
+    <Compile Include="ViewModel\DiaDiemViewModel.cs" />
+    <Compile Include="ViewModel\Commons.cs" />
+    <Compile Include="Models\Component.cs" />
+    <Compile Include="Models\ComponentOfWork.cs" />
+    <Compile Include="Models\ComponentOfSparePart.cs" />
+    <Compile Include="Models\ComponentInternalMonitoringParams.cs" />
+    <Compile Include="Models\CalibrationCycle.cs" />
+    <Compile Include="Models\UnitOfCalculation.cs" />
+    <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\Work.cs" />
+    <Compile Include="Models\CostCenter.cs" />
+    <Compile Include="Models\OrgUnit.cs" />
+    <Compile Include="Models\UnitTime.cs" />
+    <Compile Include="Models\UnitOfRuntime.cs" />
+    <Compile Include="Models\Monitoring.cs" />
+    <Compile Include="Models\MonitoringDocument.cs" />
+    <Compile Include="Models\MonitoringOfQuantitative.cs" />
+    <Compile Include="Models\MonitoringOfQualitative.cs" />
+    <Compile Include="Models\MeasureDeviceCalibration.cs" />
+    <Compile Include="Models\MaintenanceForm.cs" />
+    <Compile Include="Models\Sparepart.cs" />
+    <Compile Include="Models\SparePartWarehouse.cs" />
+    <Compile Include="Models\SparepartAndTypeOfDevice.cs" />
+    <Compile Include="Models\SparepartAndTypeOfSparepart.cs" />
+    <Compile Include="Models\MasterPlansOfWork.cs" />
+    <Compile Include="Models\MasterPlansOfSparePart.cs" />
+    <Compile Include="Models\MasterPlan.cs" />
+    <Compile Include="Models\Languages.cs" />
+    <Compile Include="Models\TypeOfMaintenance.cs" />
+    <Compile Include="Models\TypeOfMaterial.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\ReasonForRepair.cs" />
+    <Compile Include="Models\PreventiveMaintenance.cs" />
+    <Compile Include="Models\PreventiveMaintenanceCycle.cs" />
+    <Compile Include="Models\PreventiveMaintenanceOfWork.cs" />
+    <Compile Include="Models\PreventiveMaintenanceOfSparePart.cs" />
+    <Compile Include="Models\WorkOrder.cs" />
+    <Compile Include="Models\WorkOrderOfWork.cs" />
+    <Compile Include="Models\WorkOrderOfWorkIncludeStaff.cs" />
+    <Compile Include="Models\WorkOrderOfWorkIncludeDetailStaff.cs" />
+    <Compile Include="Models\WorkOrderOfWorkIncludeSuppotingStaff.cs" />
+    <Compile Include="Models\WorkOrderOfWorkIncludeSparePart.cs" />
+    <Compile Include="Models\WorkOrderOfWorkIncludeDetailSparePart.cs" />
+    <Compile Include="Models\WorkOrderOfWorkIncludeDetailSparePartAtWarehouse.cs" />
+    <Compile Include="Models\WorkOrderOfSupportingWork.cs" />
+    <Compile Include="Models\WorkOrderOfWorkIncludeSupportingSparePart.cs" />
+    <Compile Include="Models\WorkOrderByTheStatus.cs" />
+    <Compile Include="Models\WorkOrderDetailsByTheState.cs" />
+    <Compile Include="Models\Store\StaffObjForDropdown.cs" />
+    <Compile Include="Models\Store\GetOrgUnitByUserObj.cs" />
+    <Compile Include="Models\Store\GetWorkByComponentObj.cs" />
+    <Compile Include="Models\Store\GetLanguageWebObj.cs" />
+    <Compile Include="Models\Store\GetLanguageObj.cs" />
+    <Compile Include="Models\Store\MonitoringParametersByEquipment.cs" />
+    <Compile Include="Models\Store\GetMasterPlansObj.cs" />
+    <Compile Include="Models\Store\GetPeriodicMaintenanceObj.cs" />
+    <Compile Include="Models\Store\DeviceObjForDropdown.cs" />
+    <Compile Include="Models\Store\GetWorkOrderObj.cs" />
+    <Compile Include="Models\Store\GetDepartmentObj.cs" />
+    <Compile Include="Models\Store\GetUserRequestComponent.cs" />
+    <Compile Include="Models\Store\GetRequestDocumentObj.cs" />
+    <Compile Include="Models\Store\GetRequestInfomationObj.cs" />
+    <Compile Include="Models\Store\GetUserRequestObj.cs" />
+    <Compile Include="Models\Device.cs" />
+    <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\WorkSite.cs" />
+    <Compile Include="Models\Store\GetSituationWOObj.cs" />
+    <Compile Include="Models\Store\GetSituationWOColumnObj.cs" />
+    <Compile Include="Models\Store\GetDeviceStatusObj.cs" />
+    <Compile Include="Models\Store\GetDeviceInfoObj.cs" />
+    <Compile Include="Models\Store\ApprovedRequestObj.cs" />
+    <Compile Include="Models\Priority.cs" />
+    <Compile Include="Models\General.cs" />
+    <Compile Include="Models\TheStatusOfWorkOrder.cs" />
+    <Compile Include="Models\TheStatusDetailsOfWorkOrder.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\WebUserLogin.cs" />
+    <Compile Include="Models\WebMenu.cs" />
+    <Compile Include="Models\UserRequest.cs" />
+    <Compile Include="Models\UserRequestDetail.cs" />
+    <Compile Include="Models\UserRequestComponent.cs" />
+    <Compile Include="Models\UserRequestDocument.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\Formation.cs" />
+    <Compile Include="ViewModel\ChiTietBoPhanViewModel.cs" />
+    <Compile Include="ViewModel\GiamSatTinhTrangViewModel.cs" />
+    <Compile Include="ViewModel\MoningtoringViewModel.cs" />
+    <Compile Include="ViewModel\PhieuBaoTriViewModel.cs" />
+    <Compile Include="ViewModel\MyEcomainViewModel.cs" />
+    <Compile Include="ViewModel\PhuTungViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

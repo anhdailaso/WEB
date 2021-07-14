@@ -1,0 +1,191 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<style>
+    .contact-info-box {
+        margin: 0;
+    }
+
+    .contact-info-box {
+        font-size: 14px;
+        margin: 0 0 8px 10px;
+        padding-left: 0;
+    }
+
+    .clearfix:before, .clearfix:after {
+        content: '\0020';
+        display: block;
+        overflow: hidden;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+
+    .contact-info-box h3 {
+        font-size: 15px;
+        font-weight: bold;
+        float: left;
+        width: 102px;
+        margin-right: 12px;
+        line-height: 28px;
+    }
+
+        .contact-info-box h3 i {
+            font-style: normal;
+            font-size: 18px;
+            color: #222222;
+            font-family: 'FontAwesome';
+            margin-right: 7px;
+        }
+
+    .contact-info-box .contact-info {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        line-height: 28px;
+        display: block;
+        overflow: hidden;
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+    .social-link {
+        padding: 35px 0;
+        margin: 0 0 0 68px;
+        display: block;
+        overflow: hidden;
+        list-style: none;
+    }
+
+    i {
+        font-family: 'FontAwesome';
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .social-link li {
+        float: left;
+        margin-right: 8px;
+    }
+
+        .social-link li a {
+            display: block;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 25px;
+            color: #fff;
+            background: #222222;
+            border-radius: 50%;
+            transition: all 0.3s ease-in-out;
+        }
+    .fa-facebook {
+        color: #3b5998;
+    }
+    .fa-google-plus {
+        color: #db4437;
+    }
+    .fa-pinterest {
+        color: #ec0015;
+    }
+    .fa-twitter {
+        color: #1da1f2;
+    }
+    .fa-dribbble {
+        color: #4f4f4f;
+    }
+</style>
+<script>
+    require(['_MasterPageController', '_MenuPageController', '_DetailsModalController'], function (module, menu, modal) {
+        var menuID = 'mnuAbout'
+        var Languages = module.Languages
+        var MainMenu = menu
+        $(document).ready(function () {
+            global.CurrentNamePage = 'AboutWeb'
+            MainMenu.fn.SetActive(menuID);
+            Languages.fn.AutoChangeLanguage()
+        });
+    });
+</script>
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href='@Url.Action("Index", "Dashboard")'>Dashboard</a></li>
+            <li class="breadcrumb-item active" data-lang="lblAbout">About</li>
+
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div class="row">
+                <div class="col-lg-6 col-sm-7">
+                    <p data-lang="title1">
+                        Vietsoft mong nhận được tất cả sự quan tâm từ các bạn
+                    </p>
+                    <p data-lang="title2">
+                        Xin vui lòng gọi điện, email hoặc ghé thăm văn phòng chúng tôi tại:
+                    </p>
+                    <p  data-lang="title3" style="font-weight:bold">
+                        CÔNG TY TNHH PHẦN MỀM NAM VIỆT
+                        VIETSOFT CO., LTD
+                    </p>
+                    <div class="contact-info-box address clearfix">
+                        <h3><i class="fa-location-arrow"></i><span data-lang="lblAddress">Address:</span></h3>
+                        <span class="contact-info"  data-lang="lblAddress1">91 Nguyễn Trọng Lội P4, Q.Tân Bình, Tp.HCM</span>
+                    </div>
+                    <div class="contact-info-box phone clearfix">
+                        <h3><i class="fa-phone"></i><span data-lang="lblPhone">Phone:</span></h3>
+                        <span class="contact-info" data-lang="lblPhone1">028.38 110 770</span>
+                    </div>
+                    <div class="contact-info-box email clearfix">
+                        <h3><i class="fa-pencil"></i><span data-lang="lblEmail">Email:</span></h3>
+                        <span class="contact-info"  data-lang="lblEmail1">sales@vietsoft.com.vn</span>
+                    </div>
+                    <div class="contact-info-box hours clearfix">
+                        <h3><i class="fa-clock-o"></i><span data-lang="lblHour">Hours:</span></h3>
+                        <span class="contact-info"><strong data-lang="lblHour1">Monday - Friday:</strong> <span data-lang="lblHour2"> 8am - 5pm</span><br><strong data-lang="lblHour3">Saturday</strong><span data-lang="lblHour4"> 8am - 12am</span></span>
+                    </div>
+                    <ul class="social-link">
+                        <li class="twitter"><a href="#"><i class="fa-twitter"></i></a></li>
+                        <li class="facebook"><a href="#"><i class="fa-facebook"></i></a></li>
+                        <li class="pinterest"><a href="#"><i class="fa-pinterest"></i></a></li>
+                        <li class="gplus"><a href="#"><i class="fa-google-plus"></i></a></li>
+                        <li class="dribbble"><a href="#"><i class="fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-6 col-sm-5">
+                    <h5 class="card-title" data-lang="lblLienHe">
+                        Liên hệ
+                    </h5>
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control " id="name" data-lang="lblYourName" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" id="email" data-lang="lblYourEmail" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control " name="subject" id="subject" data-lang="lblSubject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control  text-area" name="message" rows="5" data-lang="lblMessage" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                        <div class="validation"></div>
+                    </div>
+
+                    <div class="text-center"><button type="submit" data-lang="btnSend" class="btn btn-flat">Send Message</button></div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

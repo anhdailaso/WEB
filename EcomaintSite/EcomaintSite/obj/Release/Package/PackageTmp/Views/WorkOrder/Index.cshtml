@@ -1,0 +1,458 @@
+﻿@using Model.Data
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<style type="text/css">
+    @@media (min-width:768px) {
+        #modalWorkOrderOfWork .modal-dialog {
+            width: 90%;
+        }
+    }
+
+    #tbSparePartSelected > tbody > tr > td {
+        word-break: break-all;
+    }
+
+    #tbWO > tbody > tr > td {
+        word-break: break-all;
+    }
+
+
+    td.details {
+        color: #2366dd;
+        font-style: italic;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    tr.selected > td.details {
+        color: #323b49;
+    }
+</style>
+
+
+<input type="hidden" id="isAuto" value="@ViewBag.IsAuto" />
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href='@Url.Action("Index", "Dashboard")'>Dashboard</a></li>
+            <li class="breadcrumb-item active" data-lang="lblPBT">Phiếu bảo trì</li>
+            @*<li class="breadcrumb-item"><a href='@Url.Action("Index", " PeriodicMaintenance")' data-lang="lblBaoTriDK">Bảo trì định kỳ</a></li>*@
+        </ol>
+    </div>
+</div>
+<div ng-controller="WorkOrderController" ng-init="fn.Init()">
+    @if (ViewBag.link == 1)
+    {
+        <input type="hidden" id="link" name="link" value="@ViewBag.link">
+        <input type="hidden" id="nx" name="nx" value="@ViewBag.nx">
+        <input type="hidden" id="may" name="may" value="@ViewBag.may">
+        <input type="hidden" id="tngay" name="tngay" value="@ViewBag.tngay">
+        <input type="hidden" id="dngay" name="dngay" value="@ViewBag.dngay">
+    }
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="lblTuNgay">Từ ngày</label>
+                            <input class="form-control" type="text" id="fromDate" data-loading="true" data-type="datepicker" value="@DateTime.Now.AddMonths(-1).ToString("dd/MM/yyyy")" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="lblDenNgay">Đến ngày</label>
+                            <input class="form-control" type="text" id="toDate" data-loading="true" data-type="datepicker" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label data-lang="lblTuyChon">Tùy chọn</label>
+                            <select id="cboOption" @*ng-model="cboOption"*@ class="form-control select-one select2" style="width:100%">
+                                <option value="1" data-lang="lblDangSoan" selected>Đang soạn</option>
+                                <option value="2" data-lang="lblDangThucHien">Đang thực hiện</option>
+                                <option value="3" data-lang="lblHoanThanh">Hoàn thành</option>
+                                <option value="4" data-lang="lblNghiemThu">Nghiệm thu</option>
+                                <option value="5" data-lang="lblKhoa">Khóa</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <div id="divButtonDefault" class="toolbar-action">
+                    <button ng-click="fn.Remove()" type="button" data-lang="btnXoa" id="btnRemove" class="btn btn-default pull-right">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                    <button ng-click="fn.Edit()" type="button" data-lang="btnSua" id="btnEdit" class="btn btn-default pull-right">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                    <button ng-click="fn.Add()" type="button" data-lang="btnThem" id="btnAdd" class="btn btn-default pull-right">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <ul id="tabContentsPlan" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#tabPBT" id="tab1" data-index="0" aria-controls="tabPBT" role="tab" data-toggle="tab" data-lang="tabPBT">Kế hoạch</a></li>
+                    <li role="presentation"><a href="#tabWorkDetail" aria-controls="tabWorkDetail" data-index="1" role="tab" data-toggle="tab" data-lang="tabWorkDetail">Kế hoạch chi tiết</a></li>
+                </ul>
+                <h6 style="margin: 20px 0 0 0;"></h6>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="tabPBT">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card-box">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group responsive">
+                                                <label data-lang="lblDiaDiem">Địa điểm</label>
+                                                @Html.DropDownList("cbbDiaDiem", ViewBag.NhaXuong as SelectList, new { name = "cbbDiaDiem", data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <div class="form-group responsive">
+                                                <label data-lang="lblThietBi">Máy</label>
+                                                @Html.DropDownList("cbbThietBi", ViewBag.NhaXuong as SelectList, new { name = "cbbThietBi", data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12">
+                                <h5 class="card-title" data-lang="lblPBT">Danh sách kế hoạch</h5>
+                                <div class="form-group">
+                                    <div class="table-responsive" style="overflow: auto">
+                                        <table id="tbWO" class="table table-bordered table-condensed ">
+                                            <thead>
+                                                <tr>
+                                                    <th data-lang="TAI_LIEU"></th>
+                                                    <th data-lang="ID"></th>
+                                                    <th data-lang="DeviceID"></th>
+                                                    <th data-lang="DeviceName"></th>
+                                                    <th data-lang="StartDatePlan"></th>
+                                                    <th data-lang="EndDatePlan"></th>
+                                                    <th data-lang="TheStatusOfWorkOrderID"></th>
+                                                    <th data-lang="PriorityName"></th>
+                                                    <th data-lang="TheStatusDetailsOfWorkOrderName"></th>
+                                                    <th data-lang="TheStatusOfWorkOrderName"></th>
+                                                    <th data-lang="Reason"></th>
+                                                    <th data-lang="DateCreated"></th>
+                                                    <th data-lang="TimeCreated"></th>
+                                                    <th data-lang="WorkSiteName"></th>
+                                                    <th data-lang="TypeOfMaintenanceID"></th>
+                                                    <th data-lang="TypeOfMaintenanceName"></th>
+                                                    <th data-lang="CreatedBy"></th>
+                                                    <th data-lang="UserCreated"></th>
+                                                    <th data-lang="StaffName"></th>
+                                                    <th data-lang="MonitoredBy"></th>
+                                                    <th data-lang="BreakdownStartDate"></th>
+                                                    <th data-lang="BreakdownStartTime"></th>
+                                                    <th data-lang="BreakdownEndDate"></th>
+                                                    <th data-lang="BreakdownEndTime"></th>
+                                                    <th data-lang="IssuedID"></th>
+                                                    <th data-lang="LastDateModified"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="tabWorkDetail">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h5 class="card-title" data-lang="grpDanhsachCV">
+                                    Danh sách công việc
+                                </h5>
+                                <div class="form-group">
+                                    <div class="table-responsive" style="overflow: auto;">
+                                        <table id="tbWorkForWO" class="table table-bordered table-condensed ">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 100px;" data-lang="ComponentName">ComponentName</th>
+                                                    <th style="width: 150px;" data-lang="WorkName">WorkName</th>
+                                                    <th style="width: 80px;" data-lang="ActualTime">ActualTime</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="3" data-lang="KhongCoDuLieu">Không có dữ liệu</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h5 class="card-title" data-lang="grpDanhsachPTTheoCV">
+                                    Danh sách phụ tùng theo công việc
+                                </h5>
+                                <div class="form-group">
+                                    <div class="table-responsive" style="overflow: auto;">
+                                        <table id="tbSparePartWO" class="table table-bordered table-condensed ">
+                                            <thead>
+                                                <tr>
+                                                    <th data-lang="SparePartID">SparePartID</th>
+                                                    <th data-lang="SparePartName">SparePartName</th>
+                                                    <th data-lang="PlanQuantity">PlanQuantity</th>
+                                                    <th data-lang="ActualQuantity">ActualQuantity</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="5" data-lang="KhongCoDuLieu">Không có dữ liệu</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div id="divBtnThem" class="row ">
+                        <div class="col-sm-3 col-md-2 col-xs-3 col-lg-2 pull-right">
+                            <div class="form-group">
+                                <input onclick="return Sua();" type="button" id="btnSua" style="width: 100%;" data-lang="btnSua" class="btn-flat flat" value="Sửa">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2 col-xs-3 col-lg-2 pull-right">
+                            <div class="form-group">
+                                <a href='#' style="width: 100%;" data-lang="btnThem" class="btn-flat flat" id="btnThem">Thêm</a>
+                            </div>
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+    <div id="divButtonFloat" class="kc_fab_wrapper"></div>
+    <div class="modal fade" id="modalWorkOrderOfWork" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="color: #15428B !important;" data-lang="lblCreateWO"></h4>
+                </div>
+                <div class="modal-body">
+                    <ul id="tabContentModal" class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#tabChooseDevice" data-index="0" id="tab1" aria-controls="tabChooseDevice" role="tab" data-toggle="tab" data-lang="tabChooseDevice">1. Chọn máy <i class="fa fa-fw fa-caret-down"></i></a></li>
+                        <li role="presentation"><a href="#tabChooseWork" data-index="1" aria-controls="tabChooseWork" role="tab" data-toggle="tab" data-lang="tabChooseWork">2. Chọn công việc <i class="fa fa-fw fa-caret-down"></i></a></li>
+                        <li role="presentation"><a href="#tabChonPT" data-index="2" aria-controls="tabChonPT" role="tab" data-toggle="tab" data-lang="tabChonPT">3. Chọn phụ tùng <i class="fa fa-fw fa-caret-down"></i></a></li>
+                    </ul>
+                    <h6 style="margin: 20px 0 0 0;"></h6>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="tabChooseDevice">
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3 col-xs-6">
+                                    <div class="form-group">
+                                        <label data-lang="lblPhieuBaoTriID">Mã PBT</label>
+                                        <input type="text" id="txtWorkOrderID" disabled class="form-control" />
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-3 col-xs-6">
+                                    <div class="form-group">
+                                        <label data-lang="lblSoPhieuBaoTriID">Số PBT</label>
+                                        <input type="text" id="txtWorkOrderNO" disabled class="form-control" />
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-3 col-xs-6">
+                                    <div class="form-group">
+                                        <label data-lang="lblDevice">Máy</label>
+
+                                        @Html.DropDownList("cboDevice", ViewBag.cboDevice as SelectList, new { data_live_search = "true", data_slide = "both", @class = "selectpicker form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-3 col-xs-6">
+                                    <div class="form-group">
+                                        <label data-lang="lblLoaiBT">Loại BT</label>
+                                        <select id="cboTypeMaintenance" class="selectpicker form-control" data-live-seach="true"></select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-6 col-sm-3">
+                                    <div class="form-group">
+                                        <label data-lang="lblNguoiLap">Người lập</label>
+                                        @Html.DropDownList("cboCreatedBy", ViewBag.cboCreatedBy as SelectList, new { data_live_search = "true", data_slide = "left", @class = "selectpicker form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-6 col-sm-3">
+                                    <div class="form-group">
+                                        <label data-lang="lblDateCreated">Ngày lập</label>
+                                        <input type="text" data-type="datetimepicker" class="form-control" id="createdDate" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-6 col-sm-3">
+                                    <div class="form-group">
+                                        <label data-lang="lblStartDate">Ngày BĐ</label>
+                                        <input type="text" data-type="datepicker" class="form-control" id="startDate" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-6 col-sm-3">
+                                    <div class="form-group">
+                                        <label data-lang="lblEndDate">Ngày KT</label>
+                                        <input type="text" data-type="datepicker" class="form-control" id="endDate" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-6 col-sm-3">
+                                    <div class="form-group">
+                                        <label data-lang="lblPriority">Mức ưu tiên</label>
+                                        @Html.DropDownList("cboPriority", ViewBag.cboPriority as SelectList, new { data_live_search = "true", data_slide = "right", @class = "selectpicker form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-6 col-sm-3">
+                                    <div class="form-group">
+                                        <label data-lang="lblLastDate">Ngày CN cuối</label>
+                                        <input type="text" data-type="datepicker" class="form-control" id="lastDate" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-6 col-sm-3">
+                                    <div class="form-group">
+                                        <label data-lang="lblBreakdownDate">Ngày hỏng</label>
+                                        <input type="text" data-type="datetimepicker" class="form-control" id="startCorruptDate" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-6 col-sm-3">
+                                    <div class="form-group">
+                                        <label data-lang="lblToBreakdownDate">Đên ngày hỏng</label>
+                                        <input type="text" data-type="datetimepicker" class="form-control" id="endCorruptDate" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label data-lang="lblReason">Lý do</label>
+                                        <textarea class="form-control" id="txtReason"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="tabChooseWork">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-xs-6  col-sm-4">
+                                            <h5 class="card-title" data-lang="grpDanhSachBP">
+                                                Danh sách bộ phận
+                                            </h5>
+                                            <div class="form-group">
+                                                <div id="tvComponent" class="treeview" style="max-height:200px; overflow:auto" data-role="treeview">
+                                                    <ul></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-xs-6 col-sm-8">
+                                            <h5 class="card-title" data-lang="grpDanhsachCV">
+                                                Danh sách công việc
+                                            </h5>
+                                            <div class="form-group">
+                                                <div class="table-responsive" style="overflow: auto;">
+                                                    <table id="tbWorkSelecting" class="table table-bordered table-condensed ">
+                                                        <thead>
+                                                            <tr>
+                                                                <th data-lang="Choose" style="width: 100px;">Chọn</th>
+                                                                <th data-lang="WorkName" style="width: 100px;">Tên công việc</th>
+                                                                <th style="width: 80px;" data-lang="SO_PHUT_KH">So</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="tabChonPT">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <h5 class="card-title" data-lang="grpDanhsachCV">
+                                        Danh sách công việc
+                                    </h5>
+                                    <div class="form-group">
+                                        <div class="table-responsive" style="overflow: auto;">
+                                            <table id="tbWorkSelected" class="table table-bordered table-condensed ">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-lang="WorkName" style="width: 100%;">Tên công việc</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <h5 class="card-title" data-lang="grpDanhsachPT">
+                                        Danh sách phụ tùng
+                                    </h5>
+                                    <div class="form-group">
+                                        <div class="table-responsive" style="overflow: auto;">
+                                            <table id="tbSparePartSelected" class="table table-bordered table-condensed ">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-lang="Choose">Chọn</th>
+                                                        <th data-lang="SparePartID">Mã phụ tùng</th>
+                                                        <th data-lang="SparePartName">Tên phụ tùng</th>
+                                                        <th data-lang="Specification">Quy cách</th>
+                                                        <th data-lang="UnitOfCalculationID">Đơn vị tính</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row ">
+                        <div class="col-sm-3 col-md-2 col-xs-3 col-lg-2 pull-right">
+                            <div class="form-group">
+                                <input type="button" data-dismiss="modal" id="Button1" data-lang="btnHuy" style="color: #fff; width: 100%;" class="btn-flat flat" value="Hủy">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2 col-xs-3 col-lg-2 pull-right">
+                            <div class="form-group">
+                                <input type="button" id="btnSaveWO" style="color: #fff; width: 100%;" data-lang="btnGhi" class="btn-flat flat" value="Lưu">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        var urlFilter = '@Url.Action("FilterData", "WorkOrder")';
+        var urlGetTypeOfMaintenanceByDevice = '@Url.Action("GetTypeOfMaintenanceByDevice", "WorkOrder")';
+        var urlSaveWO = '@Url.Action("SaveWO", "WorkOrder")';
+        var urlGetComponentByDevice = '@Url.Action("GetComponentByDevice", "WorkOrder")';
+        var urlGetWorkByComponent = '@Url.Action("GetWorkByComponent", "WorkOrder")';
+        var urlGetSparePart = '@Url.Action("GetSparePart", "WorkOrder")';
+        var urlCreateWO = '@Url.Action("CreateWO", "WorkOrder")'
+        var urlEdit = '@Url.Action("Edit", "WorkOrder")'
+        var urlRemove = '@Url.Action("Remove", "WorkOrder")'
+        var urlGetWorkOrderNumber = '@Url.Action("GetWorkOrderNumber", "WorkOrder")'
+        var urlGetWorkDetailByWorkOrder = '@Url.Action("GetWorkDetailByWorkOrder", "WorkOrder")'
+        var urlGetSparePartByWorkOrder = '@Url.Action("GetSparePartByWorkOrder", "WorkOrder")'
+        var urlGetWorkOrderDetail = '@Url.Action("GetWorkOrderDetail", "WorkOrder")'
+        var urlDevices = '@Url.Action("getDevices", "UserRequest")';
+        require(['WorkOrderController'])
+</script>

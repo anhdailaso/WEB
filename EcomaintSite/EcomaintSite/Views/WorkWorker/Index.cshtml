@@ -1,0 +1,128 @@
+﻿
+@using Model.Data
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href='@Url.Action("index", "Dashboard")'>Dashboard</a></li>
+            <li id="frmYeuCauCuaNSD" class="breadcrumb-item active" data-lang="lblWorkWorker">Tiếp nhận yêu cầu</li>
+        </ol>
+    </div>
+</div>
+<div ng-controller="WorkWorkerController" ng-init="fn.Init()">
+
+    <div class="card-box">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="lblTuNgay">Từ ngày</label>
+                            <input class="form-control" type="text" id="fromDate" data-loading="true" data-type="datepicker" value="@DateTime.Now.AddMonths(-1).ToString("dd/MM/yyyy")" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="lblDenNgay">Đến ngày</label>
+                            <input class="form-control" type="text" id="toDate" data-loading="true" data-type="datepicker" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <div class="form-group responsive">
+                            <label data-lang="lblDiaDiem">Địa điểm</label>
+                            @Html.DropDownList("cbbDiaDiem", ViewBag.NhaXuong as SelectList, new { name = "cbbDiaDiem", data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <div class="form-group responsive">
+                            <label data-lang="lblThietBi">Máy</label>
+                            @Html.DropDownList("cbbThietBi", ViewBag.cboDevice as SelectList, new { name = "cbbThietBi", data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-lg-6">
+                <h5 class="card-title" data-lang="lblPBT">Danh sách kế hoạch</h5>
+                <div class="form-group">
+                    <div class="table-responsive" style="overflow: auto">
+                        <table id="tbWO" class="table table-bordered table-condensed ">
+                            <thead>
+                                <tr>
+                                    <th data-lang="ID"></th>
+                                    <th data-lang="DeviceID"></th>
+                                    <th data-lang="DeviceName"></th>
+                                    <th data-lang="TypeOfMaintenanceName"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xs-12 col-lg-6">
+                <div id="divButtonDefault" class="toolbar-action">
+                    <button data-ng-click="fn.Removebp()" type="button" data-lang="btnXoabp" id="btnXoabp" class="btn btn-default pull-right">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                    <button onclick="thembophan()" type="button" data-lang="btnThembp" id="btnThembp" class="btn btn-default pull-right">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <h5 class="card-title" data-lang="lblPBT">Nhân sự không theo công việc</h5>
+                <div class="form-group">
+                        <div class="container-fluid"style="height:42px; padding-top:5px;text-align :center">
+                            <div class="radio-inline">
+                                <label><input type="radio" name="optradio" value="1" checked>Kế hoạch</label>
+                            </div>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="optradio" value="0">Thực tế</label>
+                            </div>
+                    </div>
+
+                    <div class="table-responsive" style="overflow: auto;">
+                        <table id="tbPBTNS" class="table table-bordered table-condensed ">
+                            <thead>
+                                <tr>
+                                    <th data-lang="CONG_NHAN">Nhân viên</th>
+                                    <th data-lang="NGAY">Ngày</th>
+                                    <th data-lang="TU_GIO">Từ giờ</th>
+                                    <th data-lang="DEN_NGAY">Đến ngày</th>
+                                    <th data-lang="DEN_GIO">Đến giờ</th>
+                                    <th data-lang="SO_GIO">Số phút</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="5" data-lang="KhongCoDuLieu">Không có dữ liệu</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    var urlFilter = '@Url.Action("FilterData", "WorkOrder")';
+    var urlDevices = '@Url.Action("getDevices", "UserRequest")';
+    var urlDevices = '@Url.Action("getDevices", "WorkWorker                                                          " +
+                     "    " +
+                     "")';
+
+    require(['WorkWorkerController'])
+</script>

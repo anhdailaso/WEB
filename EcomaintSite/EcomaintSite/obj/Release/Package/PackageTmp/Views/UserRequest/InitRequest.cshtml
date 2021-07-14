@@ -1,0 +1,368 @@
+﻿@{
+    ViewBag.Title = "InitRequest";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<style>
+    label {
+        margin-bottom: 0px !important;
+    }
+</style>
+<input type="hidden" id="hfUsername" value="Admin" />
+<input type="hidden" id="hfCount" Value="@ViewBag.count" />
+<input type="hidden" id="hfID" Value="@ViewBag.ID" />
+<input type="hidden" id="workSiteID" Value="@ViewBag.workSiteID" />
+
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href='@Url.Action("Index", "Dashboard")'>Dashboard</a></li>
+            <li class="breadcrumb-item"><a href='@Url.Action("Index", "UserRequest")' data-lang="lblDSYeuCau">Danh sách yêu cầu</a></li>
+            <li class="breadcrumb-item active" data-lang="lblLapYeuCau">Lập,chỉnh sửa yêu cầu</li>
+        </ol>
+    </div>
+</div>
+
+<div ng-controller="AddRequestController" ng-init="fn.Init()">
+    <input type="file" id="fileToUpload" style="display: none;" />
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-4 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="lblYCau">Số yêu cầu</label>
+                            <input disabled class="form-control" type="text" value="@ViewBag.requestNum" id="txtRequestNum" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="lblNgay">Ngày yêu cầu</label>
+                            @if (ViewBag.ID > -1)
+                            {
+                                <input class="form-control date" data-type="datepicker" type="text" id="dateOfRequest" value="@ViewBag.dateOfRequest" disabled />
+                            }
+                            else
+                            {
+                                <input class="form-control date" data-type="datepicker" type="text" id="dateOfRequest" value="@ViewBag.dateOfRequest" />
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="lblGio">Giờ yêu cầu</label>
+                            @if (ViewBag.ID > -1)
+                            {
+                                <input class="form-control date" data-type="timepicker" type="text" id="timeOfRequest" value="@ViewBag.timeOfRequest" disabled />
+                            }
+                            else
+                            {
+                                <input class="form-control date" data-type="timepicker" type="text" id="timeOfRequest" value="@ViewBag.timeOfRequest" />
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="lblNgayhoanthanh">Ngày hoàn thành</label>
+                            @if (ViewBag.ID > -1)
+                            {
+                                <input class="form-control date" data-type="datepicker" type="text" id="completedDate" value="@ViewBag.completedDate" disabled />
+                            }
+                            else
+                            {
+                                <input class="form-control date" data-type="datepicker" type="text" id="completedDate" value="" />
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="lblNXuong">Địa điểm</label>
+                            @Html.DropDownList("cboWorkSite", ViewBag.cboWorkSite as SelectList, new { name = "cboWorkSite", data_slide = "left", @class = "form-control select2-container--classic", @style = "width:100%" })
+                            @*@if (ViewBag.ID > -1)
+                                {
+                                    @Html.DropDownList("cboWorkSite", ViewBag.cboWorkSite as SelectList, new { data_live_search = "true", data_slide = "both", @class = "form-control", @disabled = "disabled" })
+                                }
+                                else
+                                {
+                                    @Html.DropDownList("cboWorkSite", ViewBag.cboWorkSite as SelectList, new { @class = "form-control" })
+                                }*@
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-4 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="lblNguoiyeucau">Người yêu cầu</label>
+                            @if (ViewBag.ID > -1)
+                            {
+                                @*@Html.DropDownList("cboCreatedBy", ViewBag.cboCreatedBy as SelectList, new { @disabled = "disabled", @class = "form-control" })*@
+                                <input type="text" class="form-control" id="cboCreatedBy" value="@ViewBag.CreatedBy" disabled />
+                            }
+                            else
+                            {
+                                <div class="input-group">
+                                    <input class="form-control" type="text" id="cboCreatedBy" value="@ViewBag.CreatedBy" />
+                                    <a class="input-group-addon" ng-click="fn.NguoiYeuCau();" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label data-lang="txtEmail">Email gởi thêm</label>
+                            @if (ViewBag.ID > -1)
+                            {
+                                <input type="text" class="form-control" id="txtEmail" value="@ViewBag.email" disabled />
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control" id="txtEmail" ng-keydown="fn.AutoCompleteMail();" value="@ViewBag.email" />
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="divButtonDefault" class="toolbar-action">
+                            <a href='@Url.Action("Index", "UserRequest")' data-lang="btnTroVe" class="btn btn-default pull-right">
+                                <i class="fa fa fa-reply" aria-hidden="true"></i>
+                            </a>
+                            <button ng-click="fn.CheckValidateControl();" type="button" data-lang="btnGhi" id="btnSave" class="btn btn-default pull-right">
+                                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                            </button>
+                            <button ng-click="fn.Remove();" type="button" disabled data-lang="btnXoa" id="btnRemove" class="btn btn-default pull-right">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                            <button ng-click="fn.Edit();" type="button" disabled data-lang="btnSua" id="btnEdit" class="btn btn-default pull-right">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button ng-click="fn.Add();" type="button" data-lang="btnThem" id="btnAdd" class="btn btn-default pull-right">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <h5 class="card-title" data-lang="lblYeuCauChiTiet">Yêu cầu chi tiết</h5>
+                        <div class="table-responsive" style="overflow: auto">
+                            <table id="tbRequestInfo" class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th data-lang="DeviceID">DeviceID</th>
+                                        <th data-lang="Description">Description</th>
+                                        <th data-lang="Request">Request</th>
+                                        <th data-lang="TEN_NGUYEN_NHAN">TEN_NGUYEN_NHAN</th>
+                                        <th data-lang="TEN_UU_TIEN">TEN_UU_TIEN</th>
+                                        <th data-lang="TEN_LOAI_YEU_CAU_BT">TEN_LOAI_YEU_CAU_BT</th>
+                                        <th data-lang="TypeOfMaintenanceRequestID" class="hidden">TypeOfMaintenanceRequestID</th>
+                                        <th data-lang="PriorityID" class="hidden">PriorityID</th>
+                                        <th data-lang="DateOccurred">DateOccurred</th>
+                                        <th data-lang="HourOccurred">HourOccurred</th>
+                                        <th data-lang="UserRequestDetailID" class="hidden">UserRequestDetailID</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr old data-id-vd="@item.UserRequestDetailID">
+                                            <td style="width: 150px">@item.DeviceID </td>
+                                            <td style="white-space: normal">@item.Description</td>
+                                            <td style="white-space: normal">@item.Request</td>
+                                            <td class="hidden">@item.CauseID</td>
+                                            <td>@item.TEN_NGUYEN_NHAN</td>
+                                            <td>@item.TEN_UU_TIEN</td>
+                                            <td>@item.TEN_LOAI_YEU_CAU_BT</td>
+                                            <td class="hidden">@item.TypeOfMaintenanceRequestID"</td>
+                                            <td class="hidden">@item.PriorityID</td>
+                                            <td>
+                                                @{ if (@item.DateOccurred != null)
+                                                    {
+                                                        @item.DateOccurred.ToString("dd/MM/yyyy");
+                                                    }
+                                                }
+                                            </td>
+                                            <td>
+                                                @{ if (@item.HourOccurred != null)
+                                                    {
+                                                        @item.HourOccurred.ToString("HH:mm");
+                                                    }
+                                                }
+                                            </td>
+                                            <td class="hidden">@item.UserRequestDetailID"</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" data-lang="lblChiTietYeuCau">Chi tiết yêu cầu</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <label data-lang="lblDevice">Máy</label>
+                                @*@Html.DropDownList("departmentsDropdown", ViewBag.cboyeucaubaotri as SelectList, new { data_live_search = "true", data_slide = "both", @class = "selectpicker form-control" })*@
+                                <div class="input-group">
+                                    @*<select id="cboDevice" name="cboDevice" class="form-control" data_live_search="true" data_slide="both"></select>*@
+                                    @*@Html.DropDownList("cboDevice", ViewBag.cboWorkSite as SelectList, new { name = "cboDevice", data_slide = "left", @class = "form-control select2-container--classic", @style = "width:100%" })*@
+                                    @Html.DropDownList("cboDevice", ViewBag.NhaXuong as SelectList, new { name = "cboDevice", data_live_search = "true", data_slide = "left", @class = "form-control select2-container--classic", @style = "width:100%" })
+                                    <a class="input-group-addon" id="ReadBtn" href="#"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <label data-lang="lbloaibt">Loai bao tri</label>
+                                @Html.DropDownList("cboyeucaubaotri", ViewBag.cboyeucaubaotri as SelectList, new { data_live_search = "true", data_slide = "both", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <label data-lang="lb_nguyennhan">Nguyen Nhan</label>
+                                @Html.DropDownList("cbonguyennhan", ViewBag.cbonguyennhan as SelectList, new { data_live_search = "true", data_slide = "both", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        @*ngày sự cố*@
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label data-lang="DateOccurred">Ngày sự cố</label>
+                                        <input class="form-control date" data-type="datepicker" type="text" id="dateOccurred" />
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label data-lang="HourOccurred">Giờ sự cố</label>
+                                        <input class="form-control date" data-type="timepicker" type="text" id="hourOccurred" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        @*giờ sự cố*@
+
+
+
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <label data-lang="lbuutien">Muc uu tien</label>
+                                @Html.DropDownList("cbouutien", ViewBag.cbouutien as SelectList, new { data_live_search = "true", data_slide = "both", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <label data-lang="lblMoTa">Mô tả</label>
+                                <textarea class="form-control" id="txtDescription"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <label data-lang="lblNoiDungYC">Yêu cầu</label>
+                                <textarea class="form-control" id="txtRequest"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row ">
+                        <div class="col-sm-3 col-md-3 col-xs-3 col-lg-3 pull-right">
+                            <div class="form-group">
+                                <input type="button" data-dismiss="modal" id="Button1" data-lang="btnHuy" style="color: #fff; width: 100%;" class="btn-flat flat" value="Hủy">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-xs-3 col-lg-3 pull-right">
+                            <div class="form-group">
+                                <input type="submit" id="btnSave" data-action="add" style="color: #fff; width: 100%;" data-lang="btnGhi" class="btn-flat flat" ng-click="fn.CheckValidateControl1()" value="Lưu">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalNCY" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="color: #15428B !important;" data-lang="lblChooseNYC">Chọn người YC</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive" style="overflow:auto">
+                                <table id="tbNguoiYeuCau" style="width:100%" class="table table-bordered table-striped table-condensed ">
+                                    <thead>
+                                        <tr>
+                                            <th data-lang="MS_CN">DeviceID</th>
+                                            <th data-lang="TEN">Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @*@foreach (var item in Model)
+                                            {
+                                                <tr data-id="@item.Value">
+                                                    <td style="width: 150px">@item.Value</td>
+                                                    <td>@item.Text</td>
+                                                </tr>
+                                            }*@
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div id="divGhi" class="row ">
+                        <div class="col-sm-3 col-md-2 col-xs-4 col-lg-3 pull-right">
+                            <div class="form-group">
+                                <input type="button" data-dismiss="modal" data-lang="btnHuy" style="color: #fff; width: 100%;" class="btn-flat flat" value="Hủy">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2 col-xs-4 col-lg-3 pull-right">
+                            <div class="form-group">
+                                <input type="button" id="btnChooseNYC" style="color: #fff; width: 100%;" data-lang="btnGhi" class="btn-flat flat" value="Chon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="divButtonFloat" class="kc_fab_wrapper"></div>
+    <script>
+        var urlEditRequest = '@Url.Action("EditRequest", "UserRequest")';
+        var urlSaveRequest = '@Url.Action("SaveRequest", "UserRequest")';
+        var urlRequest = '@Url.Action("Index", "UserRequest")';
+        var urlDevices = '@Url.Action("getDevices", "UserRequest")';
+        var urlShowNguoiYeuCau = '@Url.Action("ShowNguoiYeuCau", "UserRequest")';
+        var urlReadbarcode = '@Url.Action("ProcessRequest", "MyEcomain")';
+        var urlAutocomplete = '@Url.Action("AutocompleteMail", "UserRequest")';
+        require(["./AddRequestController"]);
+    </script>
+</div>

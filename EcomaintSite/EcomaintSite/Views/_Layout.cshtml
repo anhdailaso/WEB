@@ -1,0 +1,181 @@
+﻿@using Microsoft.AspNet.Identity;
+@using Model.Data.ViewModel;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ecomaint Site</title>
+    <link rel="shortcut icon" href="~/img/settings.ico" />
+    <link href="~/Content/jquery/jquery-ui.css" rel="Stylesheet" type="text/css" />
+    <link href="~/Content/plugins/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/bootstrap/bootstrap-flat.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/bootstrap/bootstrap-select.min.css" rel="stylesheet" />
+
+    <link href="~/Content/sb-admin.css" rel="stylesheet" />
+    <link href="~/Content/custombootstrap.css" rel="stylesheet" />
+    <link href="~/Content/magic-check.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/morris.css" rel="stylesheet" />
+    <link href="~/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="~/Content/plugins/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/autocomplete.css" rel="stylesheet" />
+    <link href="~/Content/loading-sap.css" rel="stylesheet" />
+    <link href="~/Content/scrollbar.css" rel="stylesheet" />
+    @*<link href="http://fonts.googleapis.com/css?family=Muli:400,400i,600,600i&amp;subset=vietnamese" rel="stylesheet">*@
+    <link href="~/Content/fonts/googleapis.css" rel="stylesheet" />
+    <link href="~/Content/loadingPage.css" rel="stylesheet" />
+
+    <!--Button float  -->
+    <link href="~/Content/plugins/kc.fab.css" rel="stylesheet" />
+
+    @*<link href="http://code.highcharts.com/css/highcharts.css" rel="stylesheet" />*@
+    <link href="~/Content/highcharts/highcharts.css" rel="stylesheet" />
+    <link href="~/Content/flags.css" rel="stylesheet" />
+
+    <link href="~/Content/plugins/metro-treeview.css" rel="stylesheet" />
+
+    <!-- Datatables -->
+    <link href="~/Content/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/datatables/customdatatables.css" rel="stylesheet" />
+    <link href="~/Content/layout.css" rel="stylesheet" />
+    <link href="~/Content/plugins/bootstrap/bootstrap-select2.css" rel="stylesheet" />
+    @*<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+    <script src="~/js/plugins/jquery/jquery-1.12.2.min.js"></script>
+    <script src="~/js/plugins/jquery/jquery-ui.js"></script>
+
+    <!------ Include the above in your HEAD tag ---------->
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>*@
+    <script src="~/js/plugins/select2/select2.min.js"></script>
+    <script>
+        var URLLanguages = '@Url.Action("GetLanguages", "Languages")'
+        var URLChangeSetting = '@Url.Action("ChangeThemeValue", "Languages")'
+        var URLTrackingUserOnline = '@Url.Action("TrackingUserOnline", "User")'
+        var URLLogOut = '@Url.Action("LogOut", "Account")'
+
+        var urlThemeDark = '/EcomaintSite/Content/theme/layout/dark.css'
+        var urlThemeLight = '/EcomaintSite/Content/theme/layout/light.css'
+        var baseUrl = '/EcomaintSite/js/';
+        var Languages
+        var Theme
+        var Messenger = {}
+        var _IDLE = false;
+        var global = {
+            Device: 'desktop',
+            TypeLanguage: 0,
+            CurrentNamePage: '',
+            ThemeStyle: '@SessionVariable.ThemeName'
+        };
+
+    </script>
+    @{
+        if (SessionVariable.ThemeName == "default")
+        {
+            <link data-theme="theme" href="" rel="stylesheet" />
+        }
+        else if (SessionVariable.ThemeName == "light")
+        {
+            <link href="~/Content/theme/layout/light.css" data-theme="theme" rel="stylesheet" />
+        }
+        else if (SessionVariable.ThemeName == "dark")
+        {
+            <link href="~/Content/theme/layout/dark.css" data-theme="theme" rel="stylesheet" />
+        }
+    }
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+
+</head>
+<body>
+    <script src="~/js/plugins/dropzone/dropzone.js"></script>
+    <script src="~/js/require.js"></script>
+    <script src="~/js/main.js"></script>
+    <input type="hidden" value="default" id="theme" />
+    <div id="page"></div>
+    <div id="block" class="loader-container" style="display:none;">
+        <div class="loading-anim">
+            <div class="cssload-square"></div>
+            <div class="cssload-square small"></div>
+        </div>
+    </div>
+    <form id="form1">
+        <div id="wrapper">
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle pull-left" id="btnMenuDropDown" data-toggle="collapse" data-target=".navbar-ex-collapse">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="navbar-control-menu" id="btnSideMenu">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </button>
+                    <a class="navbar-brand" href="Dashboard">Ecomain Site</a>
+                    <div class="navbar-form navbar-left" id="txtSearchFrame" role="search">
+                        <input type="text" id="txtSearch" class="autocomplete" placeholder="Search...">
+                        <a href=""><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <ul class="nav navbar-right top-nav">
+                    <li class="dropdown" id="Setting">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> @User.Identity.GetUserName()<b class="caret"></b></a>
+                        <ul class="dropdown-menu" id="MainMenu">
+                            <li>
+                                <a href="#" id="ThemeMenuItem">
+                                    <i class="fa fa-tags" aria-hidden="true"></i> <span style=" padding-right: 24px;" data-lang="lblGiaoDien">Giao diện</span>
+                                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" id="LanguageMenuItem">
+                                    <i class="fa fa-fw fa-language"></i> <span style=" padding-right: 18px;" data-lang="lblNgonNgu">Ngôn ngữ</span>
+                                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("LogOut", "Account")"><i class="fa fa-fw fa-power-off"></i> <span style=" padding-right: 18px;" data-lang="lblLogOut">Đăng xuất</span></a>
+                            </li>
+                        </ul>
+                        <ul class="dropdown-menu hidden" id="SubMenu"></ul>
+                    </li>
+                </ul>
+
+                <div id="navbar-menu" class="collapse navbar-collapse navbar-ex-collapse">
+                    @Html.Action("GetMenu", "Menu")
+                </div>
+            </nav>
+            @*notshow*@
+            <div id="page-wrapper" class="notshow" style="margin-bottom: 11px;">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+            <div id="block2" class="loading-child">
+                <div class="loader10"></div>
+            </div>
+            <div class="footer-fixed">
+                <footer class="footer">
+                    <div style="float:right">
+                        2017 © Vietsoft Ecomaint
+                    </div>
+                    <div style="float:right; margin-right:5px">
+                        <span class="flag-icon flag-icon-vn flag-icon-squared "></span>
+                        <span class="flag-icon flag-icon-us flag-icon-squared hidden"></span>
+                    </div>
+                    <div style="float:left; margin-left:5px">Database: <span id="DatabaseName">@(Session["DatabaseName"])</span></div>
+                    <div style="float:left; margin-left:5px"> - Online: <span id="userOnline"> </span></div>
+                </footer>
+            </div>
+            @Html.Partial("~/Views/_PartialModalDetails.cshtml")
+        </div>
+    </form>
+</body>
+</html>

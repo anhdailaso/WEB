@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{17F9CDEB-50D3-40B1-B32A-0932288C4614}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model.Repository</RootNamespace>
+    <AssemblyName>Model.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data">
+      <HintPath>..\..\..\..\..\Ecomaint\MVControl\MVControl\MVControl\bin\Debug\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\..\..\..\TACM\Biz.TACM\BIZ.TACM\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Combobox.cs" />
+    <Compile Include="Common\Cryptography.cs" />
+    <Compile Include="Common\DBUtils.cs" />
+    <Compile Include="Common\Enums.cs" />
+    <Compile Include="Common\HelperSetting.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ChartRepository.cs" />
+    <Compile Include="Repository\ComponentRepository.cs" />
+    <Compile Include="Repository\DatabaseRepository.cs" />
+    <Compile Include="Repository\DepartmentRepository.cs" />
+    <Compile Include="Repository\EquipmentRepository.cs" />
+    <Compile Include="Repository\GeneralRepository.cs" />
+    <Compile Include="Repository\LanguagesRepository.cs" />
+    <Compile Include="Repository\MasterPlanRepository.cs" />
+    <Compile Include="Repository\MasterPlansOfSparePartRepository.cs" />
+    <Compile Include="Repository\MasterPlansOfWorkRepository.cs" />
+    <Compile Include="Repository\MenuRepository.cs" />
+    <Compile Include="Repository\MonitoringOfQualitativeRepository.cs" />
+    <Compile Include="Repository\MonitoringOfQuantitativeRepository.cs" />
+    <Compile Include="Repository\MonitoringRepository.cs" />
+    <Compile Include="Repository\SafetyRepository.cs" />
+    <Compile Include="Repository\PurchaseRequestRepository.cs" />
+    <Compile Include="Repository\OrgUnitRepository.cs" />
+    <Compile Include="Repository\PeriodicMaintenanceRepository.cs" />
+    <Compile Include="Repository\PreventiveMaintenanceOfSparePartRepository.cs" />
+    <Compile Include="Repository\PreventiveMaintenanceOfWorkRepository.cs" />
+    <Compile Include="Repository\PreventiveMaintenanceRepository.cs" />
+    <Compile Include="Repository\PriorityRepository.cs" />
+    <Compile Include="Repository\ProductionLineRepository.cs" />
+    <Compile Include="Repository\ReasonForRepairRepository.cs" />
+    <Compile Include="Repository\MyEcomainRepository.cs" />
+    <Compile Include="Repository\ReceiptRequestRepository.cs" />
+    <Compile Include="Repository\SparepartAndTypeOfSparepartRepository.cs" />
+    <Compile Include="Repository\SparePartComponentRepository.cs" />
+    <Compile Include="Repository\SparePartRepository.cs" />
+    <Compile Include="Repository\StaffRepository.cs" />
+    <Compile Include="Repository\TheFormalityOfMaintenanceRepository.cs" />
+    <Compile Include="Repository\TheStatusDetailsOfWorkOrderRepository.cs" />
+    <Compile Include="Repository\TypeOfMaintenanceRepository.cs" />
+    <Compile Include="Repository\TypeOfMaterialRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\UserRequestComponentRepository.cs" />
+    <Compile Include="Repository\UserRequestDetailRepository.cs" />
+    <Compile Include="Repository\UserRequestDocumentRepository.cs" />
+    <Compile Include="Repository\UserRequestRepository.cs" />
+    <Compile Include="Repository\WebUserLoginRepository.cs" />
+    <Compile Include="Repository\WorkComponentRepository.cs" />
+    <Compile Include="Repository\WorkOrderByTheStatusRepository.cs" />
+    <Compile Include="Repository\WorkOrderDetailByTheStateRepository.cs" />
+    <Compile Include="Repository\WorkOrderIncludeDetailSparePartRepository.cs" />
+    <Compile Include="Repository\WorkOrderOfSparePartRepository.cs" />
+    <Compile Include="Repository\WorkOrderOfWorkRepository.cs" />
+    <Compile Include="Repository\WorkOrderRepository.cs" />
+    <Compile Include="Repository\WorkRepository.cs" />
+    <Compile Include="Repository\WorkSiteRepository.cs" />
+    <Compile Include="UnitOfWork\MasterPlanUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\MonitoringUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\UserRequestUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\WorkOrderUnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model.Interface\Model.Interface.csproj">
+      <Project>{782a9d8b-3954-45bb-8eb6-69449d12d3d2}</Project>
+      <Name>Model.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.Data.csproj">
+      <Project>{eca26243-73d3-4b55-b5f7-c3802d1afef1}</Project>
+      <Name>Model.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Common\HelperSetting.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

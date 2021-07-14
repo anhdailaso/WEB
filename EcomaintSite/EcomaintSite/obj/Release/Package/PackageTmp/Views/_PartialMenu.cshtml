@@ -1,0 +1,37 @@
+﻿@using Model.Data
+<script>
+    var urlGetChildMenu = '@Url.Action("GetChildMenu", "Menu")';
+    var urlAllChildMenu = '@Url.Action("GetAllChildMenu", "Menu")';
+    var MainMenu;
+    require(['_MenuPageController'], function (menu) {
+        MainMenu = menu;
+    });
+</script>
+<ul class="nav navbar-nav side-nav">
+    @foreach (var item in Model)
+    {
+        if (item.Root != 0)
+        {
+            continue;
+        }
+        if (item.MetaTitle == "#")
+        {
+            <li>
+                <a href="javascript:;" data-lang="@item.MenuID" data-toggle="collapsed" data-target="#@item.MenuID" onclick="MainMenu.fn.GetChildMenu(this, @item.ID, @item.MenuID)">
+                    <i class="@item.Icons"></i>  <i class="fa fa-fw fa-caret-down" style="float: right;margin-top: 3px;"></i>
+                    @(SessionVariable.TypeLanguage == 0 ? item.Name : item.NameEng)
+                </a>
+                <ul id="@item.MenuID" class="collapsed in"></ul>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a id='@item.MenuID' href="@item.MetaTitle" data-lang="@item.MenuID">
+                    <i class="@item.Icons"></i>
+                    @(SessionVariable.TypeLanguage == 0 ? item.Name : item.NameEng)
+                </a>
+            </li>
+        }
+    }
+</ul>
