@@ -13,10 +13,12 @@ namespace Model.Data
         public string Note { get; set; }
         public string MeasurementUnitName { get; set; }
         public bool TypeOfParam { get; set; }
-        public double Measurement { get; set; }
+        public double? Measurement { get; set; }
         public int Pass { get; set; }
         public int ValueParamID { get; set; }
         public int ID { get; set; }
+        public string Path { get; set; }
+        public byte[] ImageGS { get; set; }
     }
     public class MonitoringByDevice
     {

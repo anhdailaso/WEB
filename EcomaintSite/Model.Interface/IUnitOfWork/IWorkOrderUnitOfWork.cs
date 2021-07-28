@@ -17,6 +17,7 @@
         ITheStatusDetailsOfWorkOrderRepository TheStatusDetailsOfWorkOrderRepository { get; }
         IPriorityRepository PriorityRepository { get; }
         IGeneralRepository GeneralRepository { get; }
+        IThoiGianChayMayRepository ThoiGianChayMayRepository { get; }
         IMasterPlanRepository MasterPlanRepository { get; }
         IMasterPlansOfWorkRepository MasterPlansOfWorkRepository { get; }
         IMasterPlansOfSparePartRepository MasterPlansOfSparePartRepository { get; }

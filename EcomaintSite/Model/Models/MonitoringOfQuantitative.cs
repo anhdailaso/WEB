@@ -97,10 +97,12 @@ namespace Model.Data
 
         [StringLength(500)]
         [Column("PATH_HD")]
-        public string Path { get; set; }
+        public string PATH_HD { get; set; }
+
+        [Column("ImageGS")]
+        public Byte[] ImageGS { get; set; }
 
         public ComponentInternalMonitoringParams ComponentInternalMonitoringParams { get; set; }
-
         public Monitoring Monitoring { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,12 +1,9 @@
 
 namespace Model.Data
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
+    [Table("GIAM_SAT_TINH_TRANG_HINH")]
     public partial class MonitoringDocument
     {
         [Key]

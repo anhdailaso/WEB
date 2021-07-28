@@ -62,6 +62,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Budget.cs" />
+    <Compile Include="Models\THOI_GIAN_CHAY_MAY.cs" />
     <Compile Include="ViewModel\DiaDiemViewModel.cs" />
     <Compile Include="ViewModel\Commons.cs" />
     <Compile Include="Models\Component.cs" />

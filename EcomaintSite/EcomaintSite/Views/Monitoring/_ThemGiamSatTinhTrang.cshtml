@@ -87,10 +87,15 @@
         color: #323b49;
     }
 
+    #img01 {
+        width: 100%;
+        border: none;
+    }
 
-
+    .close {
+        font-size: xx-large;
+    }
     /*CSS VOID*/
-
     .mytext {
         border: 0;
         padding: 10px;
@@ -269,15 +274,13 @@
                                 <div class="input-group">
                                     <input class="form-control" type="text" id="txtDevice" value="@ViewBag.may" />
                                     <a class="input-group-addon" ng-click="fn.ShowEquipForm();" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-                                    <a class="input-group-addon" id="ReadBtn" href="#"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span></a>
                                 </div>
+                                @*<a class="input-group-addon" id="ReadBtn" href="#"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span></a>*@
                             }
                             else
                             {
-                                <div class="input-group">
-                                    @Html.DropDownList("cbbThietBi", ViewBag.May as SelectList, new { name = "cbbThietBi", data_live_search = "true", data_slide = "left", @class = "form-control select-one select2" })
-                                    <a class="input-group-addon" id="ReadBtn1"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span></a>
-                                </div>
+                                @Html.DropDownList("cbbThietBi", ViewBag.May as SelectList, new { name = "cbbThietBi", data_live_search = "true", data_slide = "left", @class = "form-control select-one select2" })
+                                @*<a class="input-group-addon" id="ReadBtn1"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span></a>*@
                             }
                         </div>
                     </div>
@@ -295,6 +298,7 @@
                             <input class="form-control" type="text" id="ngaykt" data-type="datepicker" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
                         </div>
                     </div>
+
                     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-6">
                         <div class="form-group responsive">
                             <label data-lang="lblGioKT">Giờ KT</label>
@@ -302,120 +306,114 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <label id="lblGioChayMay" data-giochay="0" readonly class="form-control-plaintext"></label>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="input-group">
+                            <input class="form-control" type="text"  id="txtSoGioLuyKe" value="" />
+                            <a class="input-group-addon" ng-click="fn.ShowEquipForm();" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
+</div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card-box">
-                <div id="divButtonDefault" class="toolbar-action">
-                    <a href='@Url.Action("Index", "Monitoring")' data-lang="btnTroVe" class="btn btn-default pull-right">
-                        <i class="fa fa fa-reply" aria-hidden="true"></i>
-                    </a>
-                    <button ng-click="fn.Ghi();" type="button" title="Lưu" data-lang="btnGhi" class="btn btn-default pull-right">
-                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
-                    </button>
-                    <button ng-click="fn.chonkhongdat();" type="button" title="chọn tất cả không đạt" data-lang="btnchonkhongdat" class="btn btn-default pull-right">
-                        <i class="fa fa-check-square" aria-hidden="true"></i>
-                    </button>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div id="divButtonDefault" class="toolbar-action">
+                <a href='@Url.Action("Index", "Monitoring")' data-lang="btnTroVe" class="btn btn-default pull-right">
+                    <i class="fa fa fa-reply" aria-hidden="true"></i>
+                </a>
+                <button ng-click="fn.Ghi();" type="button" title="Lưu" data-lang="btnGhi" class="btn btn-default pull-right">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                </button>
+                <button ng-click="fn.chonkhongdat();" type="button" title="chọn tất cả không đạt" data-lang="btnchonkhongdat" class="btn btn-default pull-right">
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                </button>
 
-                    <button ng-click="fn.chondat();" type="button" title="chọn tất cả đạt" data-lang="btnchondat" class="btn btn-default pull-right">
-                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                    </button>
+                <button ng-click="fn.chondat();" type="button" title="chọn tất cả đạt" data-lang="btnchondat" class="btn btn-default pull-right">
+                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                </button>
 
-                    <button ng-click="fn.bochon();" type="button" title="Bỏ chọn" data-lang="btnbochon" class="btn btn-default pull-right">
-                        <i class="fa fa-square-o" aria-hidden="true"></i>
-                    </button>
+                <button ng-click="fn.bochon();" type="button" title="Bỏ chọn" data-lang="btnbochon" class="btn btn-default pull-right">
+                    <i class="fa fa-square-o" aria-hidden="true"></i>
+                </button>
 
-                    <button ng-click="fn.ShowSpeckVoice();" type="button" title="Speak voice" data-lang="btnspeak" class="btn btn-default pull-right">
+                @*<button ng-click="fn.ShowSpeckVoice();" type="button" title="Speak voice" data-lang="btnspeak" class="btn btn-default pull-right">
                         <i class="fa fa-volume-up" aria-hidden="true"></i>
-                    </button>
-                </div>
-                <ul id="myTabsthem" class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#tabThemDinhTinh" data-val="1" aria-controls="tabThemDinhTinh" role="tab" data-toggle="tab" data-lang="tabThongSoDT">định tính</a></li>
-                    <li role="presentation"><a href="#tabThemThongSoDL" data-val="2" aria-controls="tabThemThongSoDL" role="tab" data-toggle="tab" data-lang="tabThongSoDL">định lượng</a></li>
-                </ul>
-                <h6 style="margin: 20px 0 0 0;"></h6>
-                <!-- Tab panes -->
-                @*tab định tính*@
-                <div class="tab-content">
-                    @*tab định tính*@
-                    <div role="tabpanel" class="tab-pane active" id="tabThemDinhTinh">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio" value="0" checked>Xem tất cả</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio" value="1">Xem thông số đến hạn giám sát</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                                <div class="form-group">
-                                    <label data-lang="lblTungay">Từ ngày</label>
-                                    <input class="form-control" type="text" id="fromDate" data-type="datepicker" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                                <div class="form-group">
-                                    <label data-lang="labLoaiCV">Loại công việc</label>
-                                    @Html.DropDownList("cbbLoaiCV", ViewBag.LoaiCV as SelectList, new { name = "cbbLoaiCV", data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
-                                </div>
-                            </div>
+                    </button>*@
+            </div>
+            <ul id="myTabsthem" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#tabChonThongSoGS" data-val="1" aria-controls="tabChonThongSoGS" role="tab" data-toggle="tab" data-lang="tabChonThongSoGS">Chọn thông số</a></li>
+            </ul>
+            <h6 style="margin: 20px 0 0 0;"></h6>
+            @*tab định tính*@
+            <div role="tabpanel" class="tab-pane active" id="tabChonThongSoGS">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="radio">
+                            <label><input type="radio" name="optradio" value="0" checked>Xem tất cả</label>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="table-responsive" style="overflow: auto">
-                                        <table id="tbQualityParameter" class="table table-bordered table-condensed display">
-                                            <thead>
-                                                <tr>
-                                                    <th class="">Group </th>
-                                                    <th style="width:120px" data-lang="Choose">Chọn</th>
-                                                    <th data-lang="TEN_GIA_TRI">Giá trị</th>
-                                                    <th data-lang="Note">Ghi chú</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody></tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                        <div class="radio">
+                            @if (ViewBag.STT == "-1")
+                            {
+                                <label>
+                                    <input type="radio" name="optradio" value="1">Xem thông số đến hạn giám sát
+                                </label>
+                            }
+                            else
+                            {
+                                <label>
+                                    <input type="radio" name="optradio" value="1" onclick="javascript: return false;">Xem thông số đến hạn giám sát
+                                </label>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="lblTungay">Từ ngày</label>
+                            <input class="form-control" type="text" id="fromDate" data-type="datepicker" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                        <div class="form-group">
+                            <label data-lang="labLoaiCV">Loại công việc</label>
+                            @Html.DropDownList("cbbLoaiCV", ViewBag.LoaiCV as SelectList, new { name = "cbbLoaiCV", data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <div class="table-responsive" style="overflow: auto">
+                                <table id="tbQualityParameter" class="table table-bordered table-condensed display">
+                                    <thead>
+                                        <tr>
+                                            <th class="">Group </th>
+                                            <th style="width:10%" data-lang="Choose">Chọn</th>
+                                            <th style="width:40%" data-lang="TEN_GIA_TRI">Giá trị</th>
+                                            <th style="width:40%" data-lang="Note">Ghi chú</th>
+                                            <th style="width:10%" data-lang="Path">Hinh anh</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    @*tab thông số định lượng*@
-                    @*<div role="tabpanel" class="tab-pane" id="tabThemThongSoDL">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <div class="table-responsive" style="overflow: auto">
-                                            <table id="tbQuantityParameter" class="table table-bordered table-condensed ">
-                                                <thead>
-                                                    <tr>
-                                                        <th data-lang="MS_MAY" class="hidden">MS_MAY</th>
-                                                        <th data-lang="TEN_MAY">TEN_MAY</th>
-                                                        <th data-lang="MS_BP" class="hidden">MS_BP</th>
-                                                        <th data-lang="TEN_BP">TEN_BP</th>
-                                                        <th data-lang="MS_TS" class="hidden">MS_TS</th>
-                                                        <th data-lang="TEN_TS">TEN_TS</th>
-                                                        <th data-lang="GIA_TRI">GIA_TRI</th>
-                                                        <th data-lang="DVD">DVD</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody></tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>*@
                 </div>
             </div>
         </div>
-        <div id="divButtonFloat" class="kc_fab_wrapper">
-        </div>
     </div>
+    <div id="divButtonFloat" class="kc_fab_wrapper">
+    </div>
+</div>
 </div>
 
 @*model chon may*@
@@ -520,6 +518,31 @@
     <div id="divButtonFloat" class="kc_fab_wrapper"></div>
 </div>
 
+
+<!-- The Modal -->
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModalHinh" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>*@
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img class="modal-content" id="img01">
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnChonHinh" class="btn btn-primary">Chọn hình</button>
+                <button type="button" id="btnXoaHinh" class="btn btn-primary">Xóa hình</button>
+                <input type="button" data-dismiss="modal" data-lang="btnHuy" class="btn btn-primary" value="Hủy">
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     var urlConditionMonitoringParameterGet = '@Url.Action("GetMonitoringParameters", "Monitoring")'
     var urlConditionMonitoringParameterGetTMP = '@Url.Action("GetMonitoringParametersTMP", "Monitoring")'
@@ -529,5 +552,76 @@
         var urlCheckTheParametersDue = '@Url.Action("CheckTheParametersDue", "Monitoring")'
         var urlGetGiamSatTinhTrang = '@Url.Action("Index", "Monitoring")'
         var urlReadbarcode = '@Url.Action("ProcessRequest", "MyEcomain")'
-        require(['InitMonitoringController'])
+        var urlSacveImage = '@Url.Action("SaveImage", "Monitoring")'
+
+        var urlGetThoiGianChayMay = '@Url.Action("GetThoiGianChayMay", "Monitoring")'
+        
+
+    require(['InitMonitoringController'])
+
+    var modal = document.getElementById("myModalHinh");
+    var modalImg = document.getElementById("img01");
+    function LoadHinh(e) {
+        var mor = $(e).data('mor');
+        var com = $(e).data('com');
+        $('#myModalHinh').appendTo("body").modal('show');
+        modalImg.src = e.src;
+        $('#myModalHinh').on('hidden.bs.modal', function (a) {
+            var fd = new FormData();
+            fd.append('image', file);
+            fd.append('mor', mor);
+            fd.append('com', com);
+            $.ajax({
+                type: "POST",
+                data: fd,
+                processData: false,
+                contentType: false,
+                url: urlSacveImage,
+                success: function (resulst) {
+                    $('#tbQualityParameter tr[class$="selected"] img').attr('src', $('#img01').attr('src'));
+                },
+                error: function (response) {
+                }
+            });
+        })
+    };
+
+    function uploadImgDisplay(curFile) {
+        var fileURL = window.URL.createObjectURL(curFile);
+        $('#img01').attr('src', fileURL);
+    }
+
+    var importfile = $('#fileToUpload');
+    $('#btnXoaHinh').click(function () {
+        $('#img01').attr('src', null);
+    });
+
+    $('#btnChonHinh').click(function () {
+        importfile.click();
+    });
+    var file;
+    importfile.change(function () {
+        // is file choosed
+        if (!this.files.length) {
+            return;
+        }
+        // is image
+        file = this.files[0];
+        this.value = '';
+        switch (file.type) {
+            case 'image/bmp':
+            case 'image/jpeg':
+            case 'image/jpg':
+            case 'image/png':
+            case 'image/gif':
+                break;
+            default:
+                {
+                    alert('The uploaded file is not supported.');
+                    return;
+                }
+        }
+        uploadImgDisplay(file);
+    });
+
 </script>

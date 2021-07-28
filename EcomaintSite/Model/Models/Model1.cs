@@ -84,6 +84,8 @@ namespace Model.Data
         public DbSet<SparepartAndTypeOfSparepart> SparepartAndTypeOfSparepart { get; set; }
         public DbSet<SparePartWarehouse> SparePartWarehouse { get; set; }
 
+        public DbSet<THOI_GIAN_CHAY_MAY> THOI_GIAN_CHAY_MAY { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 

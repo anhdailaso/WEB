@@ -184,12 +184,9 @@
                         method.FilterData();
                     });
                     Main.fn.InitDateTimePickerChanged([$('#fromDate'), $('#toDate')], method.FilterData);
-                    Main.fn.ScanBarCode($('#ReadBtn'), $('#fileToUpload'), $('#cbbThietBi'), '#cbbThietBi option');
+                    //Main.fn.ScanBarCode($('#ReadBtn'), $('#fileToUpload'), $('#cbbThietBi'), '#cbbThietBi option');
                     Main.fn.InitButtonFloat(buttonFloat);
                     $('.select2-container--classic').select2({ theme: "classic" });
-
-
-
                 },
                 ShowEquipForm: function () {
                     $.post(urlCheckTheParametersDue, { msnx: $("#cbbDiaDiem").val() }, function (data) {

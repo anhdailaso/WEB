@@ -23,12 +23,20 @@
                         "url": urlAddGiamSatTinhTrang //set tên hàm tương ứng
                     },
                     {
+                        "id": "btnRemove",
+                        "url": "#",
+                        "icon": "<i class='fa fa-trash'></i>",
+                        "lang": "btnXoa",
+                        "func": "fn.XoaGS()"
+                    },
+                    {
                         "id": "btnSuags",
                         "url": "#",
                         "icon": "<i class='fa fa-pencil'></i>",
                         "lang": "btnSuags",
                         "func": "fn.SuaGS()"
                     }
+               
 
                 ]
             var vars = {}
@@ -83,13 +91,13 @@
                                         "targets": [5],
                                         "visible": false
                                     },
-                                    { 'width': '130px', 'targets': 1 },
-                                    { 'width': '10%', 'targets': 2 },
-                                    { 'width': '10%', 'targets': 3 },
-                                    { 'width': '20%', 'targets': 4 },
-                                    { 'width': '10%', 'targets': 5 },
-                                    { 'width': '30%', 'targets': 6 },
-                                    { 'width': '30%', 'targets': 7 }
+                                    { 'width': '150px', 'targets': 1 },
+                                    { 'width': '100px', 'targets': 2 },
+                                    { 'width': '50px', 'targets': 3 },
+                                    { 'width': '200px', 'targets': 4 },
+                                    { 'width': '150px', 'targets': 5 },
+                                    { 'width': '250px', 'targets': 6 },
+                                    { 'width': '150px', 'targets': 7 }
                                 ],
 
                                 "language":
@@ -159,12 +167,12 @@
                                         "targets": [5],
                                         "visible": false
                                     },
-                                    { 'width': '110px', 'targets': 1 },
-                                    { 'width': '30%', 'targets': 2 },
-                                    { 'width': '30%', 'targets': 4 },
-                                    { 'width': '30%', 'targets': 6 },
-                                    { 'width': '10%', 'targets': 7 },
-                                    { 'width': '10%', 'targets': 8 }
+                                    { 'width': '150px', 'targets': 1 },
+                                    { 'width': '250px', 'targets': 2 },
+                                    { 'width': '250px', 'targets': 4 },
+                                    { 'width': '250px', 'targets': 6 },
+                                    { 'width': '50px', 'targets': 7 },
+                                    { 'width': '50px', 'targets': 8 }
 
                                 ],
                                 "language":
@@ -238,15 +246,15 @@
                                         "targets": [5],
                                         "visible": false
                                     },
-                                    { 'width': '110px', 'targets': 1 },
-                                    { 'width': '30%', 'targets': 2 },
-                                    { 'width': '30%', 'targets': 4 },
-                                    { 'width': '30%', 'targets': 6 },
-                                    { 'width': '10%', 'targets': 7 },
-                                    { 'width': '10%', 'targets': 8 },
-                                    { 'width': '10%', 'targets': 9 },
-                                    { 'width': '10%', 'targets': 10 },
-                                    { 'width': '10%', 'targets': 11 }
+                                    { 'width': '150px', 'targets': 1 },
+                                    { 'width': '250px', 'targets': 2 },
+                                    { 'width': '250px', 'targets': 4 },
+                                    { 'width': '250px', 'targets': 6 },
+                                    { 'width': '60px', 'targets': 7 },
+                                    { 'width': '70px', 'targets': 8 },
+                                    { 'width': '50px', 'targets': 9 },
+                                    { 'width': '50px', 'targets': 10 },
+                                    { 'width': '50px', 'targets': 11 }
 
                                 ],
                                 "language":

@@ -185,8 +185,6 @@ namespace EcomaintSite.Controllers
             try
             {
                 Stream iStream = imgBinary.InputStream;
-                //Image image = System.Drawing.Image.FromStream(iStream);
-                //image.Save("D:\\Image.jpg", ImageFormat.Jpeg);
                 byte[] bytes = new byte[iStream.Length];
                 iStream.Seek(0, SeekOrigin.Begin);
                 iStream.Read(bytes, 0, bytes.Length);

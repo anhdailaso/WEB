@@ -50,6 +50,7 @@
     <Compile Include="IRepository\IDatabaseRepository.cs" />
     <Compile Include="IRepository\IDepartmentRepository.cs" />
     <Compile Include="IRepository\IEquipmentRepository.cs" />
+    <Compile Include="IRepository\IThoiGianChayMayRepository.cs" />
     <Compile Include="IRepository\IGeneralRepository.cs" />
     <Compile Include="IRepository\ILanguagesRepository.cs" />
     <Compile Include="IRepository\IMasterPlanRepository.cs" />

@@ -268,6 +268,8 @@ D:\04.WEB\01.WEB\EcomaintSite\EcomaintSite\obj\Debug\EcomaintSite.csproj.CoreCom
 D:\04.WEB\01.WEB\EcomaintSite\EcomaintSite\obj\Debug\EcomaintSite.csproj.CopyComplete
 D:\04.WEB\01.WEB\EcomaintSite\EcomaintSite\obj\Debug\EcomaintSite.dll
 D:\04.WEB\01.WEB\EcomaintSite\EcomaintSite\obj\Debug\EcomaintSite.pdb
+D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\zxing.pdb
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\ApplicationInsights.config
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\roslyn\csc.exe
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\roslyn\csc.exe.config
@@ -280,7 +282,6 @@ D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\roslyn\Microsoft.CodeAnalysis.C
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\roslyn\Microsoft.CodeAnalysis.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\roslyn\Microsoft.CSharp.Core.targets
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
@@ -335,12 +336,14 @@ D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.AspNet.Identity.Owin.
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.AspNet.SignalR.Core.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.Azure.KeyVault.Core.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.Owin.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.Owin.Host.SystemWeb.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.Owin.Security.Cookies.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.Owin.Security.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.Owin.Security.OAuth.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.Web.Infrastructure.dll
+D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.WindowsAzure.Storage.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Model.Data.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Model.Interface.dll
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Model.Repository.dll
@@ -376,11 +379,14 @@ D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.AspNet.Identity.Owin.
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.AspNet.SignalR.Core.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.Azure.KeyVault.Core.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.Owin.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.Owin.Host.SystemWeb.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.Owin.Security.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.Owin.Security.Cookies.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.Owin.Security.OAuth.xml
+D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.WindowsAzure.Storage.pdb
+D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Microsoft.WindowsAzure.Storage.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\Ninject.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\System.Diagnostics.DiagnosticSource.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\System.Net.Http.Formatting.xml
@@ -392,7 +398,6 @@ D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\System.Web.Razor.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\System.Web.WebPages.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\System.Web.WebPages.Deployment.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\System.Web.WebPages.Razor.xml
-D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\zxing.pdb
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\zxing.xml
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\zxing.presentation.pdb
 D:\01.Ecomaintsite\EcomaintSite\EcomaintSite\bin\zxing.presentation.xml

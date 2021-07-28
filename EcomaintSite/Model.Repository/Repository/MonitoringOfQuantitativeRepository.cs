@@ -20,9 +20,9 @@ namespace Model.Repository
 
         public void AddRange(IEnumerable<MonitoringOfQuantitative> lst) => db.MonitoringOfQuantitative.AddRange(lst);
 
-        public void Add(MonitoringOfQuantitative obj) => db.MonitoringOfQuantitative.Add(obj);  
+        public void Add(MonitoringOfQuantitative obj) => db.MonitoringOfQuantitative.Add(obj);
 
-        public bool CheckExist(MonitoringOfQuantitative obj) => db.MonitoringOfQuantitative.Any(x=> x.MonitoringID == obj.MonitoringID && x.MonitoringParamsID == obj.MonitoringParamsID && x.ID == obj.ID && x.DeviceID == obj.DeviceID && x.ID == obj.ID);
+        public bool CheckExist(MonitoringOfQuantitative obj) => db.MonitoringOfQuantitative.Any(x => x.MonitoringID == obj.MonitoringID && x.MonitoringParamsID == obj.MonitoringParamsID && x.ID == obj.ID && x.DeviceID == obj.DeviceID && x.ID == obj.ID);
 
         public void Edit(MonitoringOfQuantitative obj)
         {
@@ -37,15 +37,16 @@ namespace Model.Repository
         }
         public void Delete(int monitoringID)
         {
-           var resulst =  db.MonitoringOfQuantitative.Where(x => x.MonitoringID == monitoringID).ToList();
-            db.MonitoringOfQuantitative.RemoveRange(resulst);
+                var resulst = db.MonitoringOfQuantitative.Where(x => x.MonitoringID == monitoringID).ToList();
+                db.MonitoringOfQuantitative.RemoveRange(resulst);
+          
         }
-            
+
 
         public void SaveChanges() => db.SaveChanges();
 
         private bool disposed = false;
-        protected  void Dispose(bool disposing)
+        protected void Dispose(bool disposing)
         {
             if (!this.disposed)
             {

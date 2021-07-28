@@ -31,6 +31,7 @@ namespace Model.UnitOfWork
         private ITheStatusDetailsOfWorkOrderRepository _theStatusDetailsOfWorkOrderRepository = null;
         private IPriorityRepository _priorityRepository = null;
         private IGeneralRepository _generalRepository = null;
+        IThoiGianChayMayRepository _thoigianchaymayRepository = null;
         private IMasterPlanRepository _masterPlanRepository = null;
         private IMasterPlansOfWorkRepository _masterPlansOfWorkRepository = null;
         private IMasterPlansOfSparePartRepository _masterPlansOfSparePartRepository = null;
@@ -104,6 +105,10 @@ namespace Model.UnitOfWork
         public IGeneralRepository GeneralRepository
         {
             get => this._generalRepository ?? new GeneralRepository(db);            
+        }
+        public IThoiGianChayMayRepository ThoiGianChayMayRepository
+        {
+            get => this._thoigianchaymayRepository ?? new ThoiGianChayMayRepository(db);
         }
 
         public IWorkOrderDetailByTheStateRepository WorkOrderDetailByTheStateRepository

@@ -9,6 +9,7 @@
             var MainMenu = menu
             var menuID = 'mnuMornitoring'
             var stt = 1
+            var Ckeckload = 1
             var currentPageName = 'MornitoringWeb'
             var buttonFloat = [
                 {
@@ -16,25 +17,7 @@
                     "url": "#",
                     "icon": "<i class='fa fa-angle-double-up'></i>",
                 },
-                {
-                    "id": "btnMain",
-                    "url": "#",
-                    "icon": "<i class='fa fa-angle-double-up'></i>",
-                    "‌​visible": "hidden"
-                },
-                {
-                    "id": "btnMain",
-                    "url": "#",
-                    "icon": "<i class='fa fa-angle-double-up'></i>",
-                    "‌​visible": "hidden"
-                },
-                {
-                    "id": "btnspeak",
-                    "url": '#',
-                    "icon": "<i class='fa fa-volume-up'></i>",
-                    "lang": "btnspeak",
-                    "func": "fn.ShowSpeckVoice"
-                },
+
                 {
                     "id": "btnbochon",
                     "url": '#',
@@ -76,22 +59,18 @@
                     $busy: false,
                     $equipDatatables: 'undefined',
                     $equipDatatablesTmp: 'undefined',
-                    $quantityParamsDatatables: 'undefined',
                     $qualityParamsDatatables: 'undefined',
                     $btnChooseEquip: $('#btnChooseEquip'),
                     $btnChoose: $('#btnChoose'),
                     $tbEquip: $('#tbEquip'),
                     $tbEquipBody: $('#tbEquip tbody'),
                     $txtDevice: $('#txtDevice'),
-                    $tbQuantityParameterBody: $('#tbQuantityParameter tbody'),
                     $tbQualityParameterBody: $('#tbQualityParameter tbody'),
-                    $tbQuantityParameter: $('#tbQuantityParameter'),
                     $tbQualityParameter: $('#tbQualityParameter'),
                     $tbGiamSatTinhTrang: $('#tbGiamSatTinhTrang'),
                     $tbGiamSatTinhTrangBody: $('#tbGiamSatTinhTrang tbody'),
                     $tableGiamSatTinhTrang: 'undefined',
                     $tablethongso: 'undefined',
-
                     $tabGiamSat: $('a[href="#tabMonitoring"]'),
                     $tabDinhTinh: $('a[href="#tabThongSoDT"]'),
                     $tabDinhLuong: $('a[href="#tabThongSoDL"]')
@@ -99,17 +78,14 @@
             }
             var fnPrivate = {
                 LoadGrid: function (id, action) {
+                    if (Ckeckload == 0) return;
                     if (method.KiemTraChonMay() !== false) {
                         Loading.fn.Show()
                         $.post(urlConditionMonitoringParameterGet, { id: id, due: $('input[name = "optradio"]:checked').val(), todate: $('#fromDate').val(), mslcv: $('#cbbLoaiCV').val(), stt: $('#stt').val() }, function (data) {
-                            if ($.fn.DataTable.isDataTable('#tbQuantityParameter')) {
-                                $('#tbQuantityParameter').dataTable().fnDestroy();
-                            }
                             if ($.fn.DataTable.isDataTable('#tbQualityParameter')) {
                                 $('#tbQualityParameter').dataTable().fnDestroy();
                             }
                             vars.$tbQualityParameterBody.empty()
-                            //vars.$tbQuantityParameterBody.empty()
                             if (data.length > 0) {
                                 var i = 0;
                                 for (i = 0; i < data.length; i++) {
@@ -123,23 +99,23 @@
 
                                     if (data[i].TypeOfParam === true) {
                                         if (data[i].Measurement == 1) {
-                                            vars.$tbQualityParameterBody.append('<tr><td >(' + data[i].ComponentID + ') ' + data[i].ComponentName + '- (' + data[i].MonitoringParamsName + ')</td><td class="dt-body-center" data-toggle="buttons" style="width:120px" data-pass="' + data[i].Pass + '"><label class="btn"><input class="form-control" data-id="' + data[i].ValueParamID + '" data-msbophan="' + data[i].ComponentID + '" data-msthongso="' + data[i].MonitoringParamsID + '" type="checkbox" checked/><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i></label><td>' + data[i].ValueParamName + '</td><td><textarea class="form-control" id="txtGhiChu">' + ghichu + '</textarea></tr>')
+                                            vars.$tbQualityParameterBody.append('<tr><td >(' + data[i].ComponentID + ') ' + data[i].ComponentName + '- (' + data[i].MonitoringParamsName + ')</td><td class="dt-body-center" data-toggle="buttons" style="width:120px" data-pass="' + data[i].Pass + '"><label class="btn"><input class="form-control" data-id="' + data[i].ValueParamID + '" data-msbophan="' + data[i].ComponentID + '" data-msthongso="' + data[i].MonitoringParamsID + '" type="checkbox" checked/><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i></label><td>' + data[i].ValueParamName + '</td><td><textarea class="form-control" id="txtGhiChu">' + ghichu + '</textarea><td><img id="' + i + '"    style="width: 100px;height: 50px;"  ' + (data[i].ImageGS === null ? 'src=""' : 'src="../Monitoring/RetrieveImage?moningtoringID=' + data[i].MonitoringParamsID + '&compunetID=' + data[i].ComponentID + ' "') + 'data-mor ="' + data[i].MonitoringParamsID + '" data-com ="' + data[i].ComponentID + '" onclick ="LoadHinh(this)" class="rounded mx-auto d-block" alt=""></td> </tr></tr>')
                                         }
                                         else {
-                                            vars.$tbQualityParameterBody.append('<tr><td >(' + data[i].ComponentID + ') ' + data[i].ComponentName + '- (' + data[i].MonitoringParamsName + ')</td><td class="dt-body-center" data-toggle="buttons" style="width:120px" data-pass="' + data[i].Pass + '"><label class="btn"><input class="form-control" data-id="' + data[i].ValueParamID + '" data-msbophan="' + data[i].ComponentID + '" data-msthongso="' + data[i].MonitoringParamsID + '" type="checkbox"/><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i></label><td>' + data[i].ValueParamName + '</td><td><textarea class="form-control" id="txtGhiChu">' + ghichu + '</textarea></tr>')
+                                            vars.$tbQualityParameterBody.append('<tr><td >(' + data[i].ComponentID + ') ' + data[i].ComponentName + '- (' + data[i].MonitoringParamsName + ')</td><td class="dt-body-center" data-toggle="buttons" style="width:120px" data-pass="' + data[i].Pass + '"><label class="btn"><input class="form-control" data-id="' + data[i].ValueParamID + '" data-msbophan="' + data[i].ComponentID + '" data-msthongso="' + data[i].MonitoringParamsID + '" type="checkbox"/><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i></label><td>' + data[i].ValueParamName + '</td><td><textarea class="form-control" id="txtGhiChu">' + ghichu + '</textarea><td><img id="' + i + '"    style="width: 100px;height: 50px;"  ' + (data[i].ImageGS === null ? 'src=""' : 'src="../Monitoring/RetrieveImage?moningtoringID=' + data[i].MonitoringParamsID + '&compunetID=' + data[i].ComponentID + ' "') + 'data-mor ="' + data[i].MonitoringParamsID + '" data-com ="' + data[i].ComponentID + '" onclick ="LoadHinh(this)" class="rounded mx-auto d-block" alt=""></td> </tr></tr>')
                                         }
                                     }
-                                    //else {
-
-                                    //vars.$tbQualityParameterBody.append('<tr><td >(' + data[i].ComponentID + ') ' + data[i].ComponentName + '-' + data[i].MonitoringParamsName + ' (' + data[i].TEN_DV_DO + ')</td><td style="padding-left: 20px;">' + data[i].ValueParamName.split[0] + '</td><td style="width:110px" ><input onkeyup="this.setAttribute(\'value\', this.value);" value="" class="form-control" type="text" data-range=\'' + data[i].ValueParamName.split('!')[1] + '\' style="width: 100%" data-msbophan="' + data[i].ComponentID + '" data-msthongso="' + data[i].MonitoringParamsID + '" /></td><td><textarea class="form-control" id="txtGhiChu">' + data[i].Note + '</textarea></td></tr>')
-                                    //}
+                                    else {
+                                        vars.$tbQualityParameterBody.append('<tr><td >(' + data[i].ComponentID + ') ' + data[i].ComponentName + '-' + data[i].MonitoringParamsName + ' (' + data[i].TEN_DV_DO + ')</td><td style="padding-left: 20px;">' + data[i].ValueParamName.split[0] + '</td><td style="width:110px" ><input onkeyup="this.setAttribute(\'value\', this.value);" value="' + (data[i].Measurement == null ? '' : data[i].Measurement) + '" class="form-control" type="text"   data-range=\'' + data[i].ValueParamName.split('!')[1] + '\' style="width: 100%" data-msbophan="' + data[i].ComponentID + '" data-msthongso="' + data[i].MonitoringParamsID + '" /></td><td><textarea class="form-control" id="txtGhiChu">' + ghichu + '</textarea></td><td><img id="' + i + '"    style="width: 100px;height: 50px;"  ' + (data[i].ImageGS === null ? 'src=""' : 'src="../Monitoring/RetrieveImage?moningtoringID=' + data[i].MonitoringParamsID + '&compunetID=' + data[i].ComponentID + ' "') + 'data-mor ="' + data[i].MonitoringParamsID + '" data-com ="' + data[i].ComponentID + '" onclick ="LoadHinh(this)" class="rounded mx-auto d-block" alt=""></td> </tr></tr>')
+                                    }
                                 }
                                 vars.$qualityParamsDatatables = $("#tbQualityParameter").DataTable({
                                     "columnDefs": [
                                         { "visible": false, "targets": 0 },
                                         { "width": '10%', "targets": 1 },
                                         { "width": "40%", "targets": 2 },
-                                        { "width": "50%", "targets": 3 }
+                                        { "width": "40%", "targets": 3 },
+                                        { "width": "10%", "targets": 4 }
                                     ],
                                     "language":
                                     {
@@ -171,7 +147,7 @@
                                         api.column(0, { page: 'current' }).data().each(function (group, i) {
                                             if (last !== group) {
                                                 $(rows).eq(i).before(
-                                                    '<tr data-root"' + i + '" class="group" id="' + i + '"><td colspan="3">' + group + '</td></tr>'
+                                                    '<tr data-root"' + i + '" class="group" id="' + i + '"><td colspan="4">' + group + '</td></tr>'
                                                 );
                                                 groupadmin.push(i);
                                                 last = group;
@@ -187,59 +163,6 @@
                                         }
                                     }
                                 });
-                                //vars.$quantityParamsDatatables = $("#tbQuantityParameter").DataTable({
-                                //    "columnDefs": [
-                                //        { "visible": false, "targets": 0 },
-                                //        { "width": '10px', "targets": 1 },
-                                //        { "width": "40%", "targets": 2 },
-                                //        { "width": "50%", "targets": 3 }
-                                //    ],
-                                //    "language":
-                                //    {
-                                //        "processing": "<div class='overlay custom-loader-background'><i class='fa fa-cog fa-spin custom-loader-color'></i></div>",
-                                //        "sSearch": "<span data-lang='lblSearch'>" + (global.TypeLanguage == 0 ? "Tìm " : "Search") + "</span> ",
-                                //        "info": "",
-                                //        "zeroRecords": "<span data-lang='lblFilterInfo'>" + (global.TypeLanguage == 0 ? "Không tìm thấy" : "No matching records found") + "</span>",
-                                //        "lengthMenu": "<span data-lang='lblShow'>" + (global.TypeLanguage == 0 ? "Xem " : "Show") + "</span> _MENU_ <span data-lang='lblEntries'>" + (global.TypeLanguage == 0 ? "dòng " : "entries") + "</span>",
-                                //        "infoEmpty": "",
-                                //        "infoFiltered": "",
-                                //        "paginate": {
-                                //            "first": "<<",
-                                //            "last": ">>",
-                                //            "next": ">",
-                                //            "previous": "<"
-                                //        },
-                                //        "emptyTable": "<span data-lang='lblEmpty'></span>",
-                                //    },
-                                //    "lengthChange": false,
-                                //    "lengthMenu": [20],
-                                //    "scrollY": '50vh',
-                                //    "scrollX": true,
-                                //    "processing": true,
-                                //    "drawCallback": function (settings) {
-                                //        var api = this.api();
-                                //        var rows = api.rows({ page: 'current' }).nodes();
-                                //        var last = null;
-                                //        var groupadmin1 = [];
-                                //        api.column(0, { page: 'current' }).data().each(function (group, i) {
-                                //            if (last !== group) {
-                                //                $(rows).eq(i).before(
-                                //                    '<tr data-root"' + i + '" class="group" id="' + (i + 10000) + '"><td colspan="3">' + group + '</td></tr>'
-                                //                );
-                                //                groupadmin1.push(i + 10000);
-                                //                last = group;
-                                //            }
-                                //        });
-                                //        for (var k = 0; k < groupadmin1.length; k++) {
-                                //            $("#" + groupadmin1[k]).nextUntil("#" + groupadmin1[k + 1]).addClass(' group-' + groupadmin1[k]);
-                                //            $("#" + groupadmin1[k]).nextUntil("#" + groupadmin1[k + 1]).attr('data-root', groupadmin1[k]);
-                                //            $("#" + groupadmin1[k]).click(function () {
-                                //                var gid = $(this).attr("id");
-                                //                $(".group-" + gid).slideToggle(300);
-                                //            });
-                                //        }
-                                //    }
-                                //});
                                 $($.fn.dataTable.tables(true)).css('width', '100%');
                                 $($.fn.dataTable.tables(true)).DataTable().columns.adjust().draw(false);
                                 Loading.fn.Hide();
@@ -249,24 +172,31 @@
                                 //if (action == 'button') {
                                 //    $('#myModal').appendTo("body").modal('show')
                                 //}
-                                Alert.fn.Show(Messenger.msgKhongCoDuLieu, Alert.Type.warning);
+                                Alert.fn.Show((global.TypeLanguage == 0 ? "Không có dữ liệu!" : "No data to print!"), Alert.Type.warning);
                             }
                         });
                     }
                 },
+
+                LoadSoGioChayMay: function (id, action) {
+                    if (method.KiemTraChonMay() !== false) {
+                        $.post(urlGetThoiGianChayMay, { msmay: id }, function (data) {
+                            $('#lblGioChayMay').text(data.chuoi);
+                            $('#txtSoGioLuyKe').val(data.sglk);
+                            $('#lblGioChayMay').attr('data-giochay', data.sgs);
+                        });
+                    }
+                },
+
 
                 LoadGridTMP: function (id, action) {
                     if (method.KiemTraChonMay() !== false) {
                         Loading.fn.Show()
                         $.post(urlConditionMonitoringParameterGetTMP, function (data) {
-                            if ($.fn.DataTable.isDataTable('#tbQuantityParameter')) {
-                                $('#tbQuantityParameter').dataTable().fnDestroy();
-                            }
                             if ($.fn.DataTable.isDataTable('#tbQualityParameter')) {
                                 $('#tbQualityParameter').dataTable().fnDestroy();
                             }
                             vars.$tbQualityParameterBody.empty()
-                            //vars.$tbQuantityParameterBody.empty()
                             if (data.length > 0) {
                                 var i = 0;
                                 for (i = 0; i < data.length; i++) {
@@ -346,15 +276,11 @@
                             }
                             else {
                                 Loading.fn.Hide();
-                                //if (action == 'button') {
-                                //    $('#myModal').appendTo("body").modal('show')
-                                //}
                                 Alert.fn.Show(Messenger.msgKhongCoDuLieu, Alert.Type.warning);
                             }
                         });
                     }
                 },
-
                 GetConditionMonitoringByDevice: function () {
                     var keys = vars.$equipDatatables.data().count();
                     if (keys == 0) {
@@ -369,6 +295,7 @@
                     Loading.fn.Show()
                     $('#myModal').appendTo("body").modal('hide')
                     window.setTimeout(function () { method.LoadGrid($('#tbEquip tr[class$=selected]').attr('data-id'), 'button'); }, 500);
+                    window.setTimeout(function () { method.LoadSoGioChayMay($('#tbEquip tr[class$=selected]').attr('data-id'), 'button'); }, 500);
                     vars.$txtDevice.val(vars.$tbEquip.find('tr[class$=selected]').attr('data-id'))
                 },
                 ToggleCheckboxesOnTable: function () {
@@ -389,30 +316,50 @@
                         $(this).parent().removeClass("checked");
                     }
                 },
+                //DetectInputValueNumber: function () {
+                //    if (vars.$busy == true) return false;
+                //    if ($(this).val() == '') return false;
+                //    if (!$.isNumeric($(this).val())) {
+                //        vars.$busy = true;
+                //        $(this).val('');
+                //        $(this).focus();
+                //        Alert.fn.Show((global.TypeLanguage == 0 ? "Chỉ được nhập số!" : "Please enter a valid number!"), Alert.Type.warning);
+                //        vars.$busy = false;
+                //        return false;
+                //    }
+                //    var data = JSON.parse($(this).attr('data-range'));
+                //    var flag = 0;
+                //    for (var i = 0; i < data.length; i++) {
+                //        if (parseFloat(data[i].GiaTriTren) >= parseFloat($(this).val()) && parseFloat($(this).val()) >= parseFloat(data[i].GiaTriDuoi)) {
+                //            flag = flag + 1;
+                //            continue;
+                //        }
+                //    }
+                //    if (flag == 0) {
+                //        vars.$busy = true; //out endless loop (recusrive)
+                //        $(this).focus();
+                //        Alert.fn.Show(Messenger.msgNhapNgoaiKhoangGT, Alert.Type.warning);
+                //        vars.$busy = false;
+                //        return false;
+                //    }
+                //},
                 DetectInputValueNumber: function () {
-                    if (vars.$busy == true) return false;
+                    if (method.KiemTraChonMay() == false) { $(this).val(''); return false; }
                     if ($(this).val() == '') return false;
                     if (!$.isNumeric($(this).val())) {
-                        vars.$busy = true;
+                        $(this).val('');
                         $(this).focus();
-                        Alert.fn.Show(Messenger.msgChiDuocNhapSo, Alert.Type.warning);
-                        vars.$busy = false;
+                        Alert.fn.Show((global.TypeLanguage == 0 ? "Chỉ được nhập số!" : "Please enter a valid number!"), Alert.Type.warning);
                         return false;
                     }
-                    var data = JSON.parse($(this).attr('data-range'));
-                    var flag = 0;
-                    for (var i = 0; i < data.length; i++) {
-                        if (parseFloat(data[i].GiaTriTren) >= parseFloat($(this).val()) && parseFloat($(this).val()) >= parseFloat(data[i].GiaTriDuoi)) {
-                            flag = flag + 1;
-                            continue;
+                    else {
+                        var gtd = $('#lblGioChayMay').data('giochay');
+                        var gtht = $('#txtSoGioLuyKe').val();
+                        if (parseFloat(gtht) <= parseFloat(gtd) && parseFloat(gtht) != 0) {
+                            Alert.fn.Show((global.TypeLanguage == 0 ? "Số giờ lũy kế nhỏ hơn trước đó!" : "The accumulated hours are smaller than before!"), Alert.Type.warning);
+                            $(this).val('');
+                            $(this).focus();
                         }
-                    }
-                    if (flag == 0) {
-                        vars.$busy = true; //out endless loop (recusrive)
-                        $(this).focus();
-                        Alert.fn.Show(Messenger.msgNhapNgoaiKhoangGT, Alert.Type.warning);
-                        vars.$busy = false;
-                        return false;
                     }
                 },
                 KiemTraChonMay: function () {
@@ -506,7 +453,6 @@
                     });
                 }
             }
-
             var method
             $scope.fn = {
                 Init: function () {
@@ -521,21 +467,6 @@
                         {
                             theme: "classic"
                         });
-                    if ($('#stt').val() != "-1") {
-                        $('#cbbDiaDiem').attr("disabled", true);
-                        method.LoadGrid($('#cbbThietBi').val(), 'keypress');
-                        $("#cbbLoaiCV").change(function () {
-                            method.LoadGrid($('#cbbThietBi').val(), 'keypress');
-                        });
-                        $("#cbbThietBi").change(function () {
-                            method.LoadGrid($('#cbbThietBi').val(), 'keypress');
-                        });
-                    }
-                    else {
-                        $("#cbbLoaiCV").change(function () {
-                            method.LoadGrid(vars.$txtDevice.val(), 'keypress');
-                        });
-                    }
                     $('input[type=radio][name=optradio]').change(function () {
                         if ($('#stt').val() != "-1") {
                             method.LoadGrid($('#cbbThietBi').val(), 'keypress');
@@ -551,8 +482,8 @@
                         }
                     });
                     if ($('#stt').val() != "-1") {
+                        Ckeckload = 0;
                         $('#cbbDiaDiem').attr("disabled", true);
-                        method.LoadGrid($('#cbbThietBi').val(), 'keypress');
                         $("#cbbLoaiCV").change(function () {
                             method.LoadGrid($('#cbbThietBi').val(), 'keypress');
                         });
@@ -563,6 +494,10 @@
                         $("#cbbThietBi").change(function () {
                             method.LoadGrid($('#cbbThietBi').val(), 'keypress');
                         });
+                        Ckeckload = 1;
+                        method.LoadGrid($('#cbbThietBi').val(), 'keypress');
+                        method.LoadSoGioChayMay($('#cbbThietBi').val(), 'keypress');
+
                     }
                     else {
                         $("#cbbLoaiCV").change(function () {
@@ -602,32 +537,9 @@
                         "lengthChange": false,
                         "lengthMenu": [10]
                     });
-                    vars.$quantityParamsDatatables = $("#tbQuantityParameter").DataTable({
-                        "language":
-                        {
-                            "processing": "<div class='overlay custom-loader-background'><i class='fa fa-cog fa-spin custom-loader-color'></i></div>",
-                            "sSearch": "<span data-lang='lblSearch'></span> ",
-                            "info": "",
-                            "zeroRecords": "<span data-lang='lblFilterInfo'>" + (global.TypeLanguage == 0 ? "Không tìm thấy" : "No matching records found") + "</span>",
-                            "lengthMenu": "<span data-lang='lblShow'></span> _MENU_ <span data-lang='lblEntries'></span>",
-                            "infoEmpty": "",
-                            "infoFiltered": "",
-                            "paginate": {
-                                "first": "<<",
-                                "last": ">>",
-                                "next": ">",
-                                "previous": "<"
-                            },
-                            "emptyTable": "<span data-lang='lblEmpty'></span>",
-                        },
-                        responsive: true,
-                        "lengthChange": false,
-                        "lengthMenu": [10]
-                    });
                     vars.$tbQualityParameterBody.on('click', 'td:first-child', method.ToggleCheckboxesOnTable);
-                    //vars.$tbQuantityParameterBody.on("focusout", "input[type=text]", method.DetectInputValueNumber);
                     $('#tbthongsodinhtinh').on('click', 'tr', method.TableThongSo_RowChanged);
-                    //Main.fn.ScanBarCode($('#ReadBtn1'), $('#fileToUpload'), $('#cbbThietBi'), $('#cbbThietBi option'));
+                    Main.fn.ScanBarCode($('#ReadBtn1'), $('#fileToUpload'), $('#cbbThietBi'), $('#cbbThietBi option'));
                     Main.fn.ScanBarCode($('#ReadBtn'), $('#fileToUpload'), $('#txtDevice'), null);
                     vars.$txtDevice.on('keypress', function (e) {
                         if (e.which === 13) {
@@ -636,15 +548,13 @@
                         }
                     });
                     vars.$txtDevice.on('change', function (e) {
-                        method.LoadGrid(vars.$txtDevice.val(), 'keypress');
+                        method.LoadGrid(vars.$txtDevice.val(), 'change');
+                        method.LoadSoGioChayMay(vars.$txtDevice.val(), 'change');
                     });
-                    vars.$btnChoose.on('click', function (e) {
-                        method.LoadGridTMP(vars.$txtDevice.val(), 'keypress');
-                        $('#myModalSpeak').appendTo("body").modal('hide');
-                    });
+
+                    $('#txtSoGioLuyKe').on('change', method.DetectInputValueNumber);
+
                     //su kien chat
-
-
                     $(".mytext").on("keydown", function (e) {
                         if (e.which == 13) {
                             var text = $(this).val();
@@ -666,11 +576,8 @@
                     //insertChat("you", "LOL", 12000);
                 },
                 Ghi: function () {
-                    if (!$.fn.DataTable.isDataTable('#tbQuantityParameter')) {
-                        Alert.fn.Show(Messenger.msgDuLieuRong, Alert.Type.warning);
-                        return;
-                    }
-                    if (vars.$qualityParamsDatatables.data().count() == 0 && vars.$quantityParamsDatatables.data().count() == 0) {
+                    alert("nghi");
+                    if (vars.$qualityParamsDatatables.data().count() == 0) {
                         Alert.fn.Show(Messenger.msgDuLieuRong, Alert.Type.warning);
                         return;
                     }
@@ -678,7 +585,7 @@
                     if (vars.$qualityParamsDatatables.$('input[type=checkbox]:checked').length == 0) {
                         count = count + 1;
                     }
-                    if (vars.$quantityParamsDatatables.$('input[type=text]:not([value=""])').length == 0) {
+                    if (vars.$qualityParamsDatatables.$('input[type=text]:not([value=""])').length == 0) {
                         count = count + 1;
                     }
                     if (count == 2) {
@@ -687,10 +594,15 @@
                     }
                     Loading.fn.Show();
                     var lstParameter = new Array();
-                    if (vars.$quantityParamsDatatables.$('input[type=text]:not([value=""])').length > 0) {
-                        vars.$quantityParamsDatatables.$('input[type=text]:not([value=""])').each(function (i, obj) {
+                    if (vars.$qualityParamsDatatables.$('input[type=text]:not([value=""])').length > 0) {
+                        vars.$qualityParamsDatatables.$('input[type=text]:not([value=""])').each(function (i, obj) {
                             lstParameter[i] = new Object();
-                            lstParameter[i].DeviceID = vars.$txtDevice.val();
+                            if ($('#stt').val() === '-1') {
+                                lstParameter[i].DeviceID = vars.$txtDevice.val();
+                            }
+                            else {
+                                lstParameter[i].DeviceID = $('#cbbThietBi').val();
+                            }
                             lstParameter[i].MonitoringParamsID = $(obj).attr('data-msthongso');
                             lstParameter[i].ComponentID = $(obj).attr('data-msbophan');
                             lstParameter[i].TypeOfParam = 0;
@@ -704,7 +616,7 @@
                                 }
                             }
                             lstParameter[i].Measurement = $(obj).val();
-                            lstParameter[i].Note = $(obj).closest('tr').find('textarea').val()
+                            lstParameter[i].Note = $(obj).closest('tr').find('textarea').val();
                         });
                     }
                     var cur_length = lstParameter.length;
@@ -722,17 +634,15 @@
                             lstParameter[j].ComponentID = $(obj).attr('data-msbophan');
                             lstParameter[j].TypeOfParam = 1;
                             lstParameter[j].ID = 1;
-                            lstParameter[j].ValueParamID = $(obj).attr('data-id')
+                            lstParameter[j].ValueParamID = $(obj).attr('data-id');
                             lstParameter[j].Measurement = 1;
-                            lstParameter[j].Note = $(obj).closest('tr').find('textarea').val()
+                            lstParameter[j].Note = $(obj).closest('tr').find('textarea').val();
                         });
                     }
-                    $.post(urlConditionMonitoringParameterSave, { data: JSON.stringify(lstParameter), mscn: $("#cbbNhanVien").val(), stt: $('#stt').val(), ngaykt: $('#ngaykt').val(), giokt: $('#giokt').val() }, function (data) {
+                    $.post(urlConditionMonitoringParameterSave, { data: JSON.stringify(lstParameter), mscn: $("#cbbNhanVien").val(), stt: $('#stt').val(), ngaykt: $('#ngaykt').val(), giokt: $('#giokt').val(), chisotruoc: $('#lblGioChayMay').data('giochay'), luyke: $('#txtSoGioLuyKe').val() }, function (data) {
                         if (data == "success") {
-                            $('#tbQuantityParameter').dataTable().fnDestroy();
                             $('#tbQualityParameter').dataTable().fnDestroy();
                             $('#tbQualityParameter tbody').empty();
-                            $('#tbQuantityParameter tbody').empty();
                             Loading.fn.Hide();
                             window.location.href = urlGetGiamSatTinhTrang;
                         }
@@ -743,11 +653,8 @@
                     });
                 },
                 chonkhongdat: function () {
-                    //if (!$.fn.DataTable.isDataTable('#tbQuantityParameter')) {
-                    //    Alert.fn.Show(Messenger.msgDuLieuRong, Alert.Type.warning);
-                    //    return;
-                    //}
-                    if (vars.$qualityParamsDatatables.data().count() == 0 && vars.$quantityParamsDatatables.data().count() == 0) {
+                    alert("nghi");
+                    if (vars.$qualityParamsDatatables.data().count() == 0) {
                         Alert.fn.Show(Messenger.msgDuLieuRong, Alert.Type.warning);
                         return;
                     }
@@ -756,7 +663,7 @@
                     $("td[data-pass=0] input[type=checkbox]", rows).prop('checked', true);
                 },
                 chondat: function () {
-                    if (vars.$qualityParamsDatatables.data().count() == 0 && vars.$quantityParamsDatatables.data().count() == 0) {
+                    if (vars.$qualityParamsDatatables.data().count() == 0) {
                         Alert.fn.Show(Messenger.msgDuLieuRong, Alert.Type.warning);
                         return;
                     }
@@ -765,10 +672,12 @@
                     $("td[data-pass=1] input[type=checkbox]", rows).prop('checked', true);
                 },
                 bochon: function () {
-                    if (vars.$qualityParamsDatatables.data().count() == 0 && vars.$quantityParamsDatatables.data().count() == 0) {
+                    debugger;
+                    if (vars.$qualityParamsDatatables.data().count() == 0) {
                         Alert.fn.Show(Messenger.msgDuLieuRong, Alert.Type.warning);
                         return;
                     }
+
                     var rows = $('#tbQualityParameter').DataTable().rows().nodes();
                     $("input[type=checkbox]", rows).prop('checked', false);
                 },
@@ -825,7 +734,7 @@
                     });
                 },
                 ShowSpeckVoice: function () {
-                    if (vars.$qualityParamsDatatables.data().count() == 0 && vars.$quantityParamsDatatables.data().count() == 0) {
+                    if (vars.$qualityParamsDatatables.data().count() == 0) {
                         Alert.fn.Show(Messenger.msgDuLieuRong, Alert.Type.warning);
                         return;
                     }
@@ -855,7 +764,7 @@
                         }
                     });
 
-                }
+                },
             }
         })
         app.init = function () {

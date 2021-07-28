@@ -7,6 +7,7 @@ using Model.Repository;
 using Model.UnitOfWork;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -22,10 +23,10 @@ namespace EcomaintSite.Controllers
         IDeviceRepository deviceRepository;
         IMonitoringRepository monitoringRepository;
         IUserRepository userRepository;
-
+        IGeneralRepository generalRepository;
+        IThoiGianChayMayRepository thoigianchaymayRepository;
         private ICombobox _Combobox;
         public static List<MonitoringParametersByDevice> listthongso = null;
-
         public static List<MonitoringByDevice> listgiamsat = null;
         string sKeyV = @"http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q=AAAXXX&tl=vi";
 
@@ -33,13 +34,15 @@ namespace EcomaintSite.Controllers
         {
             return _Combobox ?? (_Combobox = new Combobox());
         }
-
-        public MonitoringController(IMonitoringUnitOfWork _monitoringUnitOfWork, IDeviceRepository _deviceRepository, IMonitoringRepository _monitoringRepository, IUserRepository _userRepository)
+        public MonitoringController(IMonitoringUnitOfWork _monitoringUnitOfWork, IDeviceRepository _deviceRepository, IMonitoringRepository _monitoringRepository, IUserRepository _userRepository, IGeneralRepository _generalRepository, IThoiGianChayMayRepository _thoigianchaymayRepository)
         {
             deviceRepository = _deviceRepository;
             monitoringRepository = _monitoringRepository;
             monitoringUnitOfWork = _monitoringUnitOfWork;
             userRepository = _userRepository;
+            generalRepository = _generalRepository;
+            thoigianchaymayRepository = _thoigianchaymayRepository;
+
         }
         //
         // GET: Monitoring
@@ -204,6 +207,54 @@ namespace EcomaintSite.Controllers
                 return Json("error: " + ex.Message, JsonRequestBehavior.AllowGet);
             }
         }
+        [HttpGet]
+        public ActionResult RetrieveImage(string moningtoringID, string compunetID)
+        {
+            byte[] cover = (byte[])listthongso.Where(x => x.MonitoringParamsID == moningtoringID && x.ComponentID == compunetID).Select(x => x.ImageGS).FirstOrDefault();
+            return cover != null
+                ? new FileContentResult(cover, "image/jpeg")
+                : null;
+        }
+        [HttpPost]
+        public JsonResult SaveImage()
+        {
+            HttpRequest request = System.Web.HttpContext.Current.Request;
+            string mor = request["mor"].ToString();
+            string com = request["com"].ToString();
+            try
+            {
+                var webImage = new System.Web.Helpers.WebImage(Request.Files["image"].InputStream);
+                byte[] bytes = webImage.GetBytes();
+                var a = listthongso.Where(x => x.ComponentID == com && x.MonitoringParamsID == mor).FirstOrDefault();
+                a.ImageGS = imgToByteConverter(bytes);
+                return Json(JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.Message.ToString(), JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        private byte[] imgToByteConverter(byte[] imgConvert)
+        {
+            byte[] currentByteImageArray = imgConvert;
+            double scale = 1f;
+            MemoryStream inputMemoryStream = new MemoryStream(imgConvert);
+            Image fullsizeImage = Image.FromStream(inputMemoryStream);
+            while (currentByteImageArray.Length > 20000)
+            {
+                Bitmap fullSizeBitmap = new Bitmap(fullsizeImage, new Size((int)(fullsizeImage.Width * scale), (int)(fullsizeImage.Height * scale)));
+                MemoryStream resultStream = new MemoryStream();
+                fullSizeBitmap.Save(resultStream, fullsizeImage.RawFormat);
+                currentByteImageArray = resultStream.ToArray();
+                resultStream.Dispose();
+                resultStream.Close();
+                scale -= 0.05f;
+            }
+
+            return currentByteImageArray;
+        }
+
 
         [Authorize]
         public JsonResult GetMonitoringParameters(string id, string due, string todate, string mslcv, string stt)
@@ -211,32 +262,32 @@ namespace EcomaintSite.Controllers
             try
             {
                 listthongso = monitoringRepository.GetMonitoringParametersByDevice(id, Convert.ToInt32(due), Convert.ToDateTime(todate, new CultureInfo("vi-vn")).ToString("yyyy/MM/dd"), Convert.ToInt32(mslcv), Convert.ToInt32(stt)).ToList();
-                var gs = listthongso.Select(x => new
-                {
-                    DeviceID = x.DeviceID,
-                    MonitoringParamsName = x.MonitoringParamsName,
-                    MonitoringParamsID = x.MonitoringParamsID,
-                    ComponentID = x.ComponentID,
-                    ComponentName = x.ComponentName,
-                    TypeOfParam = x.TypeOfParam,
-                    MeasurementUnitName = x.MeasurementUnitName,
-                }).Distinct().ToList();
+                //var gs = listthongso.Select(x => new
+                //{
+                //    DeviceID = x.DeviceID,
+                //    MonitoringParamsName = x.MonitoringParamsName,
+                //    MonitoringParamsID = x.MonitoringParamsID,
+                //    ComponentID = x.ComponentID,
+                //    ComponentName = x.ComponentName,
+                //    TypeOfParam = x.TypeOfParam,
+                //    MeasurementUnitName = x.MeasurementUnitName,
+                //}).Distinct().ToList();
 
-                listgiamsat = gs.Select((x, i) => new MonitoringByDevice()
-                {
-                    STT = i + 1,
-                    DeviceID = x.DeviceID,
-                    MonitoringParamsName = x.MonitoringParamsName,
-                    MonitoringParamsID = x.MonitoringParamsID,
-                    ComponentID = x.ComponentID,
-                    ComponentName = x.ComponentName,
-                    TypeOfParam = x.TypeOfParam,
-                    MeasurementUnitName = x.MeasurementUnitName,
-                    TEN_GT = GetGiaTriTS(x.ComponentID, x.MonitoringParamsID, x.TypeOfParam),
-                    //Value = GetGiaTriTS(x.ComponentID, x.MonitoringParamsID, x.TypeOfParam),
-                    Speak = "thông số kiểm tra thứ " + (i + 1) + " " + x.MonitoringParamsName + " ở " + x.ComponentName + " gồm các giá trị sau: " + GetGiaTriTS(x.ComponentID, x.MonitoringParamsID, x.TypeOfParam),
-                    Message = "thông số kiểm tra thứ " + (i + 1) + " " + x.MonitoringParamsName + " ở " + x.ComponentName + " gồm các giá trị sau: " + GetGiaTriTS(x.ComponentID, x.MonitoringParamsID, x.TypeOfParam),
-                }).ToList();
+                //listgiamsat = gs.Select((x, i) => new MonitoringByDevice()
+                //{
+                //    STT = i + 1,
+                //    DeviceID = x.DeviceID,
+                //    MonitoringParamsName = x.MonitoringParamsName,
+                //    MonitoringParamsID = x.MonitoringParamsID,
+                //    ComponentID = x.ComponentID,
+                //    ComponentName = x.ComponentName,
+                //    TypeOfParam = x.TypeOfParam,
+                //    MeasurementUnitName = x.MeasurementUnitName,
+                //    TEN_GT = GetGiaTriTS(x.ComponentID, x.MonitoringParamsID, x.TypeOfParam),
+                //    //Value = GetGiaTriTS(x.ComponentID, x.MonitoringParamsID, x.TypeOfParam),
+                //    Speak = "thông số kiểm tra thứ " + (i + 1) + " " + x.MonitoringParamsName + " ở " + x.ComponentName + " gồm các giá trị sau: " + GetGiaTriTS(x.ComponentID, x.MonitoringParamsID, x.TypeOfParam),
+                //    Message = "thông số kiểm tra thứ " + (i + 1) + " " + x.MonitoringParamsName + " ở " + x.ComponentName + " gồm các giá trị sau: " + GetGiaTriTS(x.ComponentID, x.MonitoringParamsID, x.TypeOfParam),
+                //}).ToList();
                 return Json(listthongso, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -286,13 +337,25 @@ namespace EcomaintSite.Controllers
             }
         }
         [Authorize]
-        public JsonResult Save(string data, string mscn, string stt, string ngaykt, string giokt)
+        public JsonResult Save(string data, string mscn, string stt, string ngaykt, string giokt,string chisotruoc,string luyke)
         {
             try
             {
                 List<MonitoringParametersByDevice> lstParameter = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MonitoringParametersByDevice>>(data);
                 List<MonitoringOfQuantitative> lstQuantitative = new List<MonitoringOfQuantitative>();
                 List<MonitoringOfQualitative> lstQualitative = new List<MonitoringOfQualitative>();
+                //cap nhat bytr imageGS
+                var lists = listthongso.Where(x => x.ImageGS != null).ToList();
+                for (int i = 0; i < lists.Count; i++)
+                {
+                    if (lists[i].ImageGS.Count() > 0)
+                    {
+                        var parameter = lstParameter.Where(x => x.DeviceID == lists[i].DeviceID && x.ComponentID == lists[i].ComponentID && x.MonitoringParamsID == lists[i].MonitoringParamsID).FirstOrDefault();
+                        parameter.ImageGS = lists[i].ImageGS;
+                    }
+
+                }
+
                 Monitoring obj = new Monitoring
                 {
                     ID = Convert.ToInt32(stt),
@@ -309,6 +372,21 @@ namespace EcomaintSite.Controllers
                     MonitoringOfQuantitative = null,
                     votes = monitoringRepository.CreateSoPhieu(Convert.ToDateTime(ngaykt, new System.Globalization.CultureInfo("vi-vn")))
                 };
+                if (luyke != "")
+                {
+                    THOI_GIAN_CHAY_MAY tgcm = new THOI_GIAN_CHAY_MAY
+                    {
+                        MS_MAY = data,
+                        NGAY = DateTime.Now,
+                        CHI_SO_DONG_HO = Convert.ToDouble(luyke) - Convert.ToDouble(chisotruoc),
+                        MS_PBT = obj.votes,
+                        SO_MOVEMENT = 0,
+                        SO_GIO_LUY_KE = Convert.ToDouble(luyke),
+                        USERNAME = User.Identity.GetUserName()
+                    };
+                    thoigianchaymayRepository.Add(tgcm);
+                }
+
                 var lst = lstParameter.GroupBy(x => new { x.ComponentID, x.DeviceID, x.MonitoringParamsID }).Select(x => new MonitoringParametersByDevice
                 {
                     MonitoringParamsID = x.First().MonitoringParamsID,
@@ -319,6 +397,7 @@ namespace EcomaintSite.Controllers
                     ValueParamID = x.First().ValueParamID,
                     Measurement = x.First().Measurement,
                     TypeOfParam = x.First().TypeOfParam,
+                    ImageGS = x.First().ImageGS,
                     ID = x.First().ID
                 });
                 lst.ToList().ForEach(x =>
@@ -331,7 +410,8 @@ namespace EcomaintSite.Controllers
                         ComponentID = x.ComponentID,
                         Measurement = x.Measurement,
                         ID = x.ID,
-                        Note = x.Note
+                        Note = x.Note,
+                        ImageGS = x.ImageGS
                     });
                 });
                 lstParameter.ForEach(x =>
@@ -358,12 +438,13 @@ namespace EcomaintSite.Controllers
                 else
                 {//sữa
                     monitoringUnitOfWork.MonitoringRepository.Edit(obj);
-                    monitoringUnitOfWork.MonitoringOfQuantitativeRepository.Delete(Convert.ToInt32(stt));
                     monitoringUnitOfWork.MonitoringOfQualitativeRepository.Delete(Convert.ToInt32(stt));
+                    monitoringUnitOfWork.MonitoringOfQuantitativeRepository.Delete(Convert.ToInt32(stt));
                     monitoringUnitOfWork.Save();
                 }
                 monitoringUnitOfWork.MonitoringOfQuantitativeRepository.AddRange(lstQuantitative);
                 monitoringUnitOfWork.MonitoringOfQualitativeRepository.AddRange(lstQualitative);
+     
                 monitoringUnitOfWork.Save();
                 return Json("success", JsonRequestBehavior.AllowGet);
             }
@@ -420,7 +501,7 @@ namespace EcomaintSite.Controllers
                     {
                         if (a.ToLower() == "ok")
                         {
-                            var list = listthongso.Where(x => x.ComponentID.Equals(check.ComponentID) && x.MonitoringParamsID.Equals(check.MonitoringParamsID) && x.Pass==1).FirstOrDefault();
+                            var list = listthongso.Where(x => x.ComponentID.Equals(check.ComponentID) && x.MonitoringParamsID.Equals(check.MonitoringParamsID) && x.Pass == 1).FirstOrDefault();
                             list.Measurement = 1;
                         }
                         else
@@ -436,6 +517,26 @@ namespace EcomaintSite.Controllers
             }
             return Json(new { name = name, tengt = mess, stt = stt }, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetThoiGianChayMay(string msmay)
+        {
+            try
+            {
+                double? sglk = thoigianchaymayRepository.SoGioLuyKeHienTai(msmay);
+                var tgcm = thoigianchaymayRepository.ThoiGianLuyKeTruoc(msmay);
+                string chuoi = "";
+                if (SessionVariable.TypeLanguage == 0)
+                    chuoi = "Vào ngày " + tgcm.NGAY.ToString("dd/MM/yyyy") + ": " + tgcm.SO_GIO_LUY_KE.ToString();
+                else
+                    chuoi = "Date " + tgcm.NGAY.ToString("dd/MM/yyyy") + ": " + tgcm.SO_GIO_LUY_KE.ToString();
+                return Json(new { chuoi = chuoi, sglk = sglk, sgs = tgcm.SO_GIO_LUY_KE }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { chuoi = (SessionVariable.TypeLanguage == 0 ? "Chưa có thời gian chậy máy" : "no time to run"), sglk = "", sgs = 0 }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         public bool CheckData(MonitoringByDevice row, string input)
         {
             bool resulst = false;

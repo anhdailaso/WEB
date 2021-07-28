@@ -65,6 +65,7 @@
     <Compile Include="Repository\DatabaseRepository.cs" />
     <Compile Include="Repository\DepartmentRepository.cs" />
     <Compile Include="Repository\EquipmentRepository.cs" />
+    <Compile Include="Repository\ThoiGianChayMayRepository.cs" />
     <Compile Include="Repository\GeneralRepository.cs" />
     <Compile Include="Repository\LanguagesRepository.cs" />
     <Compile Include="Repository\MasterPlanRepository.cs" />

@@ -306,10 +306,17 @@ namespace Biz.Lib.Helpers
                             }
                             else
                             {
-                                if (objProperty.PropertyType.Name == "Guid")
+                                if (objProperty.PropertyType.Name == "Guid" || objProperty.PropertyType.Name == "Byte[]")
                                 {
-                                    value = new Guid(row[columnname].ToString()).ToString().Replace("%", "");
-                                    objProperty.SetValue(obj, new Guid(row[columnname].ToString()), null);
+                                    if (objProperty.PropertyType.Name == "Byte[]")
+                                    {
+                                        objProperty.SetValue(obj, row[columnname], null);
+                                    }
+                                    else
+                                    {
+                                        value = new Guid(row[columnname].ToString()).ToString().Replace("%", "");
+                                        objProperty.SetValue(obj, new Guid(row[columnname].ToString()), null);
+                                    }
                                 }
                                 else
                                 {
@@ -322,7 +329,7 @@ namespace Biz.Lib.Helpers
                 }
                 return obj;
             }
-            catch
+            catch(Exception ex)
             {
                 return obj;
             }

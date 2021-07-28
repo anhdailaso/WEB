@@ -322,7 +322,7 @@
                 idleButtonIntervalID = setInterval(timer, request);
             }
             var SessInterval = function () {
-                var now = new Date();
+                    var now = new Date();
                 var diff = now - sessLastActivity;
                 var diffMins = (diff / request / 60);
                 TrackingUserOnline();
@@ -517,10 +517,10 @@
                         return mm + '/' + dd + '/' + yyyy;
                     }
                     else {
-                         hours = today.getHours();
-                         minutes = today.getMinutes();
-                         minutes = minutes < 10 ? '0' + minutes : minutes;
-                         strTime = hours + ':' + minutes;
+                        hours = today.getHours();
+                        minutes = today.getMinutes();
+                        minutes = minutes < 10 ? '0' + minutes : minutes;
+                        strTime = hours + ':' + minutes;
                         return dd + '/' + mm + '/' + yyyy + ' ' + strTime;
                     }
                 },

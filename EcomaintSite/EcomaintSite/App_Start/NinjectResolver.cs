@@ -58,6 +58,7 @@ namespace EcomaintSite
             _kernel.Bind<IUserRequestComponentRepository>().To<UserRequestComponentRepository>();        
             _kernel.Bind<IUserRequestDocumentRepository>().To<UserRequestDocumentRepository>();
             _kernel.Bind<IGeneralRepository>().To<GeneralRepository>();
+            _kernel.Bind<IThoiGianChayMayRepository>().To<ThoiGianChayMayRepository>();
             _kernel.Bind<IWorkOrderRepository>().To<WorkOrderRepository>();
             _kernel.Bind<IWorkOrderOfSparePartRepository>().To<WorkOrderOfSparePartRepository>();
             _kernel.Bind<IWorkRepository>().To<WorkRepository>();

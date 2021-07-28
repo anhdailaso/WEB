@@ -72,8 +72,8 @@ namespace Model.Repository
                 listParameter.Add(new SqlParameter("@isDue", isDue));
                 listParameter.Add(new SqlParameter("@stt",stt));
                 list = DBUtils.ExecuteSPList<MonitoringParametersByDevice>("GetMonitoringParametersByDevice", listParameter, AppName.Model1);
-                DataTable dt = new DataTable();
-                dt.Load(SqlHelper.ExecuteReader(db.Database.Connection.ConnectionString, "GetMonitoringParametersByDevice", deviceID, "10/10/2020", msloaicv, isDue, stt));
+                //DataTable dt = new DataTable();
+                //dt.Load(SqlHelper.ExecuteReader(db.Database.Connection.ConnectionString, "GetMonitoringParametersByDevice", deviceID, "10/10/2020", msloaicv, isDue, stt));
 
             }
             catch (Exception ex)
