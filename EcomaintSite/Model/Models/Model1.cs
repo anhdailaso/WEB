@@ -3,6 +3,7 @@ namespace Model.Data
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.Infrastructure.Interception;
     using System.Web;
     public partial class Model1 : IdentityDbContext<ApplicationUser>
     {
@@ -372,7 +373,13 @@ namespace Model.Data
              .HasMany(e => e.CostCenters)
              .WithMany(e => e.Budget)
              .Map(m => m.ToTable("DISTRIBUTION_RULE").MapLeftKey("MS_BP_CHIU_PHI").MapRightKey("MS_COSTCENTER"));
+
+            modelBuilder.Entity<THOI_GIAN_CHAY_MAY>()
+           .Property(f => f.NGAY)
+           .HasColumnType("datetime");
             base.OnModelCreating(modelBuilder);
+            DbInterception.Add(new DateInterceptor());
+
         }
     }
 }

@@ -207,12 +207,27 @@ namespace EcomaintSite.Controllers
                 return Json("error: " + ex.Message, JsonRequestBehavior.AllowGet);
             }
         }
+
+        [Authorize]
+        public JsonResult GetRuntimeInYear(string msmay)
+        {
+            try
+            {
+                var list = thoigianchaymayRepository.GetThoiGianChayMayInfo(msmay).Select(x=> new { NGAY = x.NGAY.ToString("dd/MM/yyyy"),x.CHI_SO_DONG_HO,x.SO_GIO_LUY_KE }).ToList();
+                return Json(list, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json("error: " + ex.Message, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         [HttpGet]
         public ActionResult RetrieveImage(string moningtoringID, string compunetID)
         {
-            byte[] cover = (byte[])listthongso.Where(x => x.MonitoringParamsID == moningtoringID && x.ComponentID == compunetID).Select(x => x.ImageGS).FirstOrDefault();
+            byte[] cover = (byte[])listthongso.Where(x => x.MonitoringParamsID == moningtoringID && x.ComponentID == compunetID && x.ImageGS != null).Select(x => x.ImageGS).FirstOrDefault();
             return cover != null
-                ? new FileContentResult(cover, "image/jpeg")
+                ? File(cover, "image/png")
                 : null;
         }
         [HttpPost]
@@ -241,7 +256,7 @@ namespace EcomaintSite.Controllers
             double scale = 1f;
             MemoryStream inputMemoryStream = new MemoryStream(imgConvert);
             Image fullsizeImage = Image.FromStream(inputMemoryStream);
-            while (currentByteImageArray.Length > 20000)
+            while (currentByteImageArray.Length > 60000)
             {
                 Bitmap fullSizeBitmap = new Bitmap(fullsizeImage, new Size((int)(fullsizeImage.Width * scale), (int)(fullsizeImage.Height * scale)));
                 MemoryStream resultStream = new MemoryStream();
@@ -353,9 +368,7 @@ namespace EcomaintSite.Controllers
                         var parameter = lstParameter.Where(x => x.DeviceID == lists[i].DeviceID && x.ComponentID == lists[i].ComponentID && x.MonitoringParamsID == lists[i].MonitoringParamsID).FirstOrDefault();
                         parameter.ImageGS = lists[i].ImageGS;
                     }
-
                 }
-
                 Monitoring obj = new Monitoring
                 {
                     ID = Convert.ToInt32(stt),
@@ -376,9 +389,9 @@ namespace EcomaintSite.Controllers
                 {
                     THOI_GIAN_CHAY_MAY tgcm = new THOI_GIAN_CHAY_MAY
                     {
-                        MS_MAY = data,
+                        MS_MAY = lstParameter[0].DeviceID,
                         NGAY = DateTime.Now,
-                        CHI_SO_DONG_HO = Convert.ToDouble(luyke) - Convert.ToDouble(chisotruoc),
+                        CHI_SO_DONG_HO = (Convert.ToDouble(luyke) == 0 ? 0 : Convert.ToDouble(luyke) - Convert.ToDouble(chisotruoc)),
                         MS_PBT = obj.votes,
                         SO_MOVEMENT = 0,
                         SO_GIO_LUY_KE = Convert.ToDouble(luyke),
@@ -529,11 +542,11 @@ namespace EcomaintSite.Controllers
                     chuoi = "Vào ngày " + tgcm.NGAY.ToString("dd/MM/yyyy") + ": " + tgcm.SO_GIO_LUY_KE.ToString();
                 else
                     chuoi = "Date " + tgcm.NGAY.ToString("dd/MM/yyyy") + ": " + tgcm.SO_GIO_LUY_KE.ToString();
-                return Json(new { chuoi = chuoi, sglk = sglk, sgs = tgcm.SO_GIO_LUY_KE }, JsonRequestBehavior.AllowGet);
+                return Json(new { chuoi = chuoi, sglk = (sglk == 0 ? null : sglk) , sgs = tgcm.SO_GIO_LUY_KE }, JsonRequestBehavior.AllowGet);
             }
             catch
             {
-                return Json(new { chuoi = (SessionVariable.TypeLanguage == 0 ? "Chưa có thời gian chậy máy" : "no time to run"), sglk = "", sgs = 0 }, JsonRequestBehavior.AllowGet);
+                return Json(new { chuoi = (SessionVariable.TypeLanguage == 0 ? "Chưa có thời gian chạy máy" : "no time to run"), sglk = "", sgs = 0 }, JsonRequestBehavior.AllowGet);
             }
         }
 

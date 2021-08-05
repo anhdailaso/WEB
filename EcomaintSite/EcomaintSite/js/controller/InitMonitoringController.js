@@ -1,5 +1,5 @@
 ﻿define(['_MasterPageController', '_MenuPageController', '_DetailsModalController', 'datatables-bootstrap'], function (module, menu) {
-    var Monitoring = (function () {
+    var InitMonitoring = (function () {
         var app = angular.module('InitMonitoringPage', [])
         app.controller('InitMonitoringController', function ($scope) {
             var Main = module.Main
@@ -15,36 +15,35 @@
                 {
                     "id": "btnMain",
                     "url": "#",
-                    "icon": "<i class='fa fa-angle-double-up'></i>",
+                    "icon": "<i class='fa fa-angle-double-up'></i>"
                 },
-
                 {
                     "id": "btnbochon",
                     "url": '#',
                     "icon": "<i class='fa fa fa-square-o'></i>",
                     "lang": "btnbochon",
-                    "func": "fn.bochon"
+                    "func": "fn.bochon()"
                 },
                 {
-                    "id": "chondat",
+                    "id": "btnchondat",
                     "url": '#',
                     "icon": "<i class='fa fa-check-square-o'></i>",
                     "lang": "btnchondat",
-                    "func": "fn.chondat"
+                    "func": "fn.chondat()"
                 },
                 {
                     "id": "btnchonkhongdat",
                     "url": '#',
                     "icon": "<i class='fa  fa-check-square'></i>",
                     "lang": "btnchonkhongdat",
-                    "func": "fn.chonkhongdat"
+                    "func": "fn.chonkhongdat()"
                 },
                 {
                     "id": "btnSave",
                     "url": '#',
                     "icon": "<i class='fa fa-floppy-o'></i>",
                     "lang": "btnGhi",
-                    "func": "fn.Ghi"
+                    "func": "fn.Ghi()"
                 },
                 {
                     "id": "btnBack",
@@ -52,6 +51,9 @@
                     "icon": "<i class='fa fa-reply'></i>",
                     "lang": "btnTroVe"
                 }
+
+
+
             ]
             var vars = {}
             var bindVariables = function () {
@@ -106,7 +108,7 @@
                                         }
                                     }
                                     else {
-                                        vars.$tbQualityParameterBody.append('<tr><td >(' + data[i].ComponentID + ') ' + data[i].ComponentName + '-' + data[i].MonitoringParamsName + ' (' + data[i].TEN_DV_DO + ')</td><td style="padding-left: 20px;">' + data[i].ValueParamName.split[0] + '</td><td style="width:110px" ><input onkeyup="this.setAttribute(\'value\', this.value);" value="' + (data[i].Measurement == null ? '' : data[i].Measurement) + '" class="form-control" type="text"   data-range=\'' + data[i].ValueParamName.split('!')[1] + '\' style="width: 100%" data-msbophan="' + data[i].ComponentID + '" data-msthongso="' + data[i].MonitoringParamsID + '" /></td><td><textarea class="form-control" id="txtGhiChu">' + ghichu + '</textarea></td><td><img id="' + i + '"    style="width: 100px;height: 50px;"  ' + (data[i].ImageGS === null ? 'src=""' : 'src="../Monitoring/RetrieveImage?moningtoringID=' + data[i].MonitoringParamsID + '&compunetID=' + data[i].ComponentID + ' "') + 'data-mor ="' + data[i].MonitoringParamsID + '" data-com ="' + data[i].ComponentID + '" onclick ="LoadHinh(this)" class="rounded mx-auto d-block" alt=""></td> </tr></tr>')
+                                        vars.$tbQualityParameterBody.append('<tr><td >(' + data[i].ComponentID + ') ' + data[i].ComponentName + '-' + data[i].MonitoringParamsName + ' (' + data[i].TEN_DV_DO + ')</td><td style="padding-left: 20px;">' + data[i].ValueParamName.split[0] + '</td><td style="width:110px" ><input  value="' + (data[i].Measurement == null ? '' : data[i].Measurement) + '" class="form-control" type="text"   data-range=\'' + data[i].ValueParamName.split('!')[1] + '\' style="width: 100%" data-msbophan="' + data[i].ComponentID + '" data-msthongso="' + data[i].MonitoringParamsID + '" /></td><td><textarea class="form-control" id="txtGhiChu">' + ghichu + '</textarea></td><td><img id="' + i + '"    style="width: 100px;height: 50px;"  ' + (data[i].ImageGS === null ? 'src=""' : 'src="../Monitoring/RetrieveImage?moningtoringID=' + data[i].MonitoringParamsID + '&compunetID=' + data[i].ComponentID + ' "') + 'data-mor ="' + data[i].MonitoringParamsID + '" data-com ="' + data[i].ComponentID + '" onclick ="LoadHinh(this)" class="rounded mx-auto d-block" alt=""></td> </tr></tr>')
                                     }
                                 }
                                 vars.$qualityParamsDatatables = $("#tbQualityParameter").DataTable({
@@ -316,33 +318,6 @@
                         $(this).parent().removeClass("checked");
                     }
                 },
-                //DetectInputValueNumber: function () {
-                //    if (vars.$busy == true) return false;
-                //    if ($(this).val() == '') return false;
-                //    if (!$.isNumeric($(this).val())) {
-                //        vars.$busy = true;
-                //        $(this).val('');
-                //        $(this).focus();
-                //        Alert.fn.Show((global.TypeLanguage == 0 ? "Chỉ được nhập số!" : "Please enter a valid number!"), Alert.Type.warning);
-                //        vars.$busy = false;
-                //        return false;
-                //    }
-                //    var data = JSON.parse($(this).attr('data-range'));
-                //    var flag = 0;
-                //    for (var i = 0; i < data.length; i++) {
-                //        if (parseFloat(data[i].GiaTriTren) >= parseFloat($(this).val()) && parseFloat($(this).val()) >= parseFloat(data[i].GiaTriDuoi)) {
-                //            flag = flag + 1;
-                //            continue;
-                //        }
-                //    }
-                //    if (flag == 0) {
-                //        vars.$busy = true; //out endless loop (recusrive)
-                //        $(this).focus();
-                //        Alert.fn.Show(Messenger.msgNhapNgoaiKhoangGT, Alert.Type.warning);
-                //        vars.$busy = false;
-                //        return false;
-                //    }
-                //},
                 DetectInputValueNumber: function () {
                     if (method.KiemTraChonMay() == false) { $(this).val(''); return false; }
                     if ($(this).val() == '') return false;
@@ -362,6 +337,34 @@
                         }
                     }
                 },
+                DetectInputValueNumberGrid: function () {
+                    if (vars.$busy == true) return false;
+                    if ($(this).val() == '') return false;
+                    if (!$.isNumeric($(this).val())) {
+                        vars.$busy = true;
+                        $(this).val('');
+                        $(this).focus();
+                        Alert.fn.Show((global.TypeLanguage == 0 ? "Chỉ được nhập số!" : "Please enter a valid number!"), Alert.Type.warning);
+                        vars.$busy = false;
+                        return false;
+                    }
+                    var data = JSON.parse($(this).attr('data-range'));
+                    var flag = 0;
+                    for (var i = 0; i < data.length; i++) {
+                        if (parseFloat(data[i].GiaTriTren) >= parseFloat($(this).val()) && parseFloat($(this).val()) >= parseFloat(data[i].GiaTriDuoi)) {
+                            flag = flag + 1;
+                            continue;
+                        }
+                    }
+                    if (flag == 0) {
+                        vars.$busy = true; //out endless loop (recusrive)
+                        $(this).focus();
+                        Alert.fn.Show(global.TypeLanguage == 0 ? "Giá trị nhập không phù hợp!" : "Not suitable for input value!", Alert.Type.warning);
+                        vars.$busy = false;
+                        return false;
+                    }
+                },
+
                 KiemTraChonMay: function () {
                     var tmp;
                     if ($('#stt').val() != "-1") {
@@ -554,6 +557,8 @@
 
                     $('#txtSoGioLuyKe').on('change', method.DetectInputValueNumber);
 
+
+
                     //su kien chat
                     $(".mytext").on("keydown", function (e) {
                         if (e.which == 13) {
@@ -574,9 +579,9 @@
                     //-- Print Messages
                     //insertChat("me", "Spaceman: Computer! Computer! Do we bring battery?!", 9500);
                     //insertChat("you", "LOL", 12000);
-                },
+
+                    vars.$tbQualityParameterBody.on("focusout", "input[type=text]", method.DetectInputValueNumberGrid);},
                 Ghi: function () {
-                    alert("nghi");
                     if (vars.$qualityParamsDatatables.data().count() == 0) {
                         Alert.fn.Show(Messenger.msgDuLieuRong, Alert.Type.warning);
                         return;
@@ -647,13 +652,13 @@
                             window.location.href = urlGetGiamSatTinhTrang;
                         }
                         else {
+                            debugger;
                             Loading.fn.Hide();
                             Alert.fn.Show(Messenger.msgGhiKhongThanhCong, Alert.Type.error);
                         }
                     });
                 },
                 chonkhongdat: function () {
-                    alert("nghi");
                     if (vars.$qualityParamsDatatables.data().count() == 0) {
                         Alert.fn.Show(Messenger.msgDuLieuRong, Alert.Type.warning);
                         return;
@@ -672,7 +677,6 @@
                     $("td[data-pass=1] input[type=checkbox]", rows).prop('checked', true);
                 },
                 bochon: function () {
-                    debugger;
                     if (vars.$qualityParamsDatatables.data().count() == 0) {
                         Alert.fn.Show(Messenger.msgDuLieuRong, Alert.Type.warning);
                         return;
@@ -733,6 +737,69 @@
                         }
                     });
                 },
+                ShowRuntime: function () {
+                    var tmp;
+                    if ($('#stt').val() != "-1") {
+                        tmp = $('#cbbThietBi').val();
+                    }
+                    else {
+                        tmp = $('#txtDevice').val();
+                    }
+                    if (tmp === '') {
+                        Alert.fn.Show("máy chưa được chọn", Alert.Type.warning);
+                    }
+                    $.post(urlGetRuntimeInYear, { msmay: tmp }, function (data) {
+                        if (data.length > 0) {
+                            if ($.fn.DataTable.isDataTable('#tbRuntime')) {
+                                $('#tbRuntime').dataTable().fnDestroy();
+                            }
+                            vars.$equipDatatables = $("#tbRuntime").DataTable({
+                                data: data,
+                                columns: [
+                                    { data: 'NGAY' },
+                                    { data: 'CHI_SO_DONG_HO' },
+                                    { data: 'SO_GIO_LUY_KE' }
+                                ],
+                                columnDefs: [
+                                    {
+                                        'targets': 0,
+                                        'max-width': '150px',
+                                    }
+                                ],
+                                "language":
+                                {
+                                    "processing": "<div class='overlay custom-loader-background'><i class='fa fa-cog fa-spin custom-loader-color'></i></div>",
+                                    "sSearch": "<span data-lang='lblSearch'></span> ",
+                                    "info": "",
+                                    "zeroRecords": "<span data-lang='lblFilterInfo'>" + (global.TypeLanguage == 0 ? "Không tìm thấy" : "No matching records found") + "</span>",
+                                    "lengthMenu": "<span data-lang='lblShow'></span> _MENU_ <span data-lang='lblEntries'></span>",
+                                    "infoEmpty": "",
+                                    "infoFiltered": "",
+                                    "paginate": {
+                                        "first": "<<",
+                                        "last": ">>",
+                                        "next": ">",
+                                        "previous": "<"
+                                    },
+                                    "emptyTable": "<span data-lang='lblEmpty'></span>",
+                                },
+                                "processing": true,
+                                "lengthChange": false,
+                                "lengthMenu": [5],
+                                createdRow: function (row, data, dataIndex) {
+                                    if (data.hasOwnProperty("NGAY")) {
+                                        $(row).attr('data-id', data.NGAY);
+                                    }
+                                },
+                            });
+                            $('#myModalRuntime').appendTo("body").modal('show')
+                        }
+                        else {
+                            Alert.fn.Show(Messenger.msgKhongCoThietBi, Alert.Type.warning);
+                            return false;
+                        }
+                    });
+                },
                 ShowSpeckVoice: function () {
                     if (vars.$qualityParamsDatatables.data().count() == 0) {
                         Alert.fn.Show(Messenger.msgDuLieuRong, Alert.Type.warning);
@@ -765,6 +832,7 @@
                     });
 
                 },
+
             }
         })
         app.init = function () {
@@ -773,6 +841,6 @@
         return app;
     })();
     $(function () {
-        Monitoring.init()
+        InitMonitoring.init()
     });
 })

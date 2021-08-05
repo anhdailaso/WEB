@@ -312,8 +312,8 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <div class="input-group">
-                            <input class="form-control" type="text"  id="txtSoGioLuyKe" value="" />
-                            <a class="input-group-addon" ng-click="fn.ShowEquipForm();" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                            <input class="form-control" type="text" id="txtSoGioLuyKe" value="" />
+                            <a class="input-group-addon" ng-click="fn.ShowRuntime();" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                         </div>
                     </div>
                 </div>
@@ -321,99 +321,97 @@
 
         </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card-box">
-            <div id="divButtonDefault" class="toolbar-action">
-                <a href='@Url.Action("Index", "Monitoring")' data-lang="btnTroVe" class="btn btn-default pull-right">
-                    <i class="fa fa fa-reply" aria-hidden="true"></i>
-                </a>
-                <button ng-click="fn.Ghi();" type="button" title="Lưu" data-lang="btnGhi" class="btn btn-default pull-right">
-                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
-                </button>
-                <button ng-click="fn.chonkhongdat();" type="button" title="chọn tất cả không đạt" data-lang="btnchonkhongdat" class="btn btn-default pull-right">
-                    <i class="fa fa-check-square" aria-hidden="true"></i>
-                </button>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <div id="divButtonDefault" class="toolbar-action">
 
-                <button ng-click="fn.chondat();" type="button" title="chọn tất cả đạt" data-lang="btnchondat" class="btn btn-default pull-right">
-                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                </button>
+                    <a href='@Url.Action("Index", "Monitoring")' data-lang="btnTroVe" id="btnBack" class="btn btn-default pull-right">
+                        <i class="fa fa fa-reply" aria-hidden="true"></i>
+                    </a>
 
-                <button ng-click="fn.bochon();" type="button" title="Bỏ chọn" data-lang="btnbochon" class="btn btn-default pull-right">
-                    <i class="fa fa-square-o" aria-hidden="true"></i>
-                </button>
+                    <button ng-click="fn.Ghi();" type="button" title="Lưu" data-lang="btnGhi" id="btnSave" class="btn btn-default pull-right">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    </button>
 
-                @*<button ng-click="fn.ShowSpeckVoice();" type="button" title="Speak voice" data-lang="btnspeak" class="btn btn-default pull-right">
-                        <i class="fa fa-volume-up" aria-hidden="true"></i>
-                    </button>*@
-            </div>
-            <ul id="myTabsthem" class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#tabChonThongSoGS" data-val="1" aria-controls="tabChonThongSoGS" role="tab" data-toggle="tab" data-lang="tabChonThongSoGS">Chọn thông số</a></li>
-            </ul>
-            <h6 style="margin: 20px 0 0 0;"></h6>
-            @*tab định tính*@
-            <div role="tabpanel" class="tab-pane active" id="tabChonThongSoGS">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="radio">
-                            <label><input type="radio" name="optradio" value="0" checked>Xem tất cả</label>
-                        </div>
-                        <div class="radio">
-                            @if (ViewBag.STT == "-1")
-                            {
-                                <label>
-                                    <input type="radio" name="optradio" value="1">Xem thông số đến hạn giám sát
-                                </label>
-                            }
-                            else
-                            {
-                                <label>
-                                    <input type="radio" name="optradio" value="1" onclick="javascript: return false;">Xem thông số đến hạn giám sát
-                                </label>
-                            }
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                        <div class="form-group">
-                            <label data-lang="lblTungay">Từ ngày</label>
-                            <input class="form-control" type="text" id="fromDate" data-type="datepicker" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                        <div class="form-group">
-                            <label data-lang="labLoaiCV">Loại công việc</label>
-                            @Html.DropDownList("cbbLoaiCV", ViewBag.LoaiCV as SelectList, new { name = "cbbLoaiCV", data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
-                        </div>
-                    </div>
+                    <button ng-click="fn.chonkhongdat();" type="button" title="chọn tất cả không đạt" data-lang="btnchonkhongdat" id="btnchonkhongdat" class="btn btn-default pull-right">
+                        <i class="fa fa-check-square" aria-hidden="true"></i>
+                    </button>
+
+                    <button ng-click="fn.chondat();" type="button" title="chọn tất cả đạt" data-lang="btnchondat" id="btnchondat" class="btn btn-default pull-right">
+                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    </button>
+
+                    <button ng-click="fn.bochon();" type="button" title="Bỏ chọn" data-lang="btnbochon" id="btnbochon" class="btn btn-default pull-right">
+                        <i class="fa fa-square-o" aria-hidden="true"></i>
+                    </button>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <div class="table-responsive" style="overflow: auto">
-                                <table id="tbQualityParameter" class="table table-bordered table-condensed display">
-                                    <thead>
-                                        <tr>
-                                            <th class="">Group </th>
-                                            <th style="width:10%" data-lang="Choose">Chọn</th>
-                                            <th style="width:40%" data-lang="TEN_GIA_TRI">Giá trị</th>
-                                            <th style="width:40%" data-lang="Note">Ghi chú</th>
-                                            <th style="width:10%" data-lang="Path">Hinh anh</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody></tbody>
-                                </table>
+                <ul id="myTabsthem" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#tabChonThongSoGS" data-val="1" aria-controls="tabChonThongSoGS" role="tab" data-toggle="tab" data-lang="tabChonThongSoGS">Chọn thông số</a></li>
+                </ul>
+                <h6 style="margin: 20px 0 0 0;"></h6>
+                @*tab định tính*@
+                <div role="tabpanel" class="tab-pane active" id="tabChonThongSoGS">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="radio">
+                                <label><input type="radio" name="optradio" value="0" checked>Xem tất cả</label>
+                            </div>
+                            <div class="radio">
+                                @if (ViewBag.STT == "-1")
+                                {
+                                    <label>
+                                        <input type="radio" name="optradio" value="1">Xem thông số đến hạn giám sát
+                                    </label>
+                                }
+                                else
+                                {
+                                    <label>
+                                        <input type="radio" name="optradio" value="1" onclick="javascript: return false;">Xem thông số đến hạn giám sát
+                                    </label>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label data-lang="lblTungay">Từ ngày</label>
+                                <input class="form-control" type="text" id="fromDate" data-type="datepicker" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label data-lang="labLoaiCV">Loại công việc</label>
+                                @Html.DropDownList("cbbLoaiCV", ViewBag.LoaiCV as SelectList, new { name = "cbbLoaiCV", data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <div class="table-responsive" style="overflow: auto">
+                                    <table id="tbQualityParameter" class="table table-bordered table-condensed display">
+                                        <thead>
+                                            <tr>
+                                                <th class="">Group </th>
+                                                <th style="width:10%" data-lang="Choose">Chọn</th>
+                                                <th style="width:40%" data-lang="TEN_GIA_TRI">Giá trị</th>
+                                                <th style="width:40%" data-lang="Note">Ghi chú</th>
+                                                <th style="width:10%" data-lang="Path">Hinh anh</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div id="divButtonFloat" class="kc_fab_wrapper"></div>
+
         </div>
     </div>
-    <div id="divButtonFloat" class="kc_fab_wrapper">
-    </div>
-</div>
 </div>
 
 @*model chon may*@
@@ -466,9 +464,52 @@
             </div>
         </div>
     </div>
-    <div id="divButtonFloat" class="kc_fab_wrapper"></div>
 </div>
-@*model chon may*@
+
+@*model thoi gian chay may*@
+<div class="modal fade" id="myModalRuntime" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="color: #15428B !important;" data-lang="lblDSChayMayTrongNam">Danh sách chạy máy trong năm</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-responsive" style="overflow:auto">
+                            <table id="tbRuntime" style="width:100%" class="table table-bordered table-striped table-condensed ">
+                                <thead>
+                                    <tr>
+                                        <th data-lang="NGAY">NGAY</th>
+                                        <th data-lang="CHI_SO_DONG_HO">CHI_SO_DONG_HO</th>
+                                        <th data-lang="SO_GIO_LUY_KE">SO_GIO_LUY_KE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="divGhi" class="row ">
+                    <div class="col-sm-3 col-md-2 col-xs-4 col-lg-3 pull-right">
+                        <div class="form-group">
+                            <input type="button" data-dismiss="modal" data-lang="btnHuy" style="color: #fff; width: 100%;" class="btn-flat flat" value="Hủy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*model chat*@
 <div class="modal fade" id="myModalSpeak" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
@@ -515,7 +556,6 @@
             </div>
         </div>
     </div>
-    <div id="divButtonFloat" class="kc_fab_wrapper"></div>
 </div>
 
 
@@ -537,7 +577,7 @@
             <div class="modal-footer">
                 <button type="button" id="btnChonHinh" class="btn btn-primary">Chọn hình</button>
                 <button type="button" id="btnXoaHinh" class="btn btn-primary">Xóa hình</button>
-                <input type="button" data-dismiss="modal" data-lang="btnHuy" class="btn btn-primary" value="Hủy">
+                <button type="button" id="btnLuuHinh" data-dismiss="modal" class="btn btn-primary">Lưu hình</button>
             </div>
         </div>
     </div>
@@ -546,44 +586,27 @@
 <script>
     var urlConditionMonitoringParameterGet = '@Url.Action("GetMonitoringParameters", "Monitoring")'
     var urlConditionMonitoringParameterGetTMP = '@Url.Action("GetMonitoringParametersTMP", "Monitoring")'
-        var urlStarVoice = '@Url.Action("StarVoice", "Monitoring")'
-        var urlSpeakVoice = '@Url.Action("SpeakVoice", "Monitoring")'
-        var urlConditionMonitoringParameterSave = '@Url.Action("Save", "Monitoring")'
-        var urlCheckTheParametersDue = '@Url.Action("CheckTheParametersDue", "Monitoring")'
-        var urlGetGiamSatTinhTrang = '@Url.Action("Index", "Monitoring")'
-        var urlReadbarcode = '@Url.Action("ProcessRequest", "MyEcomain")'
-        var urlSacveImage = '@Url.Action("SaveImage", "Monitoring")'
-
-        var urlGetThoiGianChayMay = '@Url.Action("GetThoiGianChayMay", "Monitoring")'
-        
-
+    var urlStarVoice = '@Url.Action("StarVoice", "Monitoring")'
+    var urlSpeakVoice = '@Url.Action("SpeakVoice", "Monitoring")'
+    var urlConditionMonitoringParameterSave = '@Url.Action("Save", "Monitoring")'
+    var urlCheckTheParametersDue = '@Url.Action("CheckTheParametersDue", "Monitoring")'
+    var urlGetRuntimeInYear = '@Url.Action("GetRuntimeInYear", "Monitoring")'
+    var urlGetGiamSatTinhTrang = '@Url.Action("Index", "Monitoring")'
+    var urlReadbarcode = '@Url.Action("ProcessRequest", "MyEcomain")'
+    var urlSacveImage = '@Url.Action("SaveImage", "Monitoring")'
+    var urlGetThoiGianChayMay = '@Url.Action("GetThoiGianChayMay", "Monitoring")'
     require(['InitMonitoringController'])
 
-    var modal = document.getElementById("myModalHinh");
+    var mor;
+    var com;
     var modalImg = document.getElementById("img01");
     function LoadHinh(e) {
-        var mor = $(e).data('mor');
-        var com = $(e).data('com');
+         mor = $(e).data('mor');
+         com = $(e).data('com');
         $('#myModalHinh').appendTo("body").modal('show');
         modalImg.src = e.src;
-        $('#myModalHinh').on('hidden.bs.modal', function (a) {
-            var fd = new FormData();
-            fd.append('image', file);
-            fd.append('mor', mor);
-            fd.append('com', com);
-            $.ajax({
-                type: "POST",
-                data: fd,
-                processData: false,
-                contentType: false,
-                url: urlSacveImage,
-                success: function (resulst) {
-                    $('#tbQualityParameter tr[class$="selected"] img').attr('src', $('#img01').attr('src'));
-                },
-                error: function (response) {
-                }
-            });
-        })
+        //$('#myModalHinh').on('hidden.bs.modal', function (a) {
+        //})
     };
 
     function uploadImgDisplay(curFile) {
@@ -592,10 +615,28 @@
     }
 
     var importfile = $('#fileToUpload');
+    $('#btnLuuHinh').click(function () {
+        var fd = new FormData();
+        fd.append('image', file);
+        fd.append('mor', mor);
+        fd.append('com', com);
+        $.ajax({
+            type: "POST",
+            data: fd,
+            processData: false,
+            contentType: false,
+            url: urlSacveImage,
+            success: function (resulst) {
+                $('#tbQualityParameter tr[class$="selected"] img').attr('src', $('#img01').attr('src'));
+            },
+            error: function (response) {
+            }
+        });
+    });
+
     $('#btnXoaHinh').click(function () {
         $('#img01').attr('src', null);
     });
-
     $('#btnChonHinh').click(function () {
         importfile.click();
     });
@@ -623,5 +664,4 @@
         }
         uploadImgDisplay(file);
     });
-
 </script>

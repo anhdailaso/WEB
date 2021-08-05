@@ -140,6 +140,7 @@
                     <button ng-click="fn.XoaGS();" type="button" data-lang="btnXoa" id="btnRemove" class="btn btn-default pull-right">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
+           
                     <a href='@Url.Action("InitMonitoring", "Monitoring")' data-lang="btnThemgs" class="btn btn-default pull-right" id="btnThemgs">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                     </a>
@@ -180,7 +181,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <div class="table-responsive" style="overflow: auto;" >
-                                        <table id="tbGiamSatTinhTrang" class="table table-bordered table-condensed" style="width :100%">
+                                        <table id="tbGiamSatTinhTrang"  class="table table-bordered table-condensed">
                                             <thead>
                                                 <tr>
                                                     <th hidden>STT</th>
@@ -240,8 +241,8 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
-                                        <div class="table-responsive" style="overflow: auto; margin-top:7px;"> table-bordered table-condensed displ
-                                            <table id="tbgiatri" class="tableay">
+                                        <div class="table-responsive" style="overflow: auto; margin-top:7px;"> 
+                                            <table id="tbgiatri" class="table table-bordered table-condensed display">
                                                 <thead>
                                                     <tr>
                                                         <th data-lang="GIA_TRI">Giá trị</th>
@@ -305,10 +306,8 @@
                     </div>
                 </div>
 
-
             </div>
-            <div id="divButtonFloat" class="kc_fab_wrapper">
-            </div>
+            <div id="divButtonFloat" class="kc_fab_wrapper"></div>
         </div>
     </div>
 
@@ -361,9 +360,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="divButtonFloat" class="kc_fab_wrapper">
-
         </div>
     </div>
 </div>

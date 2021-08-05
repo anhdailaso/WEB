@@ -16,6 +16,8 @@
 
         [Key]
         [Column(Order = 1)]
+        //[DisplayFormat(DataFormatString = "{0:yyyyMMdd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.DateTime)]
         public DateTime NGAY { get; set; }
 
         public double? CHI_SO_DONG_HO { get; set; }
