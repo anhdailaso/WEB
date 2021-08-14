@@ -63,7 +63,13 @@
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Budget.cs" />
     <Compile Include="Models\DateInterceptor.cs" />
+    <Compile Include="Models\ST_HazardReport.cs" />
+    <Compile Include="Models\ST_HazardReport1.cs" />
+    <Compile Include="Models\ST_StopCard.cs" />
+    <Compile Include="Models\ST_StopCard1.cs" />
+    <Compile Include="Models\ST_StopCard2.cs" />
     <Compile Include="Models\THOI_GIAN_CHAY_MAY.cs" />
+    <Compile Include="ViewModel\ChooseListHazard.cs" />
     <Compile Include="ViewModel\DiaDiemViewModel.cs" />
     <Compile Include="ViewModel\Commons.cs" />
     <Compile Include="Models\Component.cs" />
@@ -155,6 +161,7 @@
     <Compile Include="ViewModel\MoningtoringViewModel.cs" />
     <Compile Include="ViewModel\PhieuBaoTriViewModel.cs" />
     <Compile Include="ViewModel\MyEcomainViewModel.cs" />
+    <Compile Include="ViewModel\HazardReportViewModel.cs" />
     <Compile Include="ViewModel\PhuTungViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

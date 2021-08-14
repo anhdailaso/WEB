@@ -85,6 +85,12 @@ namespace Model.Data
         public DbSet<SparepartAndTypeOfSparepart> SparepartAndTypeOfSparepart { get; set; }
         public DbSet<SparePartWarehouse> SparePartWarehouse { get; set; }
 
+        public  DbSet<ST_HazardReport> ST_HazardReport { get; set; }
+        public  DbSet<ST_HazardReport1> ST_HazardReport1 { get; set; }
+        public  DbSet<ST_StopCard> ST_StopCard { get; set; }
+        public  DbSet<ST_StopCard1> ST_StopCard1 { get; set; }
+        public  DbSet<ST_StopCard2> ST_StopCard2 { get; set; }
+
         public DbSet<THOI_GIAN_CHAY_MAY> THOI_GIAN_CHAY_MAY { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -374,12 +380,14 @@ namespace Model.Data
              .WithMany(e => e.Budget)
              .Map(m => m.ToTable("DISTRIBUTION_RULE").MapLeftKey("MS_BP_CHIU_PHI").MapRightKey("MS_COSTCENTER"));
 
-            modelBuilder.Entity<THOI_GIAN_CHAY_MAY>()
-           .Property(f => f.NGAY)
-           .HasColumnType("datetime");
+           // modelBuilder.Entity<THOI_GIAN_CHAY_MAY>()
+           //.Property(f => f.NGAY)
+           //.HasColumnType("datetime");
             base.OnModelCreating(modelBuilder);
-            DbInterception.Add(new DateInterceptor());
+            //DbInterception.Add(new DateInterceptor());
 
         }
+
+        public System.Data.Entity.DbSet<Model.Data.GetMasterPlansObj> GetMasterPlansObjs { get; set; }
     }
 }

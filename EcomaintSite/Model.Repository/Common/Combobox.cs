@@ -117,6 +117,98 @@ namespace Model.Combobox
              });
             return new SelectList(listItem, "Value", "Text", null);
         }
+
+
+
+        public SelectList GetListReportParent(string Username)
+        {
+            DataTable dtTmp = new DataTable();
+            SqlCommand sqlcom = new SqlCommand();
+            SqlConnection con = new SqlConnection(db.Database.Connection.ConnectionString);
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+            sqlcom.Connection = con;
+            sqlcom.Parameters.AddWithValue("ACTION", "GET_REPORT_PARENT2");
+            sqlcom.Parameters.AddWithValue("CreatedBy", Username);
+            sqlcom.CommandType = CommandType.StoredProcedure;
+            sqlcom.CommandText = "VS_ST_HazardReport";
+            SqlDataAdapter da = new SqlDataAdapter(sqlcom);
+            da.Fill(dtTmp);
+            var listItem = dtTmp.AsEnumerable().Select(
+             x => new SelectListItem
+             {
+                 Text = x.Field<string>("NPT"),
+                 Value = x.Field<string>("Userlogin").ToString()
+             });
+            return new SelectList(listItem, "Value", "Text", null);
+        }
+        public SelectList GetListLocation()
+        {
+            DataTable dtTmp = new DataTable();
+            SqlCommand sqlcom = new SqlCommand();
+            SqlConnection con = new SqlConnection(db.Database.Connection.ConnectionString);
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+            sqlcom.Connection = con;
+            sqlcom.Parameters.AddWithValue("ACTION", "LIST_LOCATION");
+            sqlcom.CommandType = CommandType.StoredProcedure;
+            sqlcom.CommandText = "VS_ST_HazardReport";
+            SqlDataAdapter da = new SqlDataAdapter(sqlcom);
+            da.Fill(dtTmp);
+            var listItem = dtTmp.AsEnumerable().Select(
+             x => new SelectListItem
+             {
+                 Text = x.Field<string>("NAME"),
+                 Value = x.Field<int>("ID").ToString()
+             });
+            return new SelectList(listItem, "Value", "Text", null);
+        }
+        public SelectList GetListDepartment()
+        {
+            DataTable dtTmp = new DataTable();
+            SqlCommand sqlcom = new SqlCommand();
+            SqlConnection con = new SqlConnection(db.Database.Connection.ConnectionString);
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+            sqlcom.Connection = con;
+            sqlcom.Parameters.AddWithValue("ACTION", "LIST_DEPARTMENT");
+            sqlcom.CommandType = CommandType.StoredProcedure;
+            sqlcom.CommandText = "VS_ST_HazardReport";
+            SqlDataAdapter da = new SqlDataAdapter(sqlcom);
+            da.Fill(dtTmp);
+            var listItem = dtTmp.AsEnumerable().Select(
+             x => new SelectListItem
+             {
+                 Text = x.Field<string>("Department"),
+                 Value = x.Field<int>("ID").ToString()
+             });
+            return new SelectList(listItem, "Value", "Text", null);
+        }
+        public SelectList GetListPersonRef(string UserName)
+        {
+            DataTable dtTmp = new DataTable();
+            SqlCommand sqlcom = new SqlCommand();
+            SqlConnection con = new SqlConnection(db.Database.Connection.ConnectionString);
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+            sqlcom.Connection = con;
+            sqlcom.Parameters.AddWithValue("ACTION", "GET_REPORT_PARENT3");
+            sqlcom.Parameters.AddWithValue("CreatedBy", UserName);
+            sqlcom.CommandType = CommandType.StoredProcedure;
+            sqlcom.CommandText = "VS_ST_HazardReport";
+            SqlDataAdapter da = new SqlDataAdapter(sqlcom);
+            da.Fill(dtTmp);
+            var listItem = dtTmp.AsEnumerable().Select(
+             x => new SelectListItem
+             {
+                 Text = x.Field<string>("NPT"),
+                 Value = x.Field<string>("Userlogin").ToString()
+             });
+            return new SelectList(listItem, "Value", "Text", null);
+        }
+
+
+
         public string GetEmailByNhaXuong(int stt, string msnx, string loaiyc, string username, string mailthem)
         {
             //kiểm tra mail thêm

@@ -40,6 +40,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -344,6 +345,11 @@
     <Content Include="js\controller\ApproveRequestsController.js" />
     <Content Include="js\controller\AddRequestController.js" />
     <Content Include="js\controller\UserRequestController.js" />
+    <Content Include="Resource\1.png" />
+    <Content Include="Resource\2.png" />
+    <Content Include="Resource\3.png" />
+    <Content Include="Resource\4.png" />
+    <Content Include="Resource\5.png" />
     <Content Include="Resulst\Dropdown_2-24.png" />
     <Content Include="Resulst\translate_tts.mp3" />
     <Content Include="Web.config">
@@ -437,6 +443,7 @@
     <Content Include="Views\Monitoring\_GiamSatTinhTrangMay.cshtml" />
     <Content Include="Views\Safety\HazardReport.cshtml" />
     <Content Include="Views\Safety\StopCard.cshtml" />
+    <Content Include="Views\Safety\ShowHazardReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -447,7 +454,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Image\" />
-    <Folder Include="Resource\" />
     <Folder Include="Views\Readbarcode\" />
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,8 @@ namespace Model.Interface.IRepository
     public interface ISafetyRepository
     {
 
-        IEnumerable<MyEcomainViewModel> GetMyEcomain(string username, int languages, string tngay, string dngay, string ms_nx,string may, int giaidoan);
-
+        IEnumerable<ChooseListHazard> ChooseListHazard(DateTime tngay, DateTime dngay);
+        HazardReportViewModel GetListByID(string ID);
+        string GetSoPhieuHazard();
     }
 }

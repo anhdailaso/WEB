@@ -652,7 +652,7 @@
                             window.location.href = urlGetGiamSatTinhTrang;
                         }
                         else {
-                            debugger;
+                            
                             Loading.fn.Hide();
                             Alert.fn.Show(Messenger.msgGhiKhongThanhCong, Alert.Type.error);
                         }

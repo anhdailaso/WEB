@@ -1,12 +1,9 @@
-﻿
-@using Model.Data
+﻿@using Model.Data
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/_Layout.cshtml";
 }
 <link href="~/Content/magic-check.min.css" rel="stylesheet" />
-
-
 <div class="row">
     <div class="col-lg-12">
         <ol class="breadcrumb">
@@ -22,8 +19,6 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="form-group responsive">
-                            <label data-lang="lblDiaDiem">Địa điểm</label>
-                            @Html.DropDownList("cbbDiaDiem", ViewBag.NhaXuong as SelectList, new { name = "cbbDiaDiem", data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
                         </div>
                     </div>
                 </div>
