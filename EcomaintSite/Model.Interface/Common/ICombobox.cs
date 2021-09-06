@@ -20,8 +20,15 @@ namespace Model.Interface
         SelectList GetListDepartment();
         SelectList GetListPersonRef(string UserName);
 
+        SelectList LoadListInCharge();
+        SelectList LoadListThietBi();
+        SelectList LoadListNguyenNhan();
+        SelectList LoadListLoaiYC();
+        SelectList LoadListUuTien(int NN);
+
         string GetEmailByNhaXuong(int stt, string msnx, string loaiyc, string username, string mailthem);
         List<EmailViewModel> AutoCompleteMail();
         void SendEmail(string address, string subject, string message,string link);
+        void SendEmailCC(string address, string CC, string subject, string message);
     }
 }

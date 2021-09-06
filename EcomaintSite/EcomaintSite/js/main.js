@@ -67,6 +67,9 @@
         'MasterPlansController': baseUrl + 'controller/MasterPlansController',
         'WorkOrderController': baseUrl + 'controller/WorkOrderController',
         'AddRequestController': baseUrl + 'controller/AddRequestController',
+
+        'HazardReportDetailsController': baseUrl + 'controller/HazardReportDetailsController',
+
         'UserRequestController': baseUrl + 'controller/UserRequestController',
         'CalendarController': baseUrl + 'controller/CalendarController',
         'ReceiptRequestController': baseUrl + 'controller/ReceiptRequestController',
@@ -140,6 +143,11 @@
         'AddRequestController': {
             exports: 'angular',
             deps: ['angular', 'select2','jquery','jquery-ui']
+        },
+
+        'HazardReportDetailsController': {
+            exports: 'angular',
+            deps: ['angular', 'select2', 'jquery', 'jquery-ui']
         },
 
         'ApproveRequestsController': {

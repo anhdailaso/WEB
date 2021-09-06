@@ -21,20 +21,17 @@ namespace Model.Repository
         public IEnumerable<GetSituationWOColumnObj> GetSituationWOColumn(Nullable<int> lang) =>
             db.Database.SqlQuery<GetSituationWOColumnObj>("spGetSituationWOColumn @lang", new SqlParameter("@lang", lang)).ToList();
 
-        public IEnumerable<GetDeviceInfoObj> GetDeviceInfo(Nullable<int> lang) =>
-            db.Database.SqlQuery<GetDeviceInfoObj>("spGetDeviceInfo @lang ,@username", new object[] {
+        public IEnumerable<GetDeviceInfoObj> GetDeviceInfo(Nullable<int> lang)
+        =>db.Database.SqlQuery<GetDeviceInfoObj>("spGetDeviceInfo @lang ,@username", new object[] {
                 new SqlParameter("@lang", lang),
                 new SqlParameter("@username", "Admin")
             }).ToList();
         public IEnumerable<GetDeviceStatusObj> GetDeviceStatus(Nullable<System.DateTime> toDate, string Username, Nullable<int> lang)
-        {
-            //db.Database.SqlQuery<GetDeviceStatusObj>("spGetDeviceStatus @toDate, @username, @lang", new object[] {
-            //    new SqlParameter("@toDate", toDate),
-            //    new SqlParameter("@username", Username),
-            //    new SqlParameter("@lang", lang)
-            //}).ToList();
-            return null;
-        } 
+        =>db.Database.SqlQuery<GetDeviceStatusObj>("spGetDeviceStatus @toDate, @username, @lang", new object[] {
+                new SqlParameter("@toDate", toDate),
+                new SqlParameter("@username", Username),
+                new SqlParameter("@lang", lang)
+            }).ToList();
 
         public int GetSoMay()
         {

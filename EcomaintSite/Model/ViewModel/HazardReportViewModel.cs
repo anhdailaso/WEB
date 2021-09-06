@@ -14,11 +14,15 @@ namespace Model.Data
         [StringLength(50)]
         public string DocNum { get; set; }
 
-        public DateTime DocDate { get; set; }
+        public DateTime? DocDate { get; set; }
 
-        public DateTime DocTime { get; set; }
+        public string sDocDate { get; set; }
 
-        public DateTime Createdtime { get; set; }
+        public DateTime? DocTime { get; set; }
+
+        public DateTime? Createdtime { get; set; }
+        public string sCreatedtime { get; set; }
+
 
         [StringLength(250)]
         public string CreatedBy { get; set; }
@@ -119,15 +123,17 @@ namespace Model.Data
 
             public int HazardReportID { get; set; }
 
+            [Required]
             [StringLength(250)]
             public string PreventiveAction { get; set; }
 
             [StringLength(250)]
             public string PersonIncharge { get; set; }
+            public string TENPersonIncharge { get; set; }
 
-            public DateTime Deadline { get; set; }
+            public DateTime? Deadline { get; set; }
 
-            public DateTime CompletedDate { get; set; }
+            public DateTime? CompletedDate { get; set; }
 
             [StringLength(100)]
             public string Status { get; set; }
@@ -139,13 +145,17 @@ namespace Model.Data
             public string Description { get; set; }
 
             public int MUCUUTIEN { get; set; }
+            public string TENMUCUUTIEN { get; set; }
 
             [StringLength(300)]
             public string THIETBI { get; set; }
+            public string TENTHIETBI { get; set; }
 
             public int LOAIYEUCAU { get; set; }
+            public string TENLOAIYEUCAU { get; set; }
 
             public int NGUYENNHAN { get; set; }
+            public string TENNGUYENNHAN { get; set; }
         }
     }
 }

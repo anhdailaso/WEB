@@ -119,6 +119,7 @@ namespace Model.Combobox
         }
 
 
+        
 
         public SelectList GetListReportParent(string Username)
         {
@@ -129,7 +130,7 @@ namespace Model.Combobox
                 con.Open();
             sqlcom.Connection = con;
             sqlcom.Parameters.AddWithValue("ACTION", "GET_REPORT_PARENT2");
-            sqlcom.Parameters.AddWithValue("CreatedBy", Username);
+            sqlcom.Parameters.AddWithValue("CreatedBy", "");
             sqlcom.CommandType = CommandType.StoredProcedure;
             sqlcom.CommandText = "VS_ST_HazardReport";
             SqlDataAdapter da = new SqlDataAdapter(sqlcom);
@@ -207,6 +208,101 @@ namespace Model.Combobox
             return new SelectList(listItem, "Value", "Text", null);
         }
 
+        public SelectList LoadListInCharge()
+        {
+            DataTable dtTmp = new DataTable();
+            SqlCommand sqlcom = new SqlCommand();
+            SqlConnection con = new SqlConnection(db.Database.Connection.ConnectionString);
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+            sqlcom.Connection = con;
+            sqlcom.Parameters.AddWithValue("ACTION", "LIST_INCHARGE");
+            sqlcom.CommandType = CommandType.StoredProcedure;
+            sqlcom.CommandText = "VS_ST_HazardReport";
+            SqlDataAdapter da = new SqlDataAdapter(sqlcom);
+            da.Fill(dtTmp);
+            var listItem = dtTmp.AsEnumerable().Select(
+             x => new SelectListItem
+             {
+                 Text = x.Field<string>("Staff name"),
+                 Value = x.Field<int>("ID").ToString()
+             });
+            return new SelectList(listItem, "Value", "Text", null);
+        }
+        public SelectList LoadListThietBi()
+        {
+            DataTable dtTmp = new DataTable();
+            SqlCommand sqlcom = new SqlCommand();
+            SqlConnection con = new SqlConnection(db.Database.Connection.ConnectionString);
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+            sqlcom.Connection = con;
+            sqlcom.Parameters.AddWithValue("ACTION", "LIST_THIET_BI");
+            sqlcom.CommandType = CommandType.StoredProcedure;
+            sqlcom.CommandText = "VS_ST_HazardReport";
+            SqlDataAdapter da = new SqlDataAdapter(sqlcom);
+            da.Fill(dtTmp);
+            var listItem = dtTmp.AsEnumerable().Select(
+             x => new SelectListItem
+             {
+                 Text = x.Field<string>("Staffname"),
+                 Value = x.Field<string>("ID").ToString()
+             });
+            return new SelectList(listItem, "Value", "Text", null);
+        }
+        public SelectList LoadListNguyenNhan()
+        {
+            DataTable dtTmp = new DataTable();
+            SqlCommand sqlcom = new SqlCommand();
+            SqlConnection con = new SqlConnection(db.Database.Connection.ConnectionString);
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+            sqlcom.Connection = con;
+            sqlcom.Parameters.AddWithValue("ACTION", "LIST_NGUYEN_NHAN");
+            sqlcom.CommandType = CommandType.StoredProcedure;
+            sqlcom.CommandText = "VS_ST_HazardReport";
+            SqlDataAdapter da = new SqlDataAdapter(sqlcom);
+            da.Fill(dtTmp);
+            var listItem = dtTmp.AsEnumerable().Select(
+             x => new SelectListItem
+             {
+                 Text = x.Field<string>("Staffname"),
+                 Value = x.Field<int>("ID").ToString()
+             });
+            return new SelectList(listItem, "Value", "Text", null);
+        }
+        public SelectList LoadListLoaiYC()
+        {
+            DataTable dtTmp = new DataTable();
+            SqlCommand sqlcom = new SqlCommand();
+            SqlConnection con = new SqlConnection(db.Database.Connection.ConnectionString);
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+            sqlcom.Connection = con;
+            sqlcom.Parameters.AddWithValue("ACTION", "LIST_LOAI_YEU_CAU");
+            sqlcom.CommandType = CommandType.StoredProcedure;
+            sqlcom.CommandText = "VS_ST_HazardReport";
+            SqlDataAdapter da = new SqlDataAdapter(sqlcom);
+            da.Fill(dtTmp);
+            var listItem = dtTmp.AsEnumerable().Select(
+             x => new SelectListItem
+             {
+                 Text = x.Field<string>("Staffname"),
+                 Value = x.Field<int>("ID").ToString()
+             });
+            return new SelectList(listItem, "Value", "Text", null);
+        }
+        public SelectList LoadListUuTien(int NN)
+        {
+            List<SelectListItem> listItem = new List<SelectListItem>();
+            listItem.Add(new SelectListItem { Value = "1", Text = (NN == 0 ? "Mức 1(1 ngày) Chắc chắn sẽ xảy ra tai nạn" : "Level 1(1 day) Will inevitably of accident") });
+            listItem.Add(new SelectListItem { Value = "2", Text = (NN == 0 ? "Mức 2(7 ngày) Hoàn toàn có thể xảy ra tai nạn" : "Level 2(7 days) Entirely possible accident") });
+            listItem.Add(new SelectListItem { Value = "3", Text = (NN == 0 ? "Mức 3(14 ngày) Xem như có thể xảy ra tai nạn" : "Level 3(14 days) Watch as accidents can happen") });
+            listItem.Add(new SelectListItem { Value = "4", Text = (NN == 0 ? "Mức 4(42 ngày) Rất khó có thể xảy ra tai nạn" : "Level 4(42 days) It is difficult to accident") });
+            listItem.Add(new SelectListItem { Value = "5", Text = (NN == 0 ? "Mức 5(99 ngày) Được thực hiện khi có cơ hội làm được" : "Level 5(99 days) Is performed when the opportunity to do") });
+            return new SelectList(listItem, "Value", "Text", null);
+        }
+
 
 
         public string GetEmailByNhaXuong(int stt, string msnx, string loaiyc, string username, string mailthem)
@@ -262,11 +358,54 @@ namespace Model.Combobox
             var loginInfo = new NetworkCredential(email, password);
             var msg = new MailMessage();
             var smtpClient = new SmtpClient(dt.Rows[0]["SMTP_MAIL"].ToString());
-            msg.From = new MailAddress(email,"CMMS");
+            msg.From = new MailAddress(email, "Phần mềm Báo cáo AT");
             var mail = address.Split(';');
             foreach (var item in mail)
             {
                 msg.To.Add(new MailAddress(item));
+            }
+            msg.Subject = subject;
+            msg.Body = message;
+            msg.IsBodyHtml = true;
+            msg.SubjectEncoding = Encoding.UTF8;
+            msg.BodyEncoding = Encoding.UTF8;
+            //msg.Priority = MailPriority.High;
+            smtpClient.EnableSsl = true;
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.Credentials = loginInfo;
+            smtpClient.Send(msg);
+        }
+        public void SendEmailCC(string address, string CC, string subject, string message)
+        {
+            DataTable dt = new DataTable();
+            dt.Load(SqlHelper.ExecuteReader(db.Database.Connection.ConnectionString, CommandType.Text, "SELECT MAIL_FROM,PASS_MAIL,SMTP_MAIL,PORT_MAIL,LINK_WEB FROM dbo.THONG_TIN_CHUNG"));
+            string str = dt.Rows[0]["PASS_MAIL"].ToString();
+            string password = "";
+            const int _CODE_ = 354;
+            for (int i = 0; i < str.Length; i++)
+            {
+                password += System.Convert.ToChar(((int)System.Convert.ToChar(str.Substring(i, 1)) / 2) - _CODE_).ToString();
+            }
+            string email = dt.Rows[0]["MAIL_FROM"].ToString();
+            var loginInfo = new NetworkCredential(email, password);
+            var msg = new MailMessage();
+            var smtpClient = new SmtpClient(dt.Rows[0]["SMTP_MAIL"].ToString());
+            msg.From = new MailAddress(email, "Phần mềm Báo cáo AT");
+            var mail = address.Split(';');
+            foreach (var item in mail)
+            {
+                msg.To.Add(new MailAddress(item));
+            }
+            var mailcc = CC.Split(';');
+            try
+            {
+                foreach (var item in mailcc)
+                {
+                    msg.CC.Add(new MailAddress(item));
+                }
+            }
+            catch
+            {
             }
             msg.Subject = subject;
             msg.Body = message;

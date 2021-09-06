@@ -34,7 +34,7 @@
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
     <PublishDatabases>false</PublishDatabases>
     <IncludeIisSettings>false</IncludeIisSettings>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -284,6 +284,7 @@
     <Content Include="js\browser\respond.min.js" />
     <Content Include="js\browser\select2.min.js" />
     <Content Include="Content\browser\highcharts.css" />
+    <Content Include="js\controller\HazardReportDetailsController.js" />
     <Content Include="js\controller\StopCardController.js" />
     <Content Include="js\controller\InitMonitoringController.js" />
     <Content Include="js\controller\MonitoringController.js" />
@@ -338,6 +339,10 @@
     <Content Include="js\plugins\linq\linq.min.js" />
     <Content Include="js\plugins\metro.min.js" />
     <Content Include="js\plugins\moment.min.js" />
+    <Content Include="js\plugins\moment\moment-with-locales.js" />
+    <Content Include="js\plugins\moment\moment-with-locales.min.js" />
+    <Content Include="js\plugins\moment\moment.js" />
+    <Content Include="js\plugins\moment\moment.min.js" />
     <Content Include="js\plugins\select2\select2.min.js" />
     <Content Include="js\plugins\sweetalert2\sweetalert2.min.js" />
     <Content Include="js\require.js" />
@@ -441,9 +446,9 @@
     <Content Include="Views\PurchaseRequest\Index.cshtml" />
     <Content Include="Views\WorkWorker\Index.cshtml" />
     <Content Include="Views\Monitoring\_GiamSatTinhTrangMay.cshtml" />
-    <Content Include="Views\Safety\HazardReport.cshtml" />
-    <Content Include="Views\Safety\StopCard.cshtml" />
+    <Content Include="Views\Safety\ShowStopCard.cshtml" />
     <Content Include="Views\Safety\ShowHazardReport.cshtml" />
+    <Content Include="Views\Safety\_ThemHazardDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

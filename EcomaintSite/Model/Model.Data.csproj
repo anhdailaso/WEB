@@ -63,8 +63,12 @@
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Budget.cs" />
     <Compile Include="Models\DateInterceptor.cs" />
+    <Compile Include="Models\Leadership.cs" />
+    <Compile Include="Models\LeadershipDetail.cs" />
+    <Compile Include="Models\ST_APPROVAL_USER.cs" />
     <Compile Include="Models\ST_HazardReport.cs" />
     <Compile Include="Models\ST_HazardReport1.cs" />
+    <Compile Include="Models\ST_Safety.cs" />
     <Compile Include="Models\ST_StopCard.cs" />
     <Compile Include="Models\ST_StopCard1.cs" />
     <Compile Include="Models\ST_StopCard2.cs" />
@@ -163,6 +167,7 @@
     <Compile Include="ViewModel\MyEcomainViewModel.cs" />
     <Compile Include="ViewModel\HazardReportViewModel.cs" />
     <Compile Include="ViewModel\PhuTungViewModel.cs" />
+    <Compile Include="ViewModel\StopCardViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

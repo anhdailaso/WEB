@@ -1,0 +1,153 @@
+﻿@model Model.Data.HazardReportViewModel.HazardReport1ViewModel
+@using (Html.BeginForm("_ThemHazardDetails", "Safety", FormMethod.Post, new { id = "formThemHazardDetails" }))
+{
+    @Html.AntiForgeryToken()
+    <div ng-controller="HazardReportDetailsController" ng-init="fn.Init()">
+        <div class="modal-content modal-lg" style="margin: 30px auto;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" data-lang="lblthembophan">Thêm Bộ Phận Cho Phiếu Yêu Cầu</h4>
+            </div>
+            
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group responsive">
+                            <label data-lang="lblPreventiveAction">PreventiveAction</label>
+                            @Html.EditorFor(model => model.PreventiveAction, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PreventiveAction, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group responsive">
+                            <label data-lang="lblPersonIncharge">PersonIncharge</label>
+                            @Html.DropDownListFor(model => model.PersonIncharge, (SelectList)ViewBag.LoadListUuTien, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                            @Html.ValidationMessageFor(model => model.PersonIncharge, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group responsive">
+                            <label data-lang="lblMUCUUTIEN">MUCUUTIEN</label>
+                            @Html.DropDownListFor(model => model.MUCUUTIEN, (SelectList)ViewBag.LoadListUuTien, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                            @Html.ValidationMessageFor(model => model.MUCUUTIEN, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <div class="form-group responsive">
+                            <label data-lang="lblDeadline">Deadline</label>
+                            @Html.TextBoxFor(model => model.Deadline, "{0:dd/MM/yyyy}", new { @class = "form-control date", @id = "DocDate" })
+                            @Html.ValidationMessageFor(model => model.Deadline, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <div class="form-group responsive">
+                            <label data-lang="lblCompletedDate">CompletedDate</label>
+                            @Html.TextBoxFor(model => model.CompletedDate, "{0:dd/MM/yyyy}", new { @class = "form-control date", @id = "DocDate" })
+                            @Html.ValidationMessageFor(model => model.CompletedDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group responsive">
+                            <label data-lang="lblStatus">Status</label>
+                            @Html.DropDownListFor(model => model.Status, (SelectList)ViewBag.LoadListUuTien, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group responsive">
+                            <label data-lang="lblPersonReport">PersonReport</label>
+                            @Html.EditorFor(model => model.PersonReport, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PersonReport, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group responsive">
+                            <label data-lang="lblDescription">Description</label>
+                            @Html.DropDownListFor(model => model.Description, (SelectList)ViewBag.LoadListInCharge, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group responsive">
+                            <label data-lang="lblLOAIYEUCAU">LOAIYEUCAU</label>
+                            @Html.DropDownListFor(model => model.LOAIYEUCAU, (SelectList)ViewBag.LoadListLoaiYC, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                            @Html.ValidationMessageFor(model => model.LOAIYEUCAU, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group responsive">
+                            <label data-lang="lblNGUYENNHAN">NGUYENNHAN</label>
+                            @Html.DropDownListFor(model => model.NGUYENNHAN, (SelectList)ViewBag.LoadListNguyenNhan, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                            @Html.ValidationMessageFor(model => model.NGUYENNHAN, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row ">
+                    <div class="col-sm-3 col-md-3 col-xs-3 col-lg-3 pull-right">
+                        <div class="form-group">
+                            <input type="button" data-dismiss="modal" id="Button1" data-lang="btnHuy" style="color: #fff; width: 100%;" class="btn-flat flat" value="Hủy">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-xs-3 col-lg-3 pull-right">
+                        <div class="form-group">
+                            <input type="button" data-action="add" id="btnSave" style="color: #fff; width: 100%;" data-lang="btnGhi" class="btn-flat flat" ng-click="" value="Lưu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    require(["_MenuPageController", "_DetailsModalController", "_MasterPageController"], function (menu, info, module) {
+        module.Languages.fn.AutoChangeLanguage();
+        bindFormAction();
+    });
+
+    function bindFormAction() {
+        $("#btnSave").on("click",
+            function () {
+                debugger;
+                $formThemHazardDetails = $("#formThemHazardDetails");
+                if ($formThemHazardDetails.valid()) {
+                    showLoadingOverlay();
+                    $.ajax({
+                        type: $formThemHazardDetails.prop("method"),
+                        url: $formThemHazardDetails.prop("action"),
+                        data: $formThemHazardDetails.serialize(),
+                        success: function (response) {
+                            if (!response.IsSuccess) {
+                                $.notify({ message: response.Messages }, { type: "danger" });
+                            } else {
+                                $.notify({ message: response.Messages }, { type: "success" });
+                            }
+                        },
+                        complete: function () {
+                            $("#myModalInsertHazardDetails").modal('show');
+                            //hideLoadingOverlay();
+                        }
+                    });
+                }
+                return false;
+            });
+    }
+
+
+
+</script>

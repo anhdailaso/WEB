@@ -53,7 +53,7 @@ namespace Model.Repository
                 THOI_GIAN_CHAY_MAY tgcm = db.THOI_GIAN_CHAY_MAY.Where(x => x.MS_MAY == obj.MS_MAY && DbFunctions.TruncateTime(x.NGAY) == DbFunctions.TruncateTime(DateTime.Now)).FirstOrDefault();
                 if (tgcm != null)
                 {
-                    db.Database.ExecuteSqlCommand("update dbo.THOI_GIAN_CHAY_MAY SET CHI_SO_DONG_HO = @CHI_SO_DONG_HO, SO_GIO_LUY_KE = @SO_GIO_LUY_KE WHERE MS_MAY = @MS_MAY AND YEAR(NGAY) = @NAM AND MONTH(NGAY) =@THANG AND DAY(NGAY) =@NGAY",
+                 db.Database.ExecuteSqlCommand("update dbo.THOI_GIAN_CHAY_MAY SET CHI_SO_DONG_HO = @CHI_SO_DONG_HO, SO_GIO_LUY_KE = @SO_GIO_LUY_KE WHERE MS_MAY = @MS_MAY AND YEAR(NGAY) = @NAM AND MONTH(NGAY) =@THANG AND DAY(NGAY) =@NGAY",
                  new object[] {
                 new SqlParameter("@CHI_SO_DONG_HO", obj.CHI_SO_DONG_HO),
                 new SqlParameter("@SO_GIO_LUY_KE", obj.SO_GIO_LUY_KE),

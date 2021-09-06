@@ -1,0 +1,1164 @@
+﻿@model Model.Data.StopCardViewModel
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+<link href="~/Content/magic-check.min.css" rel="stylesheet" />
+
+<style>
+
+    .form-check {
+        display: flex;
+    }
+
+        .form-check label {
+            padding-left: 3px;
+        }
+</style>
+
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href='#' data-lang="lblSafety">An toàn</a></li>
+            <li class="breadcrumb-item active" data-lang="lblStopCard">Báo cáo nguy hiểm</li>
+        </ol>
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div ng-controller="StopCardController" ng-init="fn.Init()">
+        <input type="file" id="fileToUpload" style="display: none;" />
+        <input type="hidden" id="stt" name="stt" value="@ViewBag.STT">
+        <input type="hidden" id="hfUsername" value="@ViewBag.UserName" />
+        <input type="hidden" id="hfTTPhieu" value="@ViewBag.TTPhieu" />
+        <input type="hidden" id="hfUserDuyet" value="@ViewBag.UserDuyet" />
+        <input type="hidden" id="hfIDStafety" value="@ViewBag.IDStafety" />
+
+
+        @Html.HiddenFor(model => model.ID)
+        <div class="row" id="frmMain">
+            <div class="col-lg-12">
+                <div class="card-box">
+                    <div class="row">
+                        <div class="form-group responsive">
+                            @*<input type="image" src="data:image/gif;base64,(@Model.Image_1)" style="width:100%;height:auto" />*@
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="form-group responsive">
+                                <label data-lang="lblDocNum">DocNum</label>
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.DocNum, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    <a class="input-group-addon" ng-click="fn.ShowListStopCard();" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-group responsive">
+                                <label data-lang="lblDocDate">DocDate</label>
+                                @Html.TextBoxFor(model => model.sDocDate, "{0:MM/dd/yyyy}", new { @class = "form-control", @type = "datepicker" })
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-group responsive">
+                                <label data-lang="lblDocTime">DocTime</label>
+                                @Html.TextBoxFor(model => model.DocTime, "", new { @class = "form-control", @type = "datepicker" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-group responsive">
+                                <label data-lang="lblCreatedBy">CreatedBy</label>
+                                @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-group responsive">
+                                <label data-lang="lblREPORT_PARENT">REPORT_PARENT</label>
+                                @*@Html.EditorFor(model => model.REPORT_PARENT, new { htmlAttributes = new { @class = "form-control" } })*@
+                                @Html.DropDownListFor(model => model.REPORT_PARENT, (SelectList)ViewBag.ListReportParent, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-group responsive">
+                                <label data-lang="lblNGUOILIENQUAN1">NGUOILIENQUAN1</label>
+                                @*@Html.EditorFor(model => model.NGUOILIENQUAN1, new { htmlAttributes = new { @class = "form-control" } })*@
+                                @Html.DropDownListFor(model => model.NGUOILIENQUAN1, (SelectList)ViewBag.ListPersonRef, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
+                            <a href="#">
+                                @if (@Model.Image_1 == null)
+                                {
+                                    <img type="image" src="" class="rounded mx-auto d-block" style="width : 90px; height:80px" ng-click="fn.ShowImage();" id="Image_1" />
+                                }
+                                else
+                                {
+                                    <img type="image" src="data:image;base64,@System.Convert.ToBase64String(@Model.Image_1)" class="rounded mx-auto d-block" style="width : 90px; height:80px" ng-click="fn.ShowImage();" id="Image_1" />
+                                }
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group responsive">
+                                <label data-lang="lblDescription">Description</label>
+                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row panel-title">
+                        <label class="text-primary" data-lang="lblPhanUngConNguoi"><u>Phản ứng con người</u></label>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.AdjPerPPE, new { @class = "align-middle" })
+                                <label data-lang="lblAdjPerPPE">AdjPerPPE</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.StopJob, new { @class = "align-middle" })
+                                <label data-lang="lblStopJob">StopJob</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.ChangingPosition, new { @class = "align-middle" })
+                                <label data-lang="lblChangingPosition">ChangingPosition</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.AttachingGrouds, new { @class = "align-middle" })
+                                <label data-lang="lblAttachingGroudsE">AttachingGrouds</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 ">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.RearrangingJob, new { @class = "align-middle" })
+                                <label data-lang="lblRearrangingJob">RearrangingJob</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.PerformingLocks, new { @class = "align-middle" })
+                                <label data-lang="lblPerformingLocks">PerformingLocks</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.OtherReaction, new { @class = "align-middle" })
+                                <label data-lang="lblOtherReaction">OtherReaction</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            @Html.EditorFor(model => model.TOtherReactions, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+
+                    </div>
+
+                    <div class="row panel-title">
+                        <label class="text-primary" data-lang="lblPPE"><u>PPE(Kiểm tra từ đầu đến chân)</u></label>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.Head, new { @class = "align-middle" })
+                                <label data-lang="lblHead">Head</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.ArmsAndHands, new { @class = "align-middle" })
+                                <label data-lang="lblArmsAndHands">ArmsAndHands</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.EyesAndFace, new { @class = "align-middle" })
+                                <label data-lang="lblEyesAndFace">EyesAndFace</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.Trunk, new { @class = "align-middle" })
+                                <label data-lang="lblTrunk">Trunk</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 ">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.Ears, new { @class = "align-middle" })
+                                <label data-lang="lblEars">Ears</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.LegsAndFeet, new { @class = "align-middle" })
+                                <label data-lang="lblPerLegsAndFeet">LegsAndFeet</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.RespiratorySystem, new { @class = "align-middle" })
+                                <label data-lang="lblRespiratorySystem">RespiratorySystem</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.OtherPPE, new { @class = "align-middle" })
+                                <label data-lang="lblOtherPPE">OtherPPE</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            @Html.EditorFor(model => model.TOtherPPE, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+
+                    <br />
+
+                    <div class="row">
+                        <div class="form-group responsive">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5">
+                                <label data-lang="lblAPPUSER">APPROVAL_USER</label>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-5">
+                                @Html.EditorFor(model => model.APPROVAL_USER, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                                @Html.CheckBoxFor(model => model.IS_APPROVED, new { @id = "IS_APPROVED", @class = "align-middle" })
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                <div class="form-check">
+                                    @Html.CheckBoxFor(model => model.External, new { @class = "align-middle" })
+                                    <label data-lang="lblExternal">External</label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-top:inherit">
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2" style="text-align:center">
+                            <img src="~/Resource/1.png">
+                            <div>
+                                @Html.RadioButtonFor(model => model.HPES, "1", new { @id = "HPES1", @class = "align-self-center", @Checked = "checked" })
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2" style="text-align:center">
+                            <img src="~/Resource/2.png">
+                            <div style="text-align:center">
+                                @Html.RadioButtonFor(model => model.HPES, "2", new { @id = "HPES2", @class = "align-self-center" })
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2" style="text-align:center">
+                            <img src="~/Resource/3.png">
+                            <div style="text-align:center">
+                                @Html.RadioButtonFor(model => model.HPES, "3", new { @id = "HPES3", @class = "align-self-center" })
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2" style="text-align:center">
+                            <img src="~/Resource/4.png">
+                            <div style="text-align:center">
+                                @Html.RadioButtonFor(model => model.HPES, "4", new { @id = "HPES4", @class = "align-self-center" })
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2" style="text-align:center">
+                            <img src="~/Resource/5.png">
+                            <div style="text-align:center">
+                                @Html.RadioButtonFor(model => model.HPES, "5", new { @id = "HPES5", @class = "align-self-center" })
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2" style="text-align:center">
+                            <label data-lang="lblOther">Khác</label>
+                            <div style="text-align:center;padding-top:5px;">
+                                @Html.RadioButtonFor(model => model.HPES, "6", new { @id = "HPES6", @class = "align-self-center" })
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row panel-title">
+                        <label class="text-primary" data-lang="lblVitritutheLV"><u>Vị trí tư thế làm việc</u></label>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.StrikingAgaintObjects, new { @class = "align-middle" })
+                                <label data-lang="lblStrikingAgaintObjects">StrikingAgaintObjects</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.ChokingHazardousAir, new { @class = "align-middle" })
+                                <label data-lang="lblChokingHazardousAir">ChokingHazardousAir</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.CaughtInOn, new { @class = "align-middle" })
+                                <label data-lang="lblCaughtInOn">CaughtInOn</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.Inhaling, new { @class = "align-middle" })
+                                <label data-lang="lblInhaling">Inhaling</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.Falling, new { @class = "align-middle" })
+                                <label data-lang="lblFalling">Falling</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.RepettiveMotions, new { @class = "align-middle" })
+                                <label data-lang="lblRepettiveMotions">RepettiveMotions</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.Contacting, new { @class = "align-middle" })
+                                <label data-lang="lblContacting">Contacting</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.PositionsToWork, new { @class = "align-middle" })
+                                <label data-lang="lblPositionsToWork">PositionsToWork</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.ContactSharpObject, new { @class = "align-middle" })
+                                <label data-lang="lblContactSharpObject">ContactSharpObject</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.FlyingObjects, new { @class = "align-middle" })
+                                <label data-lang="lblFlyingObjects">FlyingObjects</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.ContactingElectric, new { @class = "align-middle" })
+                                <label data-lang="lblContactingElectric">ContactingElectric</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.EmployeeWork, new { @class = "align-middle" })
+                                <label data-lang="lblEmployeeWork">EmployeeWork</label>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="row panel-title">
+                        <label class="text-primary" data-lang="lblCongcuThietbi"><u>Công cụ và thiết bị</u></label>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.NotRight, new { @class = "align-middle" })
+                                <label data-lang="lblRight">Right</label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.UsedIncorrectly, new { @class = "align-middle" })
+                                <label data-lang="lblUsedIncorrectly">UsedIncorrectly</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.InUnsafeCondition, new { @class = "align-middle" })
+                                <label data-lang="lblInUnsafeCondition">InUnsafeCondition</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.OtherTools, new { @class = "align-middle" })
+                                <label data-lang="lblOtherTools">OtherTools</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            @Html.EditorFor(model => model.TOtherToolAndEquipment, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+
+                    <div class="row panel-title">
+                        <label class="text-primary" data-lang="lblQuyTrinh"><u>QuyTrinh</u></label>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.Unknow, new { @class = "align-middle" })
+                                <label data-lang="lblUnknow">Unknow</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.NotUnderstood, new { @class = "align-middle" })
+                                <label data-lang="lblUnderstood">Understood</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.NotFlowed, new { @class = "align-middle" })
+                                <label data-lang="lblFlowed">Flowed</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.NotAequate, new { @class = "align-middle" })
+                                <label data-lang="lblAequate">Aequate</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.OtherProcedure, new { @class = "align-middle" })
+                                <label data-lang="lblOtherProcedure">OtherProcedure</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            @Html.EditorFor(model => model.TOtherProcedure, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+
+                    <div class="row panel-title">
+                        <label class="text-primary" data-lang="lblSachSeNganNap"><u>Sạch sẻ ngăn nắp</u></label>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.NotIsolate, new { @class = "align-middle" })
+                                <label data-lang="lblIsolate">Isolate</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.ToolAndEquipment, new { @class = "align-middle" })
+                                <label data-lang="lblToolAndEquipment">ToolAndEquipment</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.NoCollectGarbage, new { @class = "align-middle" })
+                                <label data-lang="lblNoCollectGarbage">NoCollectGarbage</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.EmergencyExit, new { @class = "align-middle" })
+                                <label data-lang="lblEmergencyExit">EmergencyExit</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.Slip, new { @class = "align-middle" });
+                                <label data-lang="lblSlip">Slip</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(model => model.OtherOderLine, new { @class = "align-middle" })
+                                <label data-lang="lblOtherOderLine">OtherOderLine</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            @Html.EditorFor(model => model.TOtherOrderliness, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group responsive">
+                                <label data-lang="lblLOAI_CONG_VIEC">LOAI_CONG_VIEC</label>
+                                @Html.TextAreaFor(model => model.LOAI_CONG_VIEC, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group responsive">
+                                <label data-lang="lblHO_TEN_CA_NHAN_TO_NHOM">HO_TEN_CA_NHAN_TO_NHOM</label>
+                                @Html.TextAreaFor(model => model.HO_TEN_CA_NHAN_TO_NHOM, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group responsive">
+                                <label data-lang="lblHANH_DONG_HANH_VI_AN_TOAN">HANH_DONG_HANH_VI_AN_TOAN</label>
+                                @Html.TextAreaFor(model => model.HANH_DONG_HANH_VI_AN_TOAN, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group responsive">
+                                <label data-lang="lblHANH_VI_KHONG_AN_TOAN">HANH_VI_KHONG_AN_TOAN</label>
+                                @Html.TextAreaFor(model => model.HANH_VI_KHONG_AN_TOAN, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                <div class="card-box">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="toolbar-action">
+                                <button ng-click="fn.Report1();" type="button" data-lang="btnReport" id="btnReport" class="btn btn-default pull-right">
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                </button>
+
+                                <button ng-click="fn.RemoveDetails1();" type="button" disabled data-lang="btnXoa" id="btnRemoveDetails" class="btn btn-default pull-right">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                                <button ng-click="fn.EditDetails1();" type="button" disabled data-lang="btnSua" id="btnEditDetails" class="btn btn-default pull-right">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button>
+                                <button ng-click="fn.AddDetails1();" type="button" data-lang="btnThem" id="btnAddDetails" class="btn btn-default pull-right">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <h5 class="card-title" data-lang="lblListStopCardDetails">Danh sách báo cáo oan toàn chi tiếc</h5>
+                            <div class="table-responsive" style="overflow: auto">
+                                <table id="tbStopCardDetails1" class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th data-lang="PreventiveAction">PreventiveAction</th>
+                                            <th data-lang="PersonIncharge" class="hidden">PersonIncharge</th>
+                                            <th data-lang="TENPersonIncharge">TENPersonIncharge</th>
+                                            <th data-lang="MUCUUTIEN" class="hidden">MUCUUTIEN</th>
+                                            <th data-lang="TENMUCUUTIEN">TENMUCUUTIEN</th>
+
+                                            <th data-lang="Deadline">Deadline</th>
+                                            <th data-lang="CompletedDate">CompletedDate</th>
+                                            <th data-lang="Status">Status</th>
+                                            <th data-lang="PersonReport" class="hidden">PersonReport</th>
+                                            <th data-lang="Description">Description</th>
+
+                                            <th data-lang="THIETBI" class="hidden">THIETBI</th>
+                                            <th data-lang="TENTHIETBI">THIETBI</th>
+                                            <th data-lang="LOAIYEUCAU" class="hidden">LOAIYEUCAU</th>
+                                            <th data-lang="TENLOAIYEUCAU">TENLOAIYEUCAU</th>
+                                            <th data-lang="NGUYENNHAN" class="hidden">NGUYENNHAN</th>
+
+                                            <th data-lang="TENNGUYENNHAN">TENNGUYENNHAN</th>
+                                            @*<th data-lang="UserRequestDetailID" class="hidden">UserRequestDetailID</th>*@
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.StopCard1 != null)
+                                        {
+                                            foreach (var item in Model.StopCard1)
+                                            {
+                                                <tr old data-id-vd="@item.ID">
+                                                    <td> @item.PreventiveAction </td>
+                                                    <td class="hidden">@item.PersonIncharge</td>
+                                                    <td>@item.TENPersonIncharge</td>
+                                                    <td class="hidden">@item.MUCUUTIEN</td>
+                                                    <td style="white-space: normal">@item.TENMUCUUTIEN</td>
+
+                                                    <td>
+                                                        @if (@item.Deadline != null)
+                                                        {
+                                                            @item.Deadline.Value.ToString("dd/MM/yyyy");
+                                                        }
+                                                        else
+                                                        {
+                                                            "null".ToString();
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @if (@item.CompletedDate != null)
+                                                        {
+                                                            @item.CompletedDate.Value.ToString("dd/MM/yyyy");
+                                                        }
+                                                        else
+                                                        {
+                                                            "null".ToString();
+                                                        }
+                                                    </td>
+                                                    <td>@item.Status</td>
+                                                    <td class="hidden">@item.PersonReport</td>
+                                                    <td>@item.Description"</td>
+
+                                                    <td class="hidden">@item.THIETBI</td>
+                                                    <td>@item.TENTHIETBI</td>
+                                                    <td class="hidden">@item.LOAIYEUCAU</td>
+                                                    <td>@item.TENLOAIYEUCAU</td>
+                                                    <td class="hidden">@item.NGUYENNHAN</td>
+
+                                                    <td>@item.TENNGUYENNHAN</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-box">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="toolbar-action">
+
+                                <button ng-click="fn.Report2();" type="button" data-lang="btnReport" id="btnReport" class="btn btn-default pull-right">
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                </button>
+
+                                <button ng-click="fn.RemoveDetails2();" type="button" disabled data-lang="btnXoa" id="btnRemoveDetails" class="btn btn-default pull-right">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                                <button ng-click="fn.EditDetails2();" type="button" disabled data-lang="btnSua" id="btnEditDetails" class="btn btn-default pull-right">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button>
+                                <button ng-click="fn.AddDetails2();" type="button" data-lang="btnThem" id="btnAddDetails" class="btn btn-default pull-right">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <h5 class="card-title" data-lang="lblListStopCardDetails">Danh sách báo cáo oan toàn chi tiếc</h5>
+                            <div class="table-responsive" style="overflow: auto">
+                                <table id="tbStopCardDetails2" class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th data-lang="PreventiveAction">PreventiveAction</th>
+                                            <th data-lang="PersonIncharge" class="hidden">PersonIncharge</th>
+                                            <th data-lang="TENPersonIncharge">TENPersonIncharge</th>
+                                            <th data-lang="MUCUUTIEN" class="hidden">MUCUUTIEN</th>
+                                            <th data-lang="TENMUCUUTIEN">TENMUCUUTIEN</th>
+
+                                            <th data-lang="Deadline">Deadline</th>
+                                            <th data-lang="CompletedDate">CompletedDate</th>
+                                            <th data-lang="Status">Status</th>
+                                            <th data-lang="PersonReport" class="hidden">PersonReport</th>
+                                            <th data-lang="Description">Description</th>
+
+                                            <th data-lang="THIETBI" class="hidden">THIETBI</th>
+                                            <th data-lang="TENTHIETBI">THIETBI</th>
+                                            <th data-lang="LOAIYEUCAU" class="hidden">LOAIYEUCAU</th>
+                                            <th data-lang="TENLOAIYEUCAU">TENLOAIYEUCAU</th>
+                                            <th data-lang="NGUYENNHAN" class="hidden">NGUYENNHAN</th>
+
+                                            <th data-lang="TENNGUYENNHAN">TENNGUYENNHAN</th>
+                                            @*<th data-lang="UserRequestDetailID" class="hidden">UserRequestDetailID</th>*@
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.StopCard2 != null)
+                                        {
+                                            foreach (var item in Model.StopCard2)
+                                            {
+                                                <tr old data-id-vd="@item.ID">
+                                                    <td> @item.PermanentAction </td>
+                                                    <td class="hidden">@item.PersonIncharge</td>
+                                                    <td>@item.TENPersonIncharge</td>
+                                                    <td class="hidden">@item.MUCUUTIEN</td>
+                                                    <td style="white-space: normal">@item.TENMUCUUTIEN</td>
+
+                                                    <td>
+                                                        @if (@item.Deadline != null)
+                                                        {
+                                                            @item.Deadline.Value.ToString("dd/MM/yyyy");
+                                                        }
+                                                        else
+                                                        {
+                                                            "null".ToString();
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @if (@item.CompletedDate != null)
+                                                        {
+                                                            @item.CompletedDate.Value.ToString("dd/MM/yyyy");
+                                                        }
+                                                        else
+                                                        {
+                                                            "null".ToString();
+                                                        }
+                                                    </td>
+                                                    <td>@item.Status</td>
+                                                    <td class="hidden">@item.PersonReport</td>
+                                                    <td>@item.Description"</td>
+
+                                                    <td class="hidden">@item.THIETBI</td>
+                                                    <td>@item.TENTHIETBI</td>
+                                                    <td class="hidden">@item.LOAIYEUCAU</td>
+                                                    <td>@item.TENLOAIYEUCAU</td>
+                                                    <td class="hidden">@item.NGUYENNHAN</td>
+
+                                                    <td>@item.TENNGUYENNHAN</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="divButtonFloat" class="kc_fab_wrapper"></div>
+            </div>
+        </div>
+
+        @*model chon StopCard*@
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="color: #15428B !important;" data-lang="lblChooseStopCard">Chọn báo cáo nguy hiểm</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <div class="form-group">
+                                    <label data-lang="lblTungay">Từ ngày</label>
+                                    <input class="form-control" type="text" id="fromDate" data-type="datepicker" value="@DateTime.Now.AddMonths(-1).ToString("dd/MM/yyyy")" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <div class="form-group">
+                                    <label data-lang="lblDenngay">Đến ngày</label>
+                                    <input class="form-control" type="text" id="toDate" data-type="datepicker" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="table-responsive" style="overflow:auto">
+                                    <table id="tbListStopCard" style="width:100%" class="table table-bordered table-striped table-condensed ">
+                                        <thead>
+                                            <tr>
+                                                <th data-lang="ID" hidden>DeviceID</th>
+                                                <th data-lang="DocNum1">DocNum</th>
+                                                <th data-lang="Description">Description</th>
+                                                <th data-lang="DocDate">DocDate</th>
+                                                <th data-lang="CreatedBy">CreatedBy</th>
+                                                <th data-lang="NGUOITH">NGUOITH</th>
+                                                <th data-lang="Status">Status</th>
+                                                <th data-lang="TTTH">TTTH</th>
+                                                <th data-lang="NLQVP">NLQVP</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div id="divGhi" class="row ">
+                            <div class="col-sm-3 col-md-2 col-xs-4 col-lg-3 pull-right">
+                                <div class="form-group">
+                                    <input type="button" data-dismiss="modal" data-lang="btnHuy" style="color: #fff; width: 100%;" class="btn-flat flat" value="Hủy">
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-2 col-xs-4 col-lg-3 pull-right">
+                                <div class="form-group">
+                                    <input type="button" id="btnChooseStopCard" style="color: #fff; width: 100%;" data-lang="btnChon" class="btn-flat flat" value="Chon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @*popup them bo StopCard*@
+        <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" data-lang="lblEditsStopCardDetails">Sửa báo cáo oan toàn</h4>
+                    </div>
+                    @Html.Hidden("CompletedDate")
+                    @Html.Hidden("Status")
+                    @Html.Hidden("PersonReport")
+                    @Html.Hidden("Description")
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group responsive">
+                                    <label data-lang="lblPreventiveAction">PreventiveAction</label>
+                                    @Html.Editor("PreventiveAction", new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group responsive">
+                                    <label data-lang="lblPersonIncharge">PersonIncharge</label>
+                                    @Html.DropDownList("PersonIncharge", (SelectList)ViewBag.LoadListInCharge, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group responsive">
+                                    <label data-lang="lblMUCUUTIEN">MUCUUTIEN</label>
+                                    @Html.DropDownList("MUCUUTIEN", (SelectList)ViewBag.LoadListUuTien, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group responsive">
+                                    <label data-lang="lblDeadline">Deadline</label>
+                                    <input class="form-control date" data-type="datepicker" type="text" id="Deadline" disabled="disabled" />
+                                </div>
+                            </div>
+
+                            @*<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group responsive">
+                                        <label data-lang="lblCompletedDate">CompletedDate</label>
+                                        <input class="form-control date" data-type="datepicker" type="text" id="CompletedDate" />
+                                    </div>
+                                </div>*@
+
+                            @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group responsive">
+                                        <label data-lang="lblStatus">Status</label>
+                                        @Html.DropDownList("Status", (SelectList)ViewBag.LoadListUuTien, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                                    </div>
+                                </div>*@
+
+
+                            @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group responsive">
+                                        <label data-lang="lblPersonReport">PersonReport</label>
+                                        @Html.Editor("PersonReport", new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>*@
+                            @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group responsive">
+                                        <label data-lang="lblDescription">Description</label>
+                                        @Html.DropDownListFor(model => model.Description, (SelectList)ViewBag.LoadListInCharge, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                                    </div>
+                                </div>*@
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group responsive">
+                                    <label data-lang="lblTHIETBI">THIETBI</label>
+                                    @Html.DropDownList("THIETBI", (SelectList)ViewBag.LoadListThietBi, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group responsive">
+                                    <label data-lang="lblLOAIYEUCAU">LOAIYEUCAU</label>
+                                    @Html.DropDownList("LOAIYEUCAU", (SelectList)ViewBag.LoadListLoaiYC, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group responsive">
+                                    <label data-lang="lblNGUYENNHAN">NGUYENNHAN</label>
+                                    @Html.DropDownList("NGUYENNHAN", (SelectList)ViewBag.LoadListNguyenNhan, new { data_live_search = "true", data_slide = "left", @class = "form-control select-one select2", @style = "width:100%" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row ">
+                            <div class="col-sm-3 col-md-3 col-xs-3 col-lg-3 pull-right">
+                                <div class="form-group">
+                                    <input type="button" data-dismiss="modal" id="Button1" data-lang="btnHuy" style="color: #fff; width: 100%;" class="btn-flat flat" value="Hủy">
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-xs-3 col-lg-3 pull-right">
+                                <div class="form-group">
+                                    <input type="submit" id="btnSave" data-action="add" style="color: #fff; width: 100%;" data-lang="btnGhi" class="btn-flat flat" ng-click="fn.CheckValidateControl1()" value="Lưu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="myModalHinh" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img style="width:100%" class="modal-content" id="img01">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnChonHinh" class="btn btn-primary">Chọn hình</button>
+                        <button type="button" id="btnXoaHinh" class="btn btn-primary">Xóa hình</button>
+                        <button type="button" id="btnLuuHinh" data-dismiss="modal" class="btn btn-primary">Lưu hình</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="myModalMail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" data-lang="lblSentMail">Gửi mail</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group responsive">
+                                    <label data-lang="lnlGuiToi">Gửi tới</label>
+                                    <textarea data-loaimail="" class="form-control" id="txtGuiToi" style="width:100%"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group responsive">
+                                    <label data-lang="lblGuiThem">Gửi thêm</label>
+                                    <textarea data-report="" class="form-control" id="txtGuiThem" style="width:100%"></textarea>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3 col-xs-3 col-lg-3 pull-right">
+                                <div class="form-group">
+                                    <input type="button" data-lang="btnNoSent" style="color: #fff;  width: 100%;" ng-click="fn.NoSentMail();" class="btn-flat flat" value="Không gửi">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3 col-md-3 col-xs-3 col-lg-3 pull-right">
+                                <div class="form-group">
+                                    <input type="button" id="btnThucHien" style="color: #fff; width: 100%;" data-lang="btnThucHien" ng-click="fn.SentMail();" class="btn-flat flat" value="Gửi mail">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="modal fade" id="ModaReport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" data-lang="lblReport">Báo cáo</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group responsive">
+                                    <label data-lang="lblNguoiBC">Người báo cáo</label>
+                                    @Html.Editor("txtNguoiBC", new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group responsive">
+                                    <label data-lang="lblNgayHT">Ngày hoàn thành</label>
+                                    <input class="form-control date" data-type="datepicker" type="text" id="dtNgayHT" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group responsive">
+                                    <label data-lang="lblNghiChu">Ghi chú</label>
+                                    <textarea data-report="" class="form-control" id="txtGhiChu" style="width:100%"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div class="row ">
+                            <div class="col-sm-3 col-md-3 col-xs-3 col-lg-3 pull-right">
+                                <div class="form-group">
+                                    <input type="button" data-dismiss="modal" data-lang="btnHuy" style="color: #fff; width: 100%;" class="btn-flat flat" value="Hủy">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3 col-md-3 col-xs-3 col-lg-3 pull-right">
+                                <div class="form-group">
+                                    <input type="button" id="btnKhongTH" style="color: #fff; width: 100%;" data-lang="btnKhongTH" ng-click="fn.KhongThucHien();" class="btn-flat flat" value="Không TH">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3 col-md-3 col-xs-3 col-lg-3 pull-right">
+                                <div class="form-group">
+                                    <input type="button" id="btnThucHien" style="color: #fff; width: 100%;" data-lang="btnThucHien" ng-click="fn.ThucHien();" class="btn-flat flat" value="Thực hiện">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+<script>
+    var urlGetListStopCard = '@Url.Action("GetListStopCard", "Safety")';
+    var urlEditStopCard = '@Url.Action("EditStopCard", "Safety")';
+    var urlInsertStopCard = '@Url.Action("ShowStopCard", "Safety")';
+    var urlSaveStopCard = '@Url.Action("SaveStopCard", "Safety")';
+    var urlDeleteStopCard = '@Url.Action("DeleteStopCard", "Safety")';
+    var urlGetDepartmentbyReportParent = '@Url.Action("GetDepartmentbyReportParent", "Safety")';
+    var urlSacveImage = '@Url.Action("SaveImage", "Safety")';
+    var urlCheckApprovalUser = '@Url.Action("CheckApprovalUser", "Safety")';
+    var urlSentMail = '@Url.Action("SentMail", "Safety")';
+
+    require(['StopCardController'])
+
+    var importfile = $('#fileToUpload');
+    $('#btnChonHinh').click(function () {
+        importfile.click();
+    });
+    $('#btnXoaHinh').click(function () {
+        $('#img01').attr('src', null);
+    });
+    $('#btnLuuHinh').click(function () {
+        var fd = new FormData();
+        fd.append('image', file);
+        $.ajax({
+            type: "POST",
+            data: fd,
+            processData: false,
+            contentType: false,
+            url: urlSacveImage,
+            success: function (resulst) {
+                $('#Image_1').attr('src', $('#img01').attr('src'));
+            },
+            error: function (response) {
+            }
+        });
+    });
+
+
+    var file;
+    importfile.change(function () {
+        // is file choosed
+        if (!this.files.length) {
+            return;
+        }
+        // is image
+        file = this.files[0];
+        this.value = '';
+        switch (file.type) {
+            case 'image/bmp':
+            case 'image/jpeg':
+            case 'image/jpg':
+            case 'image/png':
+            case 'image/gif':
+                break;
+            default:
+                {
+                    alert('The uploaded file is not supported.');
+                    return;
+                }
+        }
+        uploadImgDisplay(file);
+    });
+
+    function uploadImgDisplay(curFile) {
+        var fileURL = window.URL.createObjectURL(curFile);
+        $('#img01').attr('src', fileURL);
+    }
+
+
+</script>

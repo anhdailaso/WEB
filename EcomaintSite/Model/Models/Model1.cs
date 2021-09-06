@@ -12,7 +12,17 @@ namespace Model.Data
         {
             try
             {
-                string databaseName = HttpContext.Current.Request.Cookies["DatabaseName"].Value;
+                string databaseName;
+                try
+                {
+                     databaseName = HttpContext.Current.Request.Cookies["DatabaseName"].Value;
+
+                }
+                catch
+                {
+                    databaseName = "CMMS_BARIA";
+
+                }
                 string connectionString = this.Database.Connection.ConnectionString;
                 if (databaseName != this.Database.Connection.Database)
                 {
@@ -90,11 +100,25 @@ namespace Model.Data
         public  DbSet<ST_StopCard> ST_StopCard { get; set; }
         public  DbSet<ST_StopCard1> ST_StopCard1 { get; set; }
         public  DbSet<ST_StopCard2> ST_StopCard2 { get; set; }
+        public  DbSet<Leadership> Leaderships { get; set; }
+        public  DbSet<LeadershipDetail> LeadershipDetails { get; set; }
+        public  DbSet<ST_APPROVAL_USER> ST_APPROVAL_USER { get; set; }
+        public  DbSet<ST_Safety> ST_Safety { get; set; }
+
 
         public DbSet<THOI_GIAN_CHAY_MAY> THOI_GIAN_CHAY_MAY { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Leadership>()
+           .HasMany(e => e.LeadershipDetails)
+           .WithRequired(e => e.Leadership)
+           .HasForeignKey(e => e.IDLeadership)
+           .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ST_APPROVAL_USER>()
+                .Property(e => e.FORM_ID)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Device>()
                 .HasMany(e => e.UserRequestDetail)
@@ -389,5 +413,7 @@ namespace Model.Data
         }
 
         public System.Data.Entity.DbSet<Model.Data.GetMasterPlansObj> GetMasterPlansObjs { get; set; }
+
+        public System.Data.Entity.DbSet<Model.Data.HazardReportViewModel> HazardReportViewModels { get; set; }
     }
 }

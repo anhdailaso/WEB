@@ -1,5 +1,5 @@
 
-IF  EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES Where Table_Schema = 'dbo'  AND Table_Name ='Leadership')
+IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES Where Table_Schema = 'dbo'  AND Table_Name ='Leadership')
 BEGIN
 CREATE TABLE [dbo].[Leadership]
 (

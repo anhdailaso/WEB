@@ -20,4 +20,18 @@ namespace Model.Data
         public string TTTH { get; set; }
         public string NLQVP { get; set; }
     }
+
+    public class ChooseListStopCard
+    {
+        public int ID { get; set; }
+        public string DocNum { get; set; }
+        public string Description { get; set; }
+        public string DocDate { get; set; }
+        public string DocTime { get; set; }
+        public string CreatedBy { get; set; }
+        public string NGUOITH { get; set; }
+        public string Status { get; set; }
+        public string TTTH { get; set; }
+        public string NLQVP { get; set; }
+    }
 }
